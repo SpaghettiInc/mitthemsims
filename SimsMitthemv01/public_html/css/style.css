@@ -1,8 +1,30 @@
-/*
-
-*/
 /* 
-    Created on : 2016-sep-15, 17:10:12
-    Author     : hela
+Created on : 2016-sep-15, 17:10:12
+Author     : hela
 */
 
+body{
+    color: red;
+}
+
+h1 {
+    color: orange;
+    background-color: yellow;
+}
+
+#dragme {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+  }
+#title{
+   color: #006;
+    background-color: #aaa;
+    font-size: 25px;
+    padding: 1em;
+    text-align: center;   
+ }
+.ggrip{
+      color: red;
+      background-color: yellow;
+  }
