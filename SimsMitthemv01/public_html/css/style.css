@@ -1,8 +1,72 @@
-/*
+body {
 
-*/
-/* 
-    Created on : 2016-sep-15, 17:10:12
-    Author     : hela
-*/
+    background: #fff;
+    color: #000;
+}
 
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        C O N T A I N E R    P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.wrapper-container {
+
+    width: 70%;
+    padding: 25px 0;
+    margin: 0 auto;
+}
+
+.points-container {
+
+}
+
+.bin-container {
+
+}
+
+.trash-container {
+
+}
+
+.info-container {
+
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        I M A G E   P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.bin-container img, .trash-container img {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trash {
+
+    width: 100px;
+    height: 100px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        G E N E R A L   P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.center-content {
+
+    text-align: center;
+}
+
+.padding {
+
+    padding: 10px;
+}
+
+.center {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
