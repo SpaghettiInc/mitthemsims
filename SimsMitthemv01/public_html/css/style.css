@@ -1,144 +1,72 @@
+body {
 
-/* Used in the mitthem sims project as a class in the new pictures (Used in the project part) */
-.pic{
-    width: 50px;
-    height: 50px;
-    top: 500px;
-    position: relative;
-}
-/* Used as a containment for the game atm, needs refining */
-  #container{
-      width: 600px;
-      height: 600px;
-  }
-  
-  /* Testing to whatever with it */
-  .redtext{
-      color: red;
-  }
-  
-  /* Used as a class for the test pics when learning the language */
-  .picalign {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      top: 150px;
-  }
-  
-  /* Used as a class for the test pics when learning the language */
-   .picalign2 {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      top: 300px;
-  }
-  
- /* Used as a class for the test pics when learning the language */
-   .picalign3 {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      top: 425px;
-  }
-  
-/* Used as a class for the test pics when learning the language */
-   .picalign4 {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      top: 540px;
-  }
-/* Used as a class for the test pics when learning the language */
-   .picalign5 {
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      top: 680px;
-  }
-  
-/* Used as a class for the test pics when making the glide accross screen, just by the position */
-  .newClass{
-      width: 150px;
-      height: 150px;
-      left: 200px;   
-  }
-  
-  /* Used when testing to make a pic rotatec */
-  .coolclass{
-      transform: rotateY(180deg);
-  }
-  
-  /* Used when testing to make a pic slide across screen */
-  .otherClass{
-      width: 150px;
-      height: 150px;
-      left: 900px; 
-  }
-  
-  /* Used when testing to make a pic slide across screen */
-  .otherclassagain{
-       width: 150px;
-      height: 150px;
-      left: 900px; 
-      top: 100px;
-  }
-  
-  /* Used when testing to make a pic slide across screen */
-  .class3{
-      width: 150px;
-      height: 150px;
-      left: 200px; 
-      top: 100px;
-  }
-  
-  /* Used when testing something, probably sliding pic */
-  .image-wrap {
-      position: relative;
-      margin:0 auto;
-      width: 900px;
-      height: 900px;
-  }
-  
-  /* All classes with card involved was used to make the picture flip in 3d */
-  #card {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-  
-/* Used for pic flip */
-  .container { 
-  width: 200px;
-  height: 260px;
-  perspective: 800;
-  position: relative;
+    background: #fff;
+    color: #000;
 }
 
 
-/* Used for pic flip */
-#card img {
-  margin: 0;
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        C O N T A I N E R    P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.wrapper-container {
+
+    width: 70%;
+    padding: 25px 0;
+    margin: 0 auto;
 }
 
-/* Used for pic flip */
-#card .front {
-  background: red;
+.points-container {
+
 }
 
-/* Used for pic flip */
-#card .back {
-  background: blue;
-  transform: rotateY( 180deg );
+.bin-container {
+
 }
 
-/* Used for pic flip */
-#card .flipped {
-  transform: rotateY( 180deg );
+.trash-container {
+
+}
+
+.info-container {
+
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        I M A G E   P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.bin-container img, .trash-container img {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trash {
+
+    width: 100px;
+    height: 100px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        G E N E R A L   P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.center-content {
+
+    text-align: center;
+}
+
+.padding {
+
+    padding: 10px;
+}
+
+.center {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }

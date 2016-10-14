@@ -1,50 +1,63 @@
 <!DOCTYPE html>
-<!--
 
--->
 <html>
     <head>
         <title>Testing Github!!</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <!-- <link rel="stlesheet" type="text/css" href="js/jquery-ui-1.12.1.custom/jquery-ui.css"> -->
         <script type="text/javascript" src="js/library/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-        <!--<script type="text/javascript" src="js/testjs.js"></script> -->
         <script type="text/javascript" src="js/mitthemscripts.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
     </head>
-    <body>
-        <!--
-        <div id="dragme">Fyllejew</div>
-        <h1 id="title"> Testing project </h1>
-        <p class="ggrip">This be paragraph</p>
-        
-        <div class="image-wrap">
-        <img class="picalign2" id="albinboy" src="pictures/albinboy.JPG">
-        <img class="picalign" id="maxboy" src="pictures/maximan.JPG">
-        <img class="picalign3" id="marklarboy" src="pictures/martin_head.JPG">
-        <img class="picalign4" id="simonboy" src="pictures/simonsson.JPG">
-       
-       <img class="picalign5" id="gothboy" src="pictures/gothmatteus.JPG">
-        </div> 
 
-        <section class="container">
-            <div id="card">
-                <img class="front" src="pictures/albinboy.JPG">
-                <img class="back" src="pictures/maximan.JPG">
+    <body>
+
+        <!-- MAIN WRAPPER -->
+        <div class="wrapper-container">
+
+            <header class="main-header">
+
+                <div class="logo">
+
+                    !# put logo
+
+                </div>
+
+            </header>
+
+            <!-- POINTS GOES HERE -->
+            <div class="points-container center-content">
+                <p><span id="points"></span></p>
             </div>
-        </section>
-         -->
-        <div id="container">
-            <img alt ="smiley face" class="picalign2" id="albinboy" src="pictures/albinboy.JPG">
-            <img alt="RIP" class="pic" id="square" src="pictures/square.png">
-            <img alt="RIP" class="pic" id="heart" src="pictures/heart.png">
-            <img alt="RIP" class="pic" id="triangle" src="pictures/triangle.png">
-            <img alt="RIP" class="pic" id="star" src="pictures/star.png">
+
+
+            <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
+            <div class="bin-container center-content">
+                <img alt ="Glas" class="bin" id="glasBin" src="pictures/garbage-containers/glas.png">
+                <img alt ="Mat" class="bin" id="matBin" src="pictures/garbage-containers/mat.png">
+                <img alt ="Papper" class="bin" id="papperBin" src="pictures/garbage-containers/papper.png">
+                <img alt ="Metall" class="bin" id="metallBin" src="pictures/garbage-containers/metall.png">
+                <img alt ="Plast" class="bin" id="plastBin" src="pictures/garbage-containers/plast.png">
+            </div>
+
+            <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
+            <div class="trash-container center-content">
+                <img alt="RIP" class="trash padding" id="glasTrash" src="pictures/trash/glasflaska.jpg" onMouseOver="infoBox('Detta är Glas')" onmouseout="infoBox('')">
+                <img alt="RIP" class="trash padding" id="metallTrash" src="pictures/trash/metallavfall.png" onMouseOver="infoBox('Detta är metall')" onmouseout="infoBox('')">
+                <img alt="RIP" class="trash padding" id="matTrash" src="pictures/trash/matavfall.jpg" onMouseOver="infoBox('Detta är matavfall')" onmouseout="infoBox('')">
+                <img alt="RIP" class="trash padding" id="papperTrash" src="pictures/trash/pappersavfall.jpg" onMouseOver="infoBox('Detta är papper')" onmouseout="infoBox('')">
+                <img alt="RIP" class="trash padding" id="plastTrash" src="pictures/trash/plastavfall.jpg" onMouseOver="infoBox('Detta är plast')" onmouseout="infoBox('')">
+            </div>
+
+            <div class="info-container center-content">
+                <span class="trash" id="info-box"></span>
+            </div>
+
         </div>
-       
+
     </body>
+
 </html>
