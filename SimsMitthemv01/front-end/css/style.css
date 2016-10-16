@@ -1,0 +1,182 @@
+/*
+    CONTAINERS
+*/
+
+body {
+
+    font-family: "Cantarell";
+    font-size: 16px;
+    background: #fff;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+.wrapper {
+
+    margin: 0 auto;
+    width: 840px;
+}
+
+header {
+
+    background: #eee;
+    margin-top: 40px;
+    width: 100%;
+}
+
+nav {
+
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+nav ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+
+    display: inline-block;
+    font-family: inherit;
+    font-size: 18px;
+    padding: 5px 10px 0 0;
+
+}
+
+nav ul li a {
+
+    color: #000;
+    font-weight: bold;
+}
+nav ul li a:hover {
+
+    border-bottom: 4px green solid;
+    text-decoration: none;
+}
+
+footer {
+
+    background: #fff;
+    width: 100%;
+}
+
+.footer-col {
+
+    width: 276px;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col h1 {
+
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.footer-col p {
+
+    font-size: 10px;
+}
+
+.logo {
+
+    float: left;
+    display: block;
+    padding-bottom: 20px;
+}
+.logo img {
+
+    position: relative;
+    height: 60px;
+
+}
+
+.language {
+
+    display: block;
+    float: right;
+}
+
+.content {
+
+    background: #fff;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.content p {
+
+    padding-left: 10px;
+    border-left: 4px green solid;
+}
+.image {
+
+}
+
+/*
+    PROPERTIES
+*/
+
+
+.center-content {
+
+    text-align: center;
+}
+
+.center {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.align-left {
+
+    text-align: left;
+}
+
+.align-center {
+
+    text-align: center;
+}
+
+.align-right {
+
+    text-align: right;
+}
+
+.padding {
+
+    padding: 10px;
+}
+
+.green {
+
+    background: green;
+}
+/*
+    OBJECTS
+*/
+
+.line {
+
+    width: 100%;
+    height: 4px;
+}
+
+#language {
+
+    font-size: 14px;
+}
+
+#waste-bin {
+
+    height: 200px;
+}
