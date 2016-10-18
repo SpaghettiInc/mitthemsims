@@ -4,268 +4,179 @@
  * and open the template in the editor.
  */
 
-
-
 //Main Script page for testing for MITTHEM
 //
-$(function(){
-    //Makes the picture of ID square draggable
-    /*$(".trash").draggable({
-        containment: "#container"
-    });*/
-    spawnRandomImg();
-    //appendImg(img);
-    //img.appendTo($('#mydiv')).draggable();
-    /*
-    $('#glasTrash').click(function(){
-       randomImgReturn(); 
-    });
-   
-    var img = $('<img />',
-               {id: 'glasTrash',
-                class: 'thrash padding',
-                src: 'pictures/trash/glasflaska.jpg',
-                width: 100,
-                height: 100}).appendTo($('#mydiv'));
-    img.draggable();
-    var img2 = $('<img />',
-               {id: 'glasTrash',
-                class: 'thrash padding',
-                src: 'pictures/trash/glasflaska.jpg',
-                width: 100, 
-                height: 100}).appendTo($('#mydiv'));
-            
-    */
-    //Makes the pic of ID albinboy droppable, accepts pictures
-    //that has the css class "pic" attached to it
-    $("#glasBin").droppable( {
-
-        accept: function(d) {
-
-            return true;
-        },
-        
-        //When dropped it explodes it
-        //Temporary thingie, doesnt actually remove it or anything
-        drop: function(event, ui) {
-
-            //if(ui.draggable.attr('id') == "glasTrash") {
-            if(ui.draggable.attr('id') === "img0") {
-                updatePoints2(true);
-                $(ui.draggable).toggle("scale");
-
-                
-            } else {
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake");
-                // put back object where it came from
-            }
-            $('#mydiv').children().remove();    
-            //$(ui.draggable.element).remove();
-                spawnRandomImg();
-                //appendImg(img);
-        }
-    });
-
-    $("#matBin").droppable( {
-
-        accept: function(d) {
-
-            return true;
-        },
-
-        //When dropped it explodes it
-        //Temporary thingie, doesnt actually remove it or anything
-        drop: function(event, ui) {
-
-            if(ui.draggable.attr('id') === "img1") {
-
-                updatePoints2(true);
-                $(ui.draggable).toggle("scale");
-                
-
-            } else {
-
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake");
-                
-                // put back object where it came from
-            }
-            $('#mydiv').children().remove();
-            //$(ui.draggable.element).remove();
-            spawnRandomImg();
-            //appendImg(img);
-        }
-    });
-
-    //Makes the pic of ID albinboy droppable, accepts pictures
-    //that has the css class "pic" attached to it
-    $("#papperBin").droppable( {
-
-        accept: function(d) {
-
-            return true;
-        },
-
-        //When dropped it explodes it
-        //Temporary thingie, doesnt actually remove it or anything
-        drop: function(event, ui) {
-
-            if(ui.draggable.attr('id') === "img2") {
-
-                updatePoints2(true);
-                $(ui.draggable).toggle("scale");
-                
-
-            } else {
-
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake");
-                
-                // put back object where it came from
-            }
-            $('#mydiv').children().remove();
-            //$(ui.draggable.element).remove();
-            spawnRandomImg();
-            //appendImg(img);
-        }
-        
-    });
-
-    $("#metallBin").droppable( {
-
-        accept: function(d) {
-
-            return true;
-        },
-
-        //When dropped it explodes it
-        //Temporary thingie, doesnt actually remove it or anything
-        drop: function(event, ui) {
-
-            if(ui.draggable.attr('id') === "img3") {
-
-                updatePoints2(true);
-                $(ui.draggable).toggle("scale");
-                
-
-            } else {
-
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake");
-                
-                // put back object where it came from
-            }
-            $('#mydiv').children().remove();
-            //$(ui.draggable.element).remove();
-            spawnRandomImg();
-            //appendImg(img);
-        }
-    });
-
-    $("#plastBin").droppable( {
-
-        accept: function(d) {
-
-            return true;
-        },
-
-        //When dropped it explodes it
-        //Temporary thingie, doesnt actually remove it or anything
-        drop: function(event, ui) {
-
-            if(ui.draggable.attr('id') === "img4") {
-
-                updatePoints2(true);
-                $(ui.draggable).toggle("scale");
-
-            } else {
-
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake");
-               
-                // put back object where it came from
-            }
-             $(ui.draggable.element).remove();
-             spawnRandomImg();
-             //appendImg(img);
-        }
-    });
-    /*
-    function appendImg(img){
-        $('#mydiv').append(img).draggable();
+$(function () {
+    //Creating the IMAGES class and stores all images in a vector.
+    function IMAGES() {
+        this.images = [$('<img />',
+                    {id: 'img0',
+                        class: 'trash padding',
+                        src: 'pictures/trash/glasflaska.jpg',
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img1',
+                        class: 'trash padding',
+                        src: 'pictures/trash/matavfall.jpg',
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img2',
+                        class: 'trash padding',
+                        src: 'pictures/trash/pappersavfall.jpg',
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img3',
+                        class: 'trash padding',
+                        src: 'pictures/trash/metallavfall.png',
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img4',
+                        class: 'trash padding',
+                        src: 'pictures/trash/plastavfall.jpg',
+                        alt: "No picture found"})];
+    }
+    //Creates a new image object
+    var imgObject = new IMAGES();
+    
+    //Adds a getPic function to retrieve a picture from the class
+    imgObject.getPic = function (imgNr) {
+        return this.images[imgNr];
     };
-*/
-   function spawnRandomImg(){
-    var x = ( Math.floor(Math.random()*5));
-    var imgId = "img" + x;
-    if(x === 0){
-    img = $('<img />',
-               {id: imgId,
-                class: 'thrash padding',
-                src: 'pictures/trash/glasflaska.jpg',
-                width: 100,
-                height: 100});
-        }else if(x === 1){
-            img = $('<img />',
-               {id: imgId,
-                class: 'thrash padding',
-                src: 'pictures/trash/matavfall.jpg',
-                width: 100,
-                height: 100});
-        }else if (x === 3){
-            img = $('<img />',
-               {id: imgId,
-                class: 'thrash padding',
-                src: 'pictures/trash/metallavfall.png',
-                width: 100,
-                height: 100});
-        }else if(x === 2){
-            img = $('<img />',
-               {id: imgId,
-                class: 'thrash padding',
-                src: 'pictures/trash/pappersavfall.jpg',
-                width: 100,
-                height: 100});
-        }else if (x === 4){
-            img = $('<img />',
-               {id: imgId,
-                class: 'thrash padding',
-                src: 'pictures/trash/plastavfall.jpg',
-                width: 100,
-                height: 100});
+    
+    //Spawns the first image
+    spawnRandomImg(imgObject);
+
+    //When dropped it checks whether the ID corresponds to the correct thrash
+    //If its correct it updates points to true and then gets rid of the image,
+    //If not correct it shakes and then gets rid of picture
+    $("#glasBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img0") {
+                updatePoints2(true);
+                $(ui.draggable).toggle("scale", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            } else {
+                $(ui.draggable).toggle("shake", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+                updatePoints2(false);
+            }
         }
-        //.appendTo($('#mydiv')
-    //return img;
-    $(img).appendTo($('#mydiv')).draggable();
-}
+    });
+
+    $("#matBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img1") {
+                updatePoints2(true);
+                $(ui.draggable).toggle("scale", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            } else {
+                updatePoints2(false);
+                $(ui.draggable).toggle("shake", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            }
+        }
+    });
+
+
+    $("#papperBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img2") {
+                updatePoints2(true);
+                $(ui.draggable).toggle("scale", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            } else {
+                updatePoints2(false);
+                $(ui.draggable).toggle("shake", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            }
+        }
+    });
+
+    $("#metallBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img3") {
+                updatePoints2(true);
+                $(ui.draggable).toggle("scale", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            } else {
+
+                updatePoints2(false);
+                $(ui.draggable).toggle("shake", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            }
+        }
+    });
+
+    $("#plastBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img4") {
+                updatePoints2(true);
+                $(ui.draggable).toggle("scale", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            } else {
+                updatePoints2(false);
+                $(ui.draggable).toggle("shake", function () {
+                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                        $("#mydiv").children().remove();
+                        spawnRandomImg(imgObject);
+                    });
+                });
+            }
+        }
+    });
+    
+    //Function that spawns the random image
+    function spawnRandomImg(imgObject) {
+        var rnd = (Math.floor(Math.random() * 5));
+        var ggrip = imgObject.getPic(rnd);
+        $(ggrip).appendTo($('#mydiv')).draggable().show();
+    }
 });
 
-
-
-function updatePoints(pts) {
-
-    var oldPoints = parseInt(document.getElementById("points").innerHTML);
-    document.getElementById("points").innerHTML = oldPoints + pts;
-}
-
+//Function to update the points.
 function updatePoints2(status) {
-
     if (status) {
-
         var oldPoints = document.getElementById("points").innerHTML;
-        document.getElementById("points").innerHTML = oldPoints + "<i class=\"fa fa-check\" style=\"color:green;padding:5px;\"></i>"
-
+        document.getElementById("points").innerHTML = oldPoints + "<i class=\"fa fa-check\" style=\"color:green;padding:5px;\"></i>";
     } else {
-
         var oldPoints = document.getElementById("points").innerHTML;
-        document.getElementById("points").innerHTML = oldPoints + "<i class=\"fa fa-close\" style=\"color:red;padding:5px;\"></i>"
+        document.getElementById("points").innerHTML = oldPoints + "<i class=\"fa fa-close\" style=\"color:red;padding:5px;\"></i>";
     }
-
 }
 
-
-function infoBox(str) {
-
-        document.getElementById("info-box").innerHTML = str;
-}
