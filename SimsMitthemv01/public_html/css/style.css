@@ -2,6 +2,43 @@ body {
     background: #fff;
     color: #000;
 }
+#logo{
+    height:75px;
+    width: 200px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        CLOCK PROPERTIES
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+#myClock{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#myClock div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+
+#myClock div span {
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+
+.cdText{
+    padding-top: 5px;
+    font-size: 16px;
+}
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -50,6 +87,19 @@ body {
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
         G E N E R A L   P R O P E R T I E S
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+/*---------------------------------*/
+
+#startAnimation{
+display: inline-block;   
+opacity: 1;
+}
+
+#gameStart{
+    display: none;
+}
+
 
 .center-content {
 
