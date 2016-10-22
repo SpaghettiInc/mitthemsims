@@ -5,11 +5,17 @@
 body {
 
     font-family: "Cantarell";
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     background: #fff;
     margin: 0 auto;
     padding: 0;
     width: 100%;
+}
+
+h2 {
+
+    padding-top: 15px;
 }
 
 .wrapper {
@@ -53,12 +59,25 @@ nav ul li a {
     color: #000;
     font-weight: bold;
 }
+
 nav ul li a:hover {
 
     border-bottom: 4px green solid;
     text-decoration: none;
+	color: green;
+}
+/*
+nav ul li a:link {
+
+	border-bottom: none;
+	text-decoration: none;
+	color: #000;
 }
 
+nav ul li a:visitied {
+
+}
+*/
 footer {
 
     background: #fff;
@@ -67,22 +86,24 @@ footer {
 
 .footer-col {
 
+    position:  inherit;
     width: 276px;
-    padding: 0;
+    padding: 20px 0 40px 0;
     margin: 0;
+    vertical-align:top;
 }
 
 .footer-col h1 {
 
     font-weight: bold;
-    font-size: 14px;
+    font-size: 20px;
     margin: 0;
     padding: 10px 0;
 }
 
 .footer-col p {
 
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .logo {
@@ -109,9 +130,11 @@ footer {
     background: #fff;
     width: 100%;
     padding: 50px 0;
+    border-top: #bbb 4px solid;
+    margin-top: 20px;
 }
 
-.content p {
+#green-p {
 
     padding-left: 10px;
     border-left: 4px green solid;
@@ -179,4 +202,10 @@ footer {
 #waste-bin {
 
     height: 200px;
+}
+
+#rubby {
+
+    height: 200px;
+    margin-top: 20px;
 }
