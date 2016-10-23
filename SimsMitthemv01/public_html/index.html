@@ -5,35 +5,55 @@
         <title>Changing title!</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <script type="text/javascript" src="js/library/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
         <script type="text/javascript" src="js/mitthemscripts.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
-
     <body>
-
+        
+        
+        <!--              <div>
+                    <span class="days"></span>
+                    <div class="cdText">Days</div>
+                </div>
+                <div>
+                    <span class="hours"></span>
+                    <div class="cdText">Hours</div>
+                </div> -->
+        
         <!-- MAIN WRAPPER -->
         <div class="wrapper-container">
-
             <header class="main-header">
-
                 <div class="logo">
-
-                    !# put logo
-
+                    <img alt="RIP" id="logo" src="pictures/trash/mitthem.png">
                 </div>
-
             </header>
-
             <!-- POINTS GOES HERE -->
             <div class="points-container center-content">
                 <p><span id="points"></span></p>
             </div>
-
-
+            
+            <h1 id="meHeads"></h1>
+            
+            <!-- MY TIMER -->
+            <div id="myClock">
+                <div>
+                    <span class="minutes"></span>
+                    <div class="cdText">Minutes</div>
+                </div>
+                <div>
+                <span class="seconds"></span>
+                <div class="cdText">Seconds</div>
+                </div>
+            </div>
+            
+        <div>
+            <!--<input type="submit" id="startClock" value="clock start">-->
+            <input type="submit" id="gameStarter" value="start">
+        </div>
+        <div id="gameStart">
             <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
             <div class="bin-container center-content">
                 <img alt ="Glas" class="bin" id="glasBin" src="pictures/garbage-containers/glas.png">
@@ -42,22 +62,18 @@
                 <img alt ="Metall" class="bin" id="metallBin" src="pictures/garbage-containers/metall.png">
                 <img alt ="Plast" class="bin" id="plastBin" src="pictures/garbage-containers/plast.png">
             </div>
-
             <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
-            <div class="trash-container center-content">
-                <img alt="RIP" class="trash padding" id="glasTrash" src="pictures/trash/glasflaska.jpg" onMouseOver="infoBox('Detta är Glas')" onmouseout="infoBox('')">
+            <div id ="mydiv" class="trash-container center-content">
+                <!--<img alt="RIP" class="trash padding" id="glasTrash" src="pictures/trash/glasflaska.jpg" onMouseOver="infoBox('Detta är Glas')" onmouseout="infoBox('')"> 
                 <img alt="RIP" class="trash padding" id="metallTrash" src="pictures/trash/metallavfall.png" onMouseOver="infoBox('Detta är metall')" onmouseout="infoBox('')">
                 <img alt="RIP" class="trash padding" id="matTrash" src="pictures/trash/matavfall.jpg" onMouseOver="infoBox('Detta är matavfall')" onmouseout="infoBox('')">
                 <img alt="RIP" class="trash padding" id="papperTrash" src="pictures/trash/pappersavfall.jpg" onMouseOver="infoBox('Detta är papper')" onmouseout="infoBox('')">
-                <img alt="RIP" class="trash padding" id="plastTrash" src="pictures/trash/plastavfall.jpg" onMouseOver="infoBox('Detta är plast')" onmouseout="infoBox('')">
+                <img alt="RIP" class="trash padding" id="plastTrash" src="pictures/trash/plastavfall.jpg" onMouseOver="infoBox('Detta är plast')" onmouseout="infoBox('')"> -->
             </div>
-
-            <div class="info-container center-content">
-                <span class="trash" id="info-box"></span>
-            </div>
-
         </div>
-
-    </body>
-
+        <div class="info-container center-content">
+            <span class="trash" id="info-box"></span>
+        </div>
+             </div>
+</body>
 </html>
