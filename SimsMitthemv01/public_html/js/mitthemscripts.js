@@ -177,9 +177,12 @@ $(function () {
 
     //Function that spawns the random image
     function spawnRandomImg(imgObject) {
+        $('#thrashDiv').children().hide();
         var rnd = (Math.floor(Math.random() * 5));
         var rndImage = imgObject.getPic(rnd);
         $(rndImage).appendTo($('#mydiv')).draggable().show();
+        
+        
     }
 
     //Function to update the points.
@@ -250,6 +253,7 @@ $(function () {
     //Function to start the game
     function startGame() {
         $('#gameStart').toggle('shake', 500);
+        //$('#thrashDiv').children().hide();
         $('#gameStarter').remove();
     }
 });
