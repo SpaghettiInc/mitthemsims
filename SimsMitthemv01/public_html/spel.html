@@ -8,7 +8,9 @@
     <script src="js/library/jquery-3.1.1.js"></script>
     <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/game-style.css" />
     <script src="js/game-changer.js"></script>
+    <script src="js/mitthemscripts.js"></script>
   </head>
   <body id="body">
 
@@ -59,8 +61,38 @@
     When the user choses to start the game, this section will become
     visible (and the game will begin). -->
     <section id="game" class="modal">
+        <div id="myClock">
+            <div>
+                <span class="minutes"></span>
+                <div class="cdText">Minutes</div>
+            </div>
+            <div>
+                <span class="seconds"></span>
+                <div class="cdText">Seconds</div>
+            </div>
+        </div>
 
-      <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
+        <div>
+            <!--<input type="submit" id="startClock" value="clock start">-->
+            <input type="submit" id="gameStarter" value="start">
+        </div>
+        <div id="gameStart">
+            <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
+            <div class="bin-container center-content" id="thrashDiv">
+                <img alt ="Glas" class="bin" id="glasBin" src="img/game/garbage-containers/glas.png">
+                <img alt ="Mat" class="bin" id="matBin" src="img/game/garbage-containers/mat.png">
+                <img alt ="Papper" class="bin" id="papperBin" src="img/game/garbage-containers/papper.png">
+                <img alt ="Metall" class="bin" id="metallBin" src="img/game/garbage-containers/metall.png">
+                <img alt ="Plast" class="bin" id="plastBin" src="img/game/garbage-containers/plast.png">
+            </div>
+            <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
+            <div id ="mydiv" class="trash-container center-content"></div>
+        </div>
+        <div class="info-container center-content">
+            <span class="trash" id="info-box"></span>
+        </div>
+
+        <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
 
     </section>
 
