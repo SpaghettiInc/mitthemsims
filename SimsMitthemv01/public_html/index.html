@@ -1,79 +1,180 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <title>Changing title!</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="js/library/jquery-3.1.1.js"></script>
-        <script type="text/javascript" src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/mitthemscripts.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-    </head>
-    <body>
-        
-        
-        <!--              <div>
-                    <span class="days"></span>
-                    <div class="cdText">Days</div>
-                </div>
-                <div>
-                    <span class="hours"></span>
-                    <div class="cdText">Hours</div>
-                </div> -->
-        
-        <!-- MAIN WRAPPER -->
-        <div class="wrapper-container">
-            <header class="main-header">
-                <div class="logo">
-                    <img alt="RIP" id="logo" src="pictures/trash/mitthem.png">
-                </div>
-            </header>
-            <!-- POINTS GOES HERE -->
-            <div class="points-container center-content">
-                <p><span id="points"></span></p>
-            </div>
-            
-            <h1 id="meHeads"></h1>
-            
-            <!-- MY TIMER -->
-            <div id="myClock">
-                <div>
-                    <span class="minutes"></span>
-                    <div class="cdText">Minutes</div>
-                </div>
-                <div>
-                <span class="seconds"></span>
-                <div class="cdText">Seconds</div>
-                </div>
-            </div>
-            
-        <div>
-            <!--<input type="submit" id="startClock" value="clock start">-->
-            <input type="submit" id="gameStarter" value="start">
-        </div>
-        <div id="gameStart">
-            <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
-            <div class="bin-container center-content">
-                <img alt ="Glas" class="bin" id="glasBin" src="pictures/garbage-containers/glas.png">
-                <img alt ="Mat" class="bin" id="matBin" src="pictures/garbage-containers/mat.png">
-                <img alt ="Papper" class="bin" id="papperBin" src="pictures/garbage-containers/papper.png">
-                <img alt ="Metall" class="bin" id="metallBin" src="pictures/garbage-containers/metall.png">
-                <img alt ="Plast" class="bin" id="plastBin" src="pictures/garbage-containers/plast.png">
-            </div>
-            <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
-            <div id ="mydiv" class="trash-container center-content">
-                <!--<img alt="RIP" class="trash padding" id="glasTrash" src="pictures/trash/glasflaska.jpg" onMouseOver="infoBox('Detta är Glas')" onmouseout="infoBox('')"> 
-                <img alt="RIP" class="trash padding" id="metallTrash" src="pictures/trash/metallavfall.png" onMouseOver="infoBox('Detta är metall')" onmouseout="infoBox('')">
-                <img alt="RIP" class="trash padding" id="matTrash" src="pictures/trash/matavfall.jpg" onMouseOver="infoBox('Detta är matavfall')" onmouseout="infoBox('')">
-                <img alt="RIP" class="trash padding" id="papperTrash" src="pictures/trash/pappersavfall.jpg" onMouseOver="infoBox('Detta är papper')" onmouseout="infoBox('')">
-                <img alt="RIP" class="trash padding" id="plastTrash" src="pictures/trash/plastavfall.jpg" onMouseOver="infoBox('Detta är plast')" onmouseout="infoBox('')"> -->
-            </div>
-        </div>
-        <div class="info-container center-content">
-            <span class="trash" id="info-box"></span>
-        </div>
-             </div>
-</body>
+<html lang="sv">
+
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="js/library/jquery-3.1.1.js"></script>
+    <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/game-changer.js"></script>
+  </head>
+  <body id="body">
+
+    <div id="wrapper">
+
+      <header id="header">
+
+        <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
+
+      </header>
+
+      <nav id="nav">
+
+        <ul>
+          <li><a href="#">Varför sortera?</a></li>
+          <li><a href="#">Hur sortera?</a></li>
+          <li><a href="#">Spela spelet!</a></li>
+        </ul>
+
+      </nav>
+
+      <div id="content">
+
+        <!-- User will click this button when they want to start
+        the game. When so, this button will go hidden. -->
+
+        <p id="start-game-text">
+          Några förklarande ord om spelet. Orkar inte komma med några
+          specifika exempel nu. Duger inte detta menar du?</p>
+        <input type="button" id="start-game-button" class="button" value="Starta spelet" />
+        <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
+
+        <!-- This is section is not used for now and is thus kept
+        hidden. -->
+        <aside id="aside">
+          #aside
+        </aside>
+
+      </div> <!-- END #content-->
+
+      <footer id="footer">
+        #footer
+      </footer>
+
+    </div> <!-- END #wrapper -->
+
+    <!-- This is the actual game section and will start out hidden.
+    When the user choses to start the game, this section will become
+    visible (and the game will begin). -->
+    <section id="game" class="modal">
+
+      <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
+
+    </section>
+
+    <!-- This section will display the current highscore. It
+    will start out hidden and show upon either request or when
+    the game is over. -->
+    <section id="highscore" class="modal">
+
+      <h1>Topplista</h1>
+      <table id="highscore-table">
+
+        <tr>
+          <td id="name">
+            Henrik Larsson
+          </td>
+          <td id="date">
+            161104
+          </td>
+          <td id="points">
+            24
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Martin "Always Second" Karttunen
+          </td>
+          <td>
+            161104
+          </td>
+          <td>
+            21
+          </td>
+        </tr>
+
+      </table>
+
+      <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
+
+    </section>
+
+
+  </body>
+
 </html>
