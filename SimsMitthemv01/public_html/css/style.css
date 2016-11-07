@@ -30,12 +30,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-    background: #fff;
-    color: #000;
+	line-height: 1;
 }
-#logo{
-    height:75px;
-    width: 200px;
+ol, ul {
+	list-style: none;
 }
 blockquote, q {
 	quotes: none;
@@ -50,57 +48,44 @@ table {
 	border-spacing: 0;
 }
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        CLOCK PROPERTIES
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*  ----------------------------------------------------------------  */
 
-#myClock{
+/*  GENERAL   */
+
+body {
+
   font-family: sans-serif;
-    color: #fff;
-    display: inline-block;
-    font-weight: 100;
-    text-align: center;
-    font-size: 30px;
+  width: 100%;
 }
 
-#myClock div{
-    padding: 10px;
-    border-radius: 3px;
-    background: #00BF96;
-    display: inline-block;
+h1 {
+
+		font-size: 40px;
 }
 
-#myClock div span {
-    padding: 15px;
-    border-radius: 3px;
-    background: #00816A;
-    display: inline-block;
+a:link, a:visited {
+
 }
 
 a:hover, a:active {
 
-.cdText{
-    padding-top: 5px;
-    font-size: 16px;
 }
 
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        C O N T A I N E R    P R O P E R T I E S
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*  OBJECTS   */
 
-.wrapper-container {
-    width: 70%;
-    padding: 25px 0;
+#wrapper {
+
+  width: 900px;
   margin: 0 auto;
 }
 
-.points-container {
+#header {
 
   padding: 20px 0 10px 0;
 }
 
-.bin-container {
+#nav {
 
   background-color: #fff;
   margin: 0;
@@ -108,36 +93,41 @@ a:hover, a:active {
   font-size: 18px;
 }
 
-.trash-container {
+#content {
 
-    
+  text-align: center;
+  width: 100%;
+  height: 600px;
+  background-repeat: no-repeat;
+  border-top: 4px solid #ccc;
 }
 
-.info-container {
+#aside {
 
   background-color: green;
 }
 
 .modal {
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        I M A G E   P R O P E R T I E S
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+	margin: 50px auto;
+  z-index: 2;
+  width: 924px;
+  height: 568px;
+  background-color: #fff;
+  text-align: center;
+  opacity: 0.95;
+  padding: 50px;
+	box-shadow: 3px 3px 5px #aaa;
+	border: 1px solid #ddd;
 
-.bin-container img, .trash-container img {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.trash {
-    width: 100px;
-    height: 100px;
+#footer {
+
+  background-color: green;
 }
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        G E N E R A L   P R O P E R T I E S
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#start-game-text {
 
   text-align: justify;;
   padding: 100px 0 40px 0;
@@ -145,25 +135,36 @@ a:hover, a:active {
   width: 300px;
 }
 
-/*---------------------------------*/
+.button {
 
-#startAnimation{
-display: inline-block;   
-opacity: 1;
+  padding: 10px;
+  background-color: green;
+  border-width: 0;
+  color: #fff;
+  border-radius: 5px;
+  border: solid 2px green;
 }
 
-#gameStart{
-    display: none;
+.button:active {
+
+  color: #fff;
+  background-color: lightgreen;
 }
 
 #top-logo {
 
-.center-content {
-
-    text-align: center;
+  width: 200px;
 }
 
-.padding {
+#highscore-table {
+
+	width: 100%;
+	margin: 40px auto;
+	background-color: #fff;
+	color: #000;
+}
+
+#highscore-table tr:nth-child(even) {
 
 	background-color: #ddd;
 	color: #000;
@@ -175,7 +176,9 @@ tr, td {
 	text-align: left;
 }
 
-.center {
+table {
+    counter-reset: rowNumber;
+}
 
 table tr {
     counter-increment: rowNumber;
@@ -198,8 +201,7 @@ table tr td:first-child::before {
 #nav li {
 
   display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
+  margin: 0;
 }
 
 #nav a:link, a:visited {
