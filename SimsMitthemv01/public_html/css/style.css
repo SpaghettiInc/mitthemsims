@@ -80,19 +80,6 @@ tr, td {
 	text-align: left;
 }
 
-table { counter-reset: rowNumber; }
-
-table tr {
-    counter-increment: rowNumber;
-}
-
-table tr td:first-child::before {
-    content: counter(rowNumber);
-    min-width: 1em;
-    margin-right: 0.5em;
-}
-
-
 /*  MENU SPECIFICS  */
 
 #nav li {
@@ -132,6 +119,7 @@ table tr td:first-child::before {
   padding: 50px;
 	box-shadow: 3px 3px 5px #aaa;
 	border: 1px solid #ddd;
+  background-image: url("../img/bgs/landscape.jpg");
 }
 
 .button {

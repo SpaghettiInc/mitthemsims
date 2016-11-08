@@ -71,13 +71,8 @@
 
       <h1>Topplista</h1>
       <table id="highscore-table">
-
-        <!-- START PHP HIGHSCORE -->
-
-          <?php include('php/highscore.php')?>
-
-        <!-- END PHP HIGHSCORE -->
-
+        <?php include('php/highscore.php') ?>
+        
       </table>
 
       <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
