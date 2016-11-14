@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+  <script src="../js/library/jquery-3.1.1.js"></script>
+  <script src="../js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <script src="../js/game-changer.js"></script>
+  <script src="../js/language-switcher.js"></script>
+</head>
+  <body id="body">
+
+    <div id="wrapper">
+
+        <header id="header">
+
+          <img src="../img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
+
+          <div id="language-switcher">
+            <i class="fa fa-globe" style="font-size:16px"></i>
+            <span class="eng">Svenska</span>
+          </div>
+
+        </header>
+
+        <nav id="nav">
+
+          <ul>
+            <li class="eng"><a href="index.html">Why Sort Garbage?</a></li>
+            <li class="eng"><a href="hur.html">How To Sort?</a></li>
+            <li class="eng"><a href="spel.html">Play The Game!</a></li>
+          </ul>
+
+        </nav>
+
+      <div id="content">
+
+        <!-- User will click this button when they want to start
+        the game. When so, this button will go hidden. -->
+
+        <p class="eng" id="start-game-text">
+          Bried explanation of the game. CBA to come up with any
+          specifics at this moment. What - this ain't good enough for ya?</p>
+        <input type="button" id="start-game-button" class="button eng" value="Start the Game!" />
+        <input type="button" id="show-highscore-button" class="button eng" value="Show Highscore" />
+
+      </div> <!-- END #content-->
+      
+    </div> <!-- END #wrapper -->
+
+    <!-- This is the actual game section and will start out hidden.
+    When the user choses to start the game, this section will become
+    visible (and the game will begin). -->
+    <section id="game" class="modal">
+
+      <input type="button" id="end-game-button" class="button eng" value="Close the Game" />
+
+    </section>
+
+    <!-- This section will display the current highscore. It
+    will start out hidden and show upon either request or when
+    the game is over. -->
+    <section id="highscore" class="modal">
+
+      <h1 class="eng">Highscore</h1>
+      <table id="highscore-table">
+
+        <!-- START PHP HIGHSCORE -->
+
+          <?php include('php/highscore.php')?>
+
+        <!-- END PHP HIGHSCORE -->
+
+      </table>
+
+      <input type="button" id="close-highscore-button" class="button eng" value="Close Highscore" />
+
+    </section>
+
+
+  </body>
+
+</html>
