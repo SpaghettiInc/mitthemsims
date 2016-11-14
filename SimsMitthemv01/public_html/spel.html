@@ -2,44 +2,51 @@
 
 <html lang="sv">
 
-  <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="js/library/jquery-3.1.1.js"></script>
-    <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="js/game-changer.js"></script>
-  </head>
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+  <script src="js/library/jquery-3.1.1.js"></script>
+  <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="js/game-changer.js"></script>
+  <script src="js/language-switcher.js"></script>
+</head>
   <body id="body">
 
     <div id="wrapper">
 
-      <header id="header">
+        <header id="header">
 
-        <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
+          <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
 
-      </header>
+          <div id="language-switcher">
+            <i class="fa fa-globe" style="font-size:16px"></i>
+            <span class="swe">English</span>
+          </div>
 
-      <nav id="nav">
+        </header>
 
-        <ul>
-          <li><a href="index.html">Varför sortera?</a></li>
-          <li><a href="hur.html">Hur sortera?</a></li>
-          <li><a href="spel.html">Spela spelet!</a></li>
-        </ul>
+        <nav id="nav">
 
-      </nav>
+            <ul>
+              <li class="swe"><a href="index.html">Varför sortera?</a></li>
+              <li class="swe"><a href="hur.html">Hur sortera?</a></li>
+              <li class="swe"><a href="spel.html">Spela spelet!</a></li>
+            </ul>
+
+        </nav>
 
       <div id="content">
 
         <!-- User will click this button when they want to start
         the game. When so, this button will go hidden. -->
 
-        <p id="start-game-text">
+        <p class="swe" id="start-game-text">
           Några förklarande ord om spelet. Orkar inte komma med några
           specifika exempel nu. Duger inte detta menar du?</p>
-        <input type="button" id="start-game-button" class="button" value="Starta spelet" />
-        <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
+        <input type="button" id="start-game-button" class="button swe" value="Starta spelet" />
+        <input type="button" id="show-highscore-button" class="button swe" value="Visa topplista" />
 
         <!-- This is section is not used for now and is thus kept
         hidden. -->
@@ -60,7 +67,7 @@
     visible (and the game will begin). -->
     <section id="game" class="modal">
 
-      <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
+      <input type="button" id="end-game-button" class="button swe" value="Stäng spelet" />
 
     </section>
 
@@ -69,7 +76,7 @@
     the game is over. -->
     <section id="highscore" class="modal">
 
-      <h1>Topplista</h1>
+      <h1 class="swe">Topplista</h1>
       <table id="highscore-table">
 
         <!-- START PHP HIGHSCORE -->
@@ -80,7 +87,7 @@
 
       </table>
 
-      <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
+      <input type="button" id="close-highscore-button" class="button swe" value="Stäng topplistan" />
 
     </section>
 
