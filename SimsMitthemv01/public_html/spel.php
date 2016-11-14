@@ -71,8 +71,15 @@
 
       <h1>Topplista</h1>
       <table id="highscore-table">
-        <?php include('php/highscore.php') ?>
-        
+        <?php
+
+            include_once('php/Highscore.php');
+
+            $hs = new Highscore();
+            $hs->getHtmlTable();
+
+        ?>
+
       </table>
 
       <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
