@@ -1,35 +1,17 @@
 
 $(document).ready(function() {
 
-  var lang = "swe";
+    $("#language-switcher").click(function() {
 
-  $("#language-switcher").mouseenter(function() {
-    $("#language-switcher").css("color", "green");
-    $("#language-switcher").css("border-bottom", "4px solid green");
-  });
-  $("#language-switcher").mouseleave(function() {
-    $("#language-switcher").css("color", "black");
-    $("#language-switcher").css("border-bottom", "none");
-  });
+        var doc = document.location.href.match(/[^\/]+$/)[0];
 
+        if ( $("html").attr("lang") === "en" ) {
 
-  $(".eng").hide();
-  $(".swe").show();
+            window.location.href = "../" + doc;
+        }
+        else if ( $("html").attr("lang") === "sv" ) {
 
-  $("#language-switcher").click(function() {
-
-    if (lang === "swe") {
-      lang = "eng";
-      $(".swe").hide();
-      $(".eng").show();
-    }
-
-    else if (lang === "eng") {
-      lang = "swe";
-      $(".eng").hide();
-      $(".swe").show();
-    }
-
-  });
-
+            window.location.href = "en/" + doc;
+        }
+    });
 });
