@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : Martin
 */
 
+.bottom {
+    position: absolute;
+    align-self: center;
+    bottom: 10px;
+}
+
 body {
     background: #fff;
     color: #000;
@@ -38,7 +44,6 @@ body {
 }
 
 #myClock div {
-
     background: #fff;
     display: inline-block;
 }
@@ -104,8 +109,6 @@ body {
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-/*---------------------------------*/
-
 #startAnimation{
 display: inline-block;
 opacity: 1;
@@ -132,3 +135,4 @@ opacity: 1;
     margin-left: auto;
     margin-right: auto;
 }
+

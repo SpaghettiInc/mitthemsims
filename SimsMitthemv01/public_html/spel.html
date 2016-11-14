@@ -2,211 +2,215 @@
 
 <html lang="sv">
 
-  <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="js/library/jquery-3.1.1.js"></script>
-    <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/game-style.css" />
-    <script src="js/game-changer.js"></script>
-    <script src="js/mitthemscripts.js"></script>
-  </head>
-  <body id="body">
+    <head>
+        <title>Mitthem</title>
+        <meta charset="utf-8" />
+        <script src="js/library/jquery-3.1.1.js"></script>
+        <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/game-style.css" />
+        <script src="js/game-changer.js"></script>
+        <script src="js/mitthemscripts.js"></script>
+    </head>
+    <body id="body">
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-      <header id="header">
+            <header id="header">
 
-        <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
+                <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
 
-      </header>
+            </header>
 
-      <nav id="nav">
+            <nav id="nav">
 
-        <ul>
-          <li><a href="#">Varför sortera?</a></li>
-          <li><a href="#">Hur sortera?</a></li>
-          <li><a href="#">Spela spelet!</a></li>
-        </ul>
+                <ul>
+                    <li><a href="#">Varför sortera?</a></li>
+                    <li><a href="#">Hur sortera?</a></li>
+                    <li><a href="#">Spela spelet!</a></li>
+                </ul>
 
-      </nav>
+            </nav>
 
-      <div id="content">
+            <div id="content">
 
-        <!-- User will click this button when they want to start
-        the game. When so, this button will go hidden. -->
+                <!-- User will click this button when they want to start
+                the game. When so, this button will go hidden. -->
 
-        <p id="start-game-text">
-          Några förklarande ord om spelet. Orkar inte komma med några
-          specifika exempel nu. Duger inte detta menar du?</p>
-        <input type="button" id="start-game-button" class="button" value="Starta spelet" />
-        <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
+                <p id="start-game-text">
+                    Några förklarande ord om spelet. Orkar inte komma med några
+                    specifika exempel nu. Duger inte detta menar du?</p>
+                <input type="button" id="start-game-button" class="button" value="Starta spelet" />
+                <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
 
-        <!-- This is section is not used for now and is thus kept
-        hidden. -->
-        <aside id="aside">
-          #aside
-        </aside>
+                <!-- This is section is not used for now and is thus kept
+                hidden. -->
+                <aside id="aside">
+                    #aside
+                </aside>
 
-      </div> <!-- END #content-->
+            </div> <!-- END #content-->
 
-      <footer id="footer">
-        #footer
-      </footer>
+            <footer id="footer">
+                #footer
+            </footer>
 
-    </div> <!-- END #wrapper -->
+        </div> <!-- END #wrapper -->
 
-    <!-- This is the actual game section and will start out hidden.
-    When the user choses to start the game, this section will become
-    visible (and the game will begin). -->
-    <section id="game" class="modal">
-        <div id="myClock">
+        <!-- This is the actual game section and will start out hidden.
+        When the user choses to start the game, this section will become
+        visible (and the game will begin). -->
+        <section id="game" class="modal">
+            <div id="myClock">
+                <div>
+                    <span class="minutes"></span>
+                    <div class="cdText">Minutes</div>
+                </div>
+                <div>
+                    <span class="seconds"></span>
+                    <div class="cdText">Seconds</div>
+                </div>
+            </div>
+
+            <div id="score" class="center"></div>
+
             <div>
-                <span class="minutes"></span>
-                <div class="cdText">Minutes</div>
+                <!--<input type="submit" id="startClock" value="clock start">-->
+                <input class="bottom" type="submit" id="gameStarter" value="Start">
+                <input class="bottom" type="button" id="replay" value="Play again">
             </div>
-            <div>
-                <span class="seconds"></span>
-                <div class="cdText">Seconds</div>
+            <div id="gameStart">
+                <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
+                <div class="bin-container center-content" id="thrashDiv">
+                    <img alt ="Glas" id="glasBin" src="img/game/garbage-containers/glas.png">
+                    <img alt ="Mat" id="matBin" src="img/game/garbage-containers/mat.png">
+                    <img alt ="Papper" id="papperBin" src="img/game/garbage-containers/papper.png">
+                    <img alt ="Metall" id="metallBin" src="img/game/garbage-containers/metall.png">
+                    <img alt ="Plast" id="plastBin" src="img/game/garbage-containers/plast.png">
+                </div>
+                <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
+                <div id ="mydiv" class="trash-container center-content"></div>
             </div>
-        </div>
-
-        <div>
-            <!--<input type="submit" id="startClock" value="clock start">-->
-            <input type="submit" id="gameStarter" value="start">
-        </div>
-        <div id="gameStart">
-            <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
-            <div class="bin-container center-content" id="thrashDiv">
-                <img alt ="Glas" class="bin" id="glasBin" src="img/game/garbage-containers/glas.png">
-                <img alt ="Mat" class="bin" id="matBin" src="img/game/garbage-containers/mat.png">
-                <img alt ="Papper" class="bin" id="papperBin" src="img/game/garbage-containers/papper.png">
-                <img alt ="Metall" class="bin" id="metallBin" src="img/game/garbage-containers/metall.png">
-                <img alt ="Plast" class="bin" id="plastBin" src="img/game/garbage-containers/plast.png">
+            <div class="info-container center-content">
+                <span class="trash" id="info-box"></span>
             </div>
-            <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
-            <div id ="mydiv" class="trash-container center-content"></div>
-        </div>
-        <div class="info-container center-content">
-            <span class="trash" id="info-box"></span>
-        </div>
 
-        <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
+            <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
 
-    </section>
+        </section>
+        
 
-    <!-- This section will display the current highscore. It
-    will start out hidden and show upon either request or when
-    the game is over. -->
-    <section id="highscore" class="modal">
+        <!-- This section will display the current highscore. It
+        will start out hidden and show upon either request or when
+        the game is over. -->
+        <section id="highscore" class="modal">
 
-      <h1>Topplista</h1>
-      <table id="highscore-table">
+            <h1>Topplista</h1>
+            <table id="highscore-table">
 
-        <tr>
-          <td id="name">
-            Henrik Larsson
-          </td>
-          <td id="date">
-            161104
-          </td>
-          <td id="points">
-            24
-          </td>
-        </tr>
+                <tr>
+                    <td id="name">
+                        Henrik Larsson
+                    </td>
+                    <td id="date">
+                        161104
+                    </td>
+                    <td id="points">
+                        24
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-        <tr>
-          <td>
-            Martin "Always Second" Karttunen
-          </td>
-          <td>
-            161104
-          </td>
-          <td>
-            21
-          </td>
-        </tr>
+                <tr>
+                    <td>
+                        Martin "Always Second" Karttunen
+                    </td>
+                    <td>
+                        161104
+                    </td>
+                    <td>
+                        21
+                    </td>
+                </tr>
 
-      </table>
+            </table>
 
-      <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
+            <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
 
-    </section>
+        </section>
 
 
-  </body>
+    </body>
 
 </html>
