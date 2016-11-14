@@ -1,0 +1,139 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-nov-07, 16:03:00
+    Author     : Martin
+*/
+
+.bottom {
+    position: absolute;
+    align-self: center;
+    bottom: 10px;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+}
+#logo{
+    height:75px;
+    width: 200px;
+}
+
+.points-container {
+
+  height: 20px;
+  background-color: #fff;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        CLOCK PROPERTIES
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+#myClock {
+
+    color: #000;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#myClock div {
+    background: #fff;
+    display: inline-block;
+}
+
+#myClock div span {
+
+    background: #fff;
+    display: inline-block;
+}
+
+
+.cdText{
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        C O N T A I N E R    P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.wrapper-container {
+    width: 70%;
+    padding: 25px 0;
+    margin: 0 auto;
+}
+
+.points-container {
+
+}
+
+.bin-container {
+
+}
+
+.trash-container {
+
+
+}
+
+.info-container {
+
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        I M A G E   P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.bin-container img, .trash-container img {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trash {
+    width: 100px;
+    height: 100px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        G E N E R A L   P R O P E R T I E S
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+#startAnimation{
+display: inline-block;
+opacity: 1;
+}
+
+#gameStart{
+    display: none;
+}
+
+
+.center-content {
+
+    text-align: center;
+}
+
+.padding {
+
+    padding: 10px;
+}
+
+.center {
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
