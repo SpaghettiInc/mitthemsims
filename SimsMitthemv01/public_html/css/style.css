@@ -117,9 +117,10 @@ tr, td {
   text-align: center;
   opacity: 0.95;
   padding: 50px;
-	box-shadow: 3px 3px 5px #aaa;
-	border: 1px solid #ddd;
-  background-image: url("../img/bgs/landscape.jpg");
+    box-shadow: 3px 3px 5px #aaa;
+    border: 1px solid #ddd;
+    background-image: url("../img/bgs/game-back.png");
+    background-size: cover;
 }
 
 .button {
