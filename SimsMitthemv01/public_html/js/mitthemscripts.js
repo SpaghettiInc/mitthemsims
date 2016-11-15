@@ -54,6 +54,7 @@ $(function () {
         this.points = 0;
     }
 
+    $("#score").hide();
     $('#replay').hide();
     //Creates a new image object
     var imgObject = new IMAGES();
@@ -270,6 +271,7 @@ $(function () {
                 clearInterval(timeinterval);
                 //alert(imgObject.points);
                 $("#gameStart").toggle('scale', 'fast');
+                $("#score").show();
                 $('#score').text('You got ' + imgObject.points + ' points');
                 $('#myClock').hide();
                 $('#replay').show();
@@ -279,6 +281,7 @@ $(function () {
 
     //Function to start the game
     function startGame() {
+        $("#score").hide();
         $('#gameStart').toggle('shake', 500);
         spawnRandomImg(imgObject); //Spawns the first image
         $('#gameStarter').remove();
