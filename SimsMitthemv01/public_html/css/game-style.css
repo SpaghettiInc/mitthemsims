@@ -105,7 +105,7 @@ body {
         I M A G E   P R O P E R T I E S
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-.bin-container div,  {
+.bin-container div  {
     display: inline-block;
     margin: 50px auto 0 auto;
     width: 180px;

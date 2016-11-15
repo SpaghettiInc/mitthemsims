@@ -46,20 +46,43 @@ $(function () {
             img3:'metallBin',
             img4:'plastBin'
         };
-
+        
+        this.glass_audio = new Audio('sound/glass_break.mp3');
+        this.metal_throw = new Audio('sound/metal_throw.mp3');
+        this.glass_audio.volume = 0.2;
+        this.metal_throw.volume = 0.2;
         //Adds a getPic function to retrieve a picture from the class
         this.getPic = function (imgNr) {
             return this.images[imgNr];
         };
         this.points = 0;
+        
+        this.muteAll = function (){
+            this.glass_audio.muted = true;
+            this.metal_throw.muted = true;
+        };
+        
+        this.unMuteAll = function (){
+            this.glass_audio.muted = false;
+            this.metal_throw.muted = false;
+        };
     }
 
+    
     $("#score").hide();
     $('#replay').hide();
     $("#myClock").hide();
     //Creates a new image object
     var imgObject = new IMAGES();
 
+    $("#sound").click(function(){
+        if(imgObject.glass_audio.muted){
+            imgObject.unMuteAll(); 
+        }else{
+           imgObject.muteAll(); 
+        }
+        
+    });
 
     $('#gameStarter').click(function () {
         $("#myClock").show();
@@ -72,10 +95,11 @@ $(function () {
         var deadline = Date.parse(new Date()) + 31000;
         initializeClock('myClock', deadline);
         imgObject.points = 0;
-        startGame();
         $('#myClock').show();
         $('#replay').hide();
         $('#score').text('');
+        $("#cdText").show();
+        startGame();
     });
 
     /**
@@ -86,6 +110,7 @@ $(function () {
     $("#glasBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
+                imgObject.glass_audio.play();
                 updatePoints2(true);
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
@@ -108,6 +133,7 @@ $(function () {
     $("#matBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img1") {
+                imgObject.metal_throw.play();
                 updatePoints2(true);
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
@@ -131,6 +157,7 @@ $(function () {
     $("#papperBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img2") {
+                imgObject.metal_throw.play();
                 updatePoints2(true);
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
@@ -153,6 +180,7 @@ $(function () {
     $("#metallBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img3") {
+                imgObject.metal_throw.play();
                 updatePoints2(true);
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
@@ -176,6 +204,7 @@ $(function () {
     $("#plastBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img4") {
+                imgObject.metal_throw.play();
                 updatePoints2(true);
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
@@ -271,7 +300,7 @@ $(function () {
             //If the time goes to zero end the game and print points to screen
             if (time.total <= 0) {
                 clearInterval(timeinterval);
-                //alert(imgObject.points);
+                $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
                 $("#score").show();
                 $('#score').text('You got ' + imgObject.points + ' points');
@@ -283,9 +312,25 @@ $(function () {
 
     //Function to start the game
     function startGame() {
+        $('#gameStarter').remove();
+        var count = 3;
+        gameCd();
+        
+        function gameCd(ct) {
+        if (count > 0) {
+            //console.log(count);
+            $("#cdText").text(count);
+            count--;
+            setTimeout(gameCd, 500);
+        }
+        else {
+        $("#cdText").text("Start!!!").hide(500, function(){
         $("#score").hide();
         $('#gameStart').toggle('shake', 500);
         spawnRandomImg(imgObject); //Spawns the first image
-        $('#gameStarter').remove();
+        });
+        }
     }
+    }
+    
 });

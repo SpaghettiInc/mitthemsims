@@ -49,6 +49,7 @@
                     specifika exempel nu. Duger inte detta menar du?</p>
                 <input type="button" id="start-game-button" class="button" value="Starta spelet" />
                 <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
+                
 
 
             </div> <!-- END #content-->
@@ -62,11 +63,11 @@
         <section id="game" class="modal">
             <div id="myClock">
                 <div>
-                    <span class="minutes"></span>
+                    <span id="minutes" class="minutes"></span>
                     <div class="cdText">minuter</div>
                 </div>
                 <div>
-                    <span class="seconds"></span>
+                    <span id="seconds" class="seconds"></span>
                     <div class="cdText">sekunder</div>
                 </div>
             </div>
@@ -74,10 +75,13 @@
             <div id="score" class="center"></div>
 
             <div>
-                <!--<input type="submit" id="startClock" value="clock start">-->
-                <input class="bottom" type="submit" id="gameStarter" value="Start">
-                <input class="bottom" type="button" id="replay" value="Play again">
+                <input  type="submit" id="gameStarter" value="Start">
+                <input  type="button" id="replay" value="Play again">
+                <input type="button" id="sound" class="button" value="Mute game" /> 
             </div>
+            
+            
+            <h1 id="cdText"></h1>
             <div id="gameStart">
                 <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
                 <div class="bin-container center-content" id="thrashDiv">
@@ -105,9 +109,9 @@
                 <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
                 <div id ="mydiv" class="trash-container center-content"></div>
             </div>
-            <div class="info-container center-content">
+           <!-- <div class="info-container center-content">
                 <span class="trash" id="info-box"></span>
-            </div>
+            </div> -->
 
             <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
 
