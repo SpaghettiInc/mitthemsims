@@ -46,25 +46,25 @@ $(function () {
             img3:'metallBin',
             img4:'plastBin'
         };
-        
+
         //Adds a getPic function to retrieve a picture from the class
         this.getPic = function (imgNr) {
             return this.images[imgNr];
         };
         this.points = 0;
     }
-    
+
     $('#replay').hide();
     //Creates a new image object
     var imgObject = new IMAGES();
- 
+
 
     $('#gameStarter').click(function () {
         var deadline = Date.parse(new Date()) + 31000;
         initializeClock('myClock', deadline);
         startGame();
     });
-    
+
     $('#replay').click(function () {
         var deadline = Date.parse(new Date()) + 31000;
         initializeClock('myClock', deadline);
@@ -197,20 +197,20 @@ $(function () {
         var threeRnd = [0,1,2,3,4];
         var index = 5;
         $('#thrashDiv').children().hide();
-        
+
         var rnd = (Math.floor(Math.random() * index));
         index--;
         var rndImage = imgObject.getPic(rnd);
         var boundBin = imgObject.binBind['img' + rnd];
         threeRnd.splice(rnd,1);
         $('#' + boundBin).show();
-        
+
         rnd = (Math.floor(Math.random() * index));
         index--;
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
         threeRnd.splice(rnd,1);
-        
+
         rnd = (Math.floor(Math.random() * index));
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
@@ -228,11 +228,11 @@ $(function () {
     }
 
 /**
- * 
+ *
  * @param {type} eTime
  * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
  * Returns the time remaining
- * 
+ *
  */
     function getTimeRemaining(eTime) {
         var time = eTime - Date.parse(new Date());
@@ -246,7 +246,7 @@ $(function () {
     }
 
 /**
- * 
+ *
  * @param {type} id
  * @param {type} eTime
  * @returns {undefined}
@@ -258,15 +258,15 @@ $(function () {
         var secondsSpan = clock.querySelector('.seconds');
         updateClock(); // run function once at first to avoid delay
         var timeinterval = setInterval(updateClock, 1000);
-        
+
         //Inner function to update the clock on screen, runs every 1s
         function updateClock() {
             var time = getTimeRemaining(eTime);
             minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
             secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
-            
+
             //If the time goes to zero end the game and print points to screen
-            if (time.total <= 0) { 
+            if (time.total <= 0) {
                 clearInterval(timeinterval);
                 //alert(imgObject.points);
                 $("#gameStart").toggle('scale', 'fast');
@@ -276,7 +276,7 @@ $(function () {
             }
         }
     }
-    
+
     //Function to start the game
     function startGame() {
         $('#gameStart').toggle('shake', 500);
@@ -284,7 +284,3 @@ $(function () {
         $('#gameStarter').remove();
     }
 });
-
-
-
-
