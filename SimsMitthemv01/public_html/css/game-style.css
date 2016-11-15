@@ -105,14 +105,30 @@ body {
         I M A G E   P R O P E R T I E S
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-.bin-container img, .trash-container img {
+.bin-container div,  {
     display: inline-block;
     margin: 50px auto 0 auto;
     width: 180px;
 }
 
+.trash-container img{
+    display: inline-block;
+    margin: 50px auto 0 auto;
+    width: 75px;
+    height: 75px;
+}
+
+.bin-container figure img{
+    width: 125px;
+    height: 200px;
+}
 .trash {
-    width: 100px;
+    width: 25px;
+    height: 100px;
+}
+.testing{
+    display: inline-block;
+    
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -131,17 +147,14 @@ opacity: 1;
 
 
 .center-content {
-
     text-align: center;
 }
 
 .padding {
-
     padding: 10px;
 }
 
 .center {
-
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
