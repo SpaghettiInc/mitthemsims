@@ -60,41 +60,53 @@
         When the user choses to start the game, this section will become
         visible (and the game will begin). -->
         <section id="game" class="modal">
-            <div id="myClock">
-                <div>
-                    <span class="minutes"></span>
-                    <div class="cdText">minuter</div>
-                </div>
-                <div>
-                    <span class="seconds"></span>
-                    <div class="cdText">sekunder</div>
-                </div>
-            </div>
 
-            <div id="score" class="center"></div>
+            <aside id="button-box">
 
-            <div>
-                <!--<input type="submit" id="startClock" value="clock start">-->
-                <input class="bottom" type="submit" id="gameStarter" value="Start">
-                <input class="bottom" type="button" id="replay" value="Play again">
-            </div>
-            <div id="gameStart">
-                <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
-                <div class="bin-container center-content" id="thrashDiv">
-                    <img alt ="Glas" id="glasBin" src="img/game/garbage-containers/glas.png">
-                    <img alt ="Mat" id="matBin" src="img/game/garbage-containers/mat.png">
-                    <img alt ="Papper" id="papperBin" src="img/game/garbage-containers/papper.png">
-                    <img alt ="Metall" id="metallBin" src="img/game/garbage-containers/metall.png">
-                    <img alt ="Plast" id="plastBin" src="img/game/garbage-containers/plast.png">
+                <i id="gameStarter" class="green game-button fa fa-play" aria-hidden="true"></i>
+                <i id="end-game-button" class=" red game-button fa fa-close" aria-hidden="true"></i>
+                <i id="replay" class="yellow game-button fa fa-refresh" aria-hidden="true"></i>
+
+
+                <!-- <input class="button game-button" type="submit" id="gameStarter" value="Starta spelet">
+                <input class="button game-button" type="button" id="end-game-button" value="Stäng spelet" />
+                <input class="button game-button" type="button" id="replay" value="Spela igen"> -->
+
+            </aside>
+
+            <section id="game-area">
+
+                <div id="myClock">
+                    <div>
+                        <span class="minutes"></span>
+                        <div class="cdText">minuter</div>
+                    </div>
+                    <div>
+                        <span class="seconds"></span>
+                        <div class="cdText">sekunder</div>
+                    </div>
                 </div>
-                <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
-                <div id ="mydiv" class="trash-container center-content"></div>
-            </div>
-            <div class="info-container center-content">
-                <span class="trash" id="info-box"></span>
-            </div>
 
-            <input type="button" id="end-game-button" class="button" value="Stäng spelet" />
+                <div id="gameStart">
+                    <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
+                    <div class="bin-container center-content" id="thrashDiv">
+                        <img alt ="Glas" id="glasBin" src="img/game/garbage-containers/glas.png">
+                        <img alt ="Mat" id="matBin" src="img/game/garbage-containers/mat.png">
+                        <img alt ="Papper" id="papperBin" src="img/game/garbage-containers/papper.png">
+                        <img alt ="Metall" id="metallBin" src="img/game/garbage-containers/metall.png">
+                        <img alt ="Plast" id="plastBin" src="img/game/garbage-containers/plast.png">
+                    </div>
+                    <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
+                    <div id ="mydiv" class="trash-container center-content"></div>
+                </div>
+                <div class="info-container center-content">
+                    <span class="trash" id="info-box"></span>
+                </div>
+
+                <div id="score" class="center"></div>
+            </section>
+
+
 
         </section>
 
