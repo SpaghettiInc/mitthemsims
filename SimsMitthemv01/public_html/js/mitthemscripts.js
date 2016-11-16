@@ -56,13 +56,11 @@ $(function () {
 
     $("#score").hide();
     $('#replay').hide();
-    $("#myClock").hide();
     //Creates a new image object
     var imgObject = new IMAGES();
 
 
     $('#gameStarter').click(function () {
-        $("#myClock").show();
         var deadline = Date.parse(new Date()) + 31000;
         initializeClock('myClock', deadline);
         startGame();
