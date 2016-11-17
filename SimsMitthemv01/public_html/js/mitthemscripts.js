@@ -12,7 +12,6 @@ $(function () {
     * Creating the IMAGES class and stores all images in a vector.
     * @returns {mitthemscripts_L9.IMAGES}
     */
-   //.appendTo($('#mydiv')).draggable().show();
     function IMAGES() {
         this.images = [$('<img />',
                     {id: 'img0',
@@ -38,14 +37,34 @@ $(function () {
                     {id: 'img4',
                         class: 'trash padding',
                         src: 'img/game/trash/plastavfall.jpg',
-                        alt: "No picture found"})];
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img5',
+                        class: 'trash padding',
+                        src: 'img/game/trash/bonus_event/gpp.png',
+                        alt: "No Picture found"}),
+            $('<img />',
+                    {id: 'img6',
+                        class: 'trash padding',
+                        src: 'img/game/trash/bonus_event/gp.png',
+                        alt: "No Picture found"}),
+            $('<img />',
+                    {id: 'img7',
+                        class: 'trash padding',
+                        src: 'img/game/trash/bonus_event/bp.png',
+                        alt: "No Picture found"})];
+        
         this.binBind = {
             img0:'glasBin',
             img1:'matBin',
             img2:'papperBin',
             img3:'metallBin',
-            img4:'plastBin'
+            img4:'plastBin',
+            img5:'matBin',
+            img6:'plastBin'
         };
+        
+        
         
         this.glass_audio = new Audio('sound/glass_break.mp3');
         this.metal_throw = new Audio('sound/metal_throw.mp3');
@@ -66,6 +85,7 @@ $(function () {
             this.glass_audio.muted = false;
             this.metal_throw.muted = false;
         };
+        this.status = true;
     }
 
     
@@ -85,17 +105,11 @@ $(function () {
     });
 
     $('#gameStarter').click(function () {
-        $("#myClock").show();
-        var deadline = Date.parse(new Date()) + 31000;
-        initializeClock('myClock', deadline);
         startGame();
     });
 
     $('#replay').click(function () {
-        var deadline = Date.parse(new Date()) + 31000;
-        initializeClock('myClock', deadline);
         imgObject.points = 0;
-        $('#myClock').show();
         $('#replay').hide();
         $('#score').text('');
         $("#cdText").show();
@@ -110,45 +124,60 @@ $(function () {
     $("#glasBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
+                imgObject.status = true;
                 imgObject.glass_audio.play();
-                updatePoints2(true);
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
                 });
             } else {
-                $(ui.draggable).toggle("shake", function () {
+                imgObject.status = false;
+                $(ui.draggable).toggle('shake', 'fast').show(function(){
+                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
+                    updatePoints2(imgObject.status);
+                });
+                /*$(ui.draggable).toggle("shake", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
-                });
-                updatePoints2(false);
+                });*/
             }
         }
     });
 
     $("#matBin").droppable({
         drop: function (event, ui) {
-            if (ui.draggable.attr('id') === "img1") {
+            if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img6" || ui.draggable.attr('id') === "img7") {
                 imgObject.metal_throw.play();
-                updatePoints2(true);
+                imgObject.status = true;
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
                 });
             } else {
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake", function () {
+                imgObject.status = false;
+                
+                $(ui.draggable).toggle('shake', 'fast').show(function(){
+                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
+                    updatePoints2(imgObject.status);
+                });
+                
+                
+                /*$(ui.draggable).toggle("shake", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
-                });
+                });*/
             }
         }
     });
@@ -158,21 +187,30 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img2") {
                 imgObject.metal_throw.play();
-                updatePoints2(true);
+                imgObject.status = true;
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
                 });
             } else {
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake", function () {
+                imgObject.status = false;
+                
+                $(ui.draggable).toggle('shake', 'fast').show(function(){
+                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
+                    updatePoints2(imgObject.status);
+                });
+                
+                
+                /*$(ui.draggable).toggle("shake", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
-                });
+                });*/
             }
         }
     });
@@ -181,22 +219,29 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img3") {
                 imgObject.metal_throw.play();
-                updatePoints2(true);
+                imgObject.status = true;
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
                 });
             } else {
-
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake", function () {
+                imgObject.status = false;
+                
+                $(ui.draggable).toggle('shake', 'fast').show(function(){
+                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
+                    updatePoints2(imgObject.status);
+                });
+                
+                /*$(ui.draggable).toggle("shake", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
-                });
+                });*/
             }
         }
     });
@@ -205,36 +250,57 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img4") {
                 imgObject.metal_throw.play();
-                updatePoints2(true);
+                imgObject.status = true;
                 $(ui.draggable).toggle("scale", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
                 });
             } else {
-                updatePoints2(false);
-                $(ui.draggable).toggle("shake", function () {
+                imgObject.status = false;
+                $(ui.draggable).toggle('shake', 'fast').show(function(){
+                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
+                    updatePoints2(imgObject.status);
+                });
+                
+                /*$(ui.draggable).toggle("shake", function () {
                     $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
                         $("#mydiv").children().remove();
+                        updatePoints2(imgObject.status);
                         spawnRandomImg(imgObject);
                     });
-                });
+                });*/
             }
+
         }
     });
 
     //Function that spawns the random image
     function spawnRandomImg(imgObject) {
-        var threeRnd = [0,1,2,3,4];
-        var index = 5;
+        var threeRnd = [0,1,2,3,4,5];
+        var index = 6;
         $('#thrashDiv').children().hide();
 
+        
         var rnd = (Math.floor(Math.random() * index));
+        var rndCheck = rnd;
         index--;
         var rndImage = imgObject.getPic(rnd);
         var boundBin = imgObject.binBind['img' + rnd];
         threeRnd.splice(rnd,1);
+        
+        if(rnd === 5){
+            threeRnd.splice(1,1);
+            index--;
+        }else{
+            threeRnd.splice(4,1);
+            index--;
+        }
+        
+        
+
         $('#' + boundBin).show();
 
         rnd = (Math.floor(Math.random() * index));
@@ -246,7 +312,28 @@ $(function () {
         rnd = (Math.floor(Math.random() * index));
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
+        
+                
+        if(rndCheck === 5){
+            $(rndImage).appendTo($('#mydiv')).draggable().on('click', function(){
+                $("#mydiv").children().remove();
+                imgObject.deadline = imgObject.deadline + 5000;
+                $(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
+                $(imgObject.images[7]).appendTo($('#mydiv')).draggable().show();
+            }).show();
+        }else{
         $(rndImage).appendTo($('#mydiv')).draggable().show();
+        }
+        /*{
+            revert: function(event, ui){
+                $(this).data("ui-draggable").originalPosition = {
+                    top: 0,
+                    left: 0
+                };
+                return !event;
+            }
+        }*/
+        
     }
 
 
@@ -254,20 +341,24 @@ $(function () {
     function updatePoints2(status) {
         if (status) {
             imgObject.points++;
-        } else {
-            return;
+            imgObject.deadline = imgObject.deadline + 2000;
+        }else if(imgObject.points > 0){
+            imgObject.points--;
+            imgObject.deadline = imgObject.deadline - 3000;
         }
+        $("#testScore").text(imgObject.points);    
     }
 
 /**
  *
- * @param {type} eTime
+ * 
  * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
  * Returns the time remaining
  *
  */
-    function getTimeRemaining(eTime) {
-        var time = eTime - Date.parse(new Date());
+
+    function getTimeRemaining() {
+        var time = imgObject.deadline - Date.parse(new Date());
         var seconds = Math.floor((time / 1000) % 60);
         var minutes = Math.floor((time / 1000 / 60) % 60);
         return {
@@ -276,15 +367,15 @@ $(function () {
             'seconds': seconds
         };
     }
-
+    
 /**
  *
  * @param {type} id
- * @param {type} eTime
  * @returns {undefined}
  * Function that initializes the timer
  */
-    function initializeClock(id, eTime) {
+
+    function initializeClock(id) {
         var clock = document.getElementById(id);
         var minutesSpan = clock.querySelector('.minutes');
         var secondsSpan = clock.querySelector('.seconds');
@@ -293,13 +384,14 @@ $(function () {
 
         //Inner function to update the clock on screen, runs every 1s
         function updateClock() {
-            var time = getTimeRemaining(eTime);
+            var time = getTimeRemaining();
             minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
             secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
 
             //If the time goes to zero end the game and print points to screen
             if (time.total <= 0) {
                 clearInterval(timeinterval);
+                $("#mydiv").children(0).animate({top: 0, left: 0});
                 $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
                 $("#score").show();
@@ -316,21 +408,22 @@ $(function () {
         var count = 3;
         gameCd();
         
-        function gameCd(ct) {
+        function gameCd() {
         if (count > 0) {
             //console.log(count);
             $("#cdText").text(count);
             count--;
             setTimeout(gameCd, 500);
-        }
-        else {
+        }else {
         $("#cdText").text("Start!!!").hide(500, function(){
         $("#score").hide();
         $('#gameStart').toggle('shake', 500);
-        spawnRandomImg(imgObject); //Spawns the first image
+        spawnRandomImg(imgObject); //Spawns the first thrash
+        imgObject.deadline = Date.parse(new Date()) + 30000;
+        initializeClock('myClock');
+        $("#myClock").show();
         });
         }
     }
     }
-    
 });
