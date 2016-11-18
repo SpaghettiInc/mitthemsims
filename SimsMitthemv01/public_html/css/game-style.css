@@ -18,10 +18,18 @@ and open the template in the editor.
     /*-------*/
     color: green;
     font-size: 50px;
-    opacity: 0.5;
     cursor: pointer;
 }
 
+.transparent {
+
+    opacity: 0.1;
+}
+
+.white {
+
+    color: #fff;
+}
 .red {
     color: red;
 }
@@ -173,7 +181,7 @@ body {
 }
 .testing{
     display: inline-block;
-    
+
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -49,13 +49,15 @@
                     specifika exempel nu. Duger inte detta menar du?</p>
                 <input type="button" id="start-game-button" class="button" value="Starta spelet" />
                 <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
-                
+
 
 
             </div> <!-- END #content-->
 
 
         </div> <!-- END #wrapper -->
+
+<!-- ************************************************************************************ -->
 
         <!-- This is the actual game section and will start out hidden.
         When the user choses to start the game, this section will become
@@ -64,14 +66,10 @@
 
             <aside id="button-box">
 
-                <i id="gameStarter" class="green game-button fa fa-play" aria-hidden="true"></i>
-                <i id="end-game-button" class=" red game-button fa fa-close" aria-hidden="true"></i>
-                <i id="replay" class="yellow game-button fa fa-refresh" aria-hidden="true"></i>
-                <input type="button" id="sound" value="Mute sound"/>
-                
-                <!-- <input class="button game-button" type="submit" id="gameStarter" value="Starta spelet">
-                <input class="button game-button" type="button" id="end-game-button" value="Stäng spelet" />
-                <input class="button game-button" type="button" id="replay" value="Spela igen"> -->
+                <i id="gameStarter" class="white transparent game-button fa fa-play" aria-hidden="true"></i>
+                <i id="end-game-button" class="white transparent game-button fa fa-close" aria-hidden="true"></i>
+                <i id="replay" class="white transparent game-button fa fa-refresh" aria-hidden="true"></i>
+                <i id="sound" class="white transparent game-button fa fa-volume-up" aria-hidden="true"></i>
 
             </aside>
 
@@ -87,46 +85,43 @@
                         <div class="cdText">sekunder</div>
                     </div>
                 </div>
+
                 <h1 id="cdText"></h1>
+
                 <div id="gameStart">
                     <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
                     <div class="bin-container center-content" id="thrashDiv">
-                    <figure id="glasBin" class="testing">
-                    <img alt ="Glas" src="img/game/garbage-containers/glas.png">
-                    <figcaption>Glasavfall</figcaption>
-                    </figure>
-                    <figure  id="matBin" class="testing">
-                    <img alt ="Mat" src="img/game/garbage-containers/mat.png">
-                    <figcaption>Matavfall</figcaption>
-                    </figure>
-                    <figure id="papperBin" class="testing">
-                    <img alt ="Papper" src="img/game/garbage-containers/papper.png">
-                    <figcaption>Papper</figcaption>
-                    </figure>
-                    <figure id="metallBin" class="testing">
-                    <img alt ="Metall" src="img/game/garbage-containers/metall.png">
-                    <figcaption>Metallavfall</figcaption>
-                    </figure>
-                    <figure id="plastBin" class="testing">
-                    <img alt ="Plast" src="img/game/garbage-containers/plast.png">
-                    <figcaption>Plastavfall</figcaption>
-                    </figure>
+                        <figure id="glasBin" class="testing">
+                            <img alt="Glas" src="img/game/garbage-containers/glas.png">
+                            <figcaption>Glasavfall</figcaption>
+                        </figure>
+                        <figure id="matBin" class="testing">
+                            <img alt="Mat" src="img/game/garbage-containers/mat.png">
+                            <figcaption>Matavfall</figcaption>
+                        </figure>
+                        <figure id="papperBin" class="testing">
+                            <img alt="Papper" src="img/game/garbage-containers/papper.png">
+                            <figcaption>Papper</figcaption>
+                        </figure>
+                        <figure id="metallBin" class="testing">
+                            <img alt="Metall" src="img/game/garbage-containers/metall.png">
+                            <figcaption>Metallavfall</figcaption>
+                        </figure>
+                        <figure id="plastBin" class="testing">
+                            <img alt="Plast" src="img/game/garbage-containers/plast.png">
+                            <figcaption>Plastavfall</figcaption>
+                        </figure>
                     </div>
+
                     <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
                     <div id ="mydiv" class="trash-container center-content"></div>
                 </div>
-                <div class="info-container center-content">
-                    <span class="trash" id="info-box"></span>
-                </div>
 
-                <div id="score" class="center"></div>
             </section>
 
-
-
         </section>
-        <h1 id="testScore"></h1>
 
+<!-- ************************************************************************************ -->
 
         <!-- This section will display the current highscore. It
         will start out hidden and show upon either request or when
