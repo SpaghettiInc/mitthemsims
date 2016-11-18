@@ -93,6 +93,7 @@ $(function () {
         this.status = true;
     }
 
+    $("#myClock").hide();
     $("#score").hide();
     $('#replay').hide();
 
@@ -112,6 +113,7 @@ $(function () {
     });
 
     $('#gameStarter').click(function () {
+
         startGame();
     });
 
@@ -395,10 +397,13 @@ $(function () {
     //Function to start the game
     function startGame() {
         $('#gameStarter').remove();
+
         var count = 3;
         gameCd();
 
         function gameCd() {
+            $("#game-greeter").hide("fade", 300, function() {
+
             if (count > 0) {
                 $("#cdText").text(count);
                 count--;
@@ -409,11 +414,13 @@ $(function () {
                     $('#gameStart').toggle('fade', 2000, function(){
                         imgObject.deadline = Date.parse(new Date()) + 30000;
                         initializeClock('myClock');
-                        $("#myClock").show();
                     });
+                    $("#myClock").show();
                     spawnRandomImg(imgObject); //Spawns the first thrash
                 });
             }
+            });
         }
+
     }
 });

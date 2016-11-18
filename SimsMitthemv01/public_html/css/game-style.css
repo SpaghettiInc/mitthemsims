@@ -188,6 +188,17 @@ body {
         G E N E R A L   P R O P E R T I E S
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+#game-greeter {
+
+    background-color: #fff;
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    padding: 25px;
+    opacity: 0.7;
+    margin-top: 90px;
+    box-shadow: 5px 5px 5px #000;
+}
 
 #startAnimation{
 display: inline-block;
