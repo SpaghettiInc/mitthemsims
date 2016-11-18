@@ -14,7 +14,6 @@ $(document).ready(function() {
 
   /*  Clicking on "end game" button */
   $("#end-game-button").click(function() {
-
     $("#game").hide();
     $("#wrapper").show();
   });

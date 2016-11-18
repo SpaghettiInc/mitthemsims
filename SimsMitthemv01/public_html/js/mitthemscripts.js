@@ -9,8 +9,8 @@
 //
 $(function () {
    /**
-    * Creating the IMAGES class with constructor and store the images in an array.
-    * @returns {mitthemscripts_L9.IMAGES}
+    * IMAGES class used to hold the pure game functions and images to be spawned
+    * @returns {mitthemscriptsL#10.IMAGES}
     */
     function IMAGES() {
         this.images = [$('<img />',
@@ -99,6 +99,9 @@ $(function () {
     //Creates a new image object
     var imgObject = new IMAGES();
 
+    /**
+     * On click function to mute the sound
+     */
     $("#sound").click(function(){
         if(imgObject.glass_audio.muted){
             imgObject.unMuteAll(); 
@@ -106,11 +109,17 @@ $(function () {
            imgObject.muteAll(); 
         }
     });
-
+    
+    /**
+     * Simple click function to start the game
+     */
     $('#gameStarter').click(function () {
         startGame();
     });
-
+    
+    /**
+     * Click function for the replay function
+     */
     $('#replay').click(function () {
         imgObject.points = 0;
         $('#replay').hide();
@@ -122,7 +131,8 @@ $(function () {
     /**
      * When dropped it checks whether the ID corresponds to the correct thrash
      * If its correct it updates points to true and then gets rid of the image,
-     * If not correct it shakes and then gets rid of picture
+     * if the thrash does not match it simply reverses it back to the original position
+     * and removes some time from the clock
      */
     $("#glasBin").droppable({
         drop: function (event, ui) {
@@ -280,21 +290,31 @@ $(function () {
         }
     });
 
-    //Function that spawns the random image
+    /**
+     * Function that spawns the random image, and shows the proper thrashbins
+     * @param {type} imgObject
+     * @returns {undefined}
+     */
     function spawnRandomImg(imgObject) {
+        //Vector containing the different picture maps
         var threeRnd = [0,1,2,3,4,5];
         var index = 6;
         
         $('#thrashDiv').children().hide();
         
+        //Random nr determining the first trash
         var rnd = (Math.floor(Math.random() * index));
         var rndCheck = rnd;
+        //Decrementing the index
         index--;
+        //Splicing the array to remove the trash used
+        threeRnd.splice(rnd,1);
         var rndImage = imgObject.getPic(rnd);
         var boundBin = imgObject.binBind['img' + rnd];
-        threeRnd.splice(rnd,1);
+        
         $('#' + boundBin).show();
         
+        //Check so we do not spawn duplicate bins
         if(rnd === 5){
             threeRnd.splice(1,1);
             index--;
@@ -313,15 +333,25 @@ $(function () {
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
         
+        //If the trash is a brown bag with plastic around we need to add the click function
+        //When clicked it spawns the brown bag aswell as the plastic to be put in correct bins.
         if(rndCheck === 5){
-            $(rndImage).appendTo($('#mydiv')).draggable().on('click', function(){
+            $(rndImage).appendTo($('#mydiv')).draggable({
+                containment: "#game-area"
+            }).on('click', function(){
                 $("#mydiv").children().remove();
                 imgObject.deadline = imgObject.deadline + 5000;
-                $(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
-                $(imgObject.images[7]).appendTo($('#mydiv')).draggable().show();
+                $(imgObject.images[6]).appendTo($('#mydiv')).draggable({
+                    containment: "#game-area"
+                }).show();
+                $(imgObject.images[7]).appendTo($('#mydiv')).draggable({
+                    containment: "#game-area"
+                }).show();
             }).show();
         }else{
-        $(rndImage).appendTo($('#mydiv')).draggable().show();
+        $(rndImage).appendTo($('#mydiv')).draggable({
+            containment: "#game-area"
+        }).show();
         }
     }
 
@@ -338,11 +368,8 @@ $(function () {
     }
 
 /**
- *
- * 
- * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
- * Returns the time remaining
- *
+ * Helper function that returns the time remaining as a data object.
+ * @returns {mitthemscriptsL#10.getTimeRemaining.mitthemscriptsAnonym$8}
  */
     function getTimeRemaining() {
         var time = imgObject.deadline - Date.parse(new Date());
@@ -356,10 +383,10 @@ $(function () {
     }
     
 /**
- *
+ * Function that initializes the clock take a parameter ID which is the id to the
+ * clock div
  * @param {type} id
  * @returns {undefined}
- * Function that initializes the timer
  */
     function initializeClock(id) {
         var clock = document.getElementById(id);
@@ -368,13 +395,13 @@ $(function () {
         updateClock(); // run function once at first to avoid delay
         var timeinterval = setInterval(updateClock, 1000);
 
-        //Inner function to update the clock on screen, runs every 1s
+        //Inner function to update the clock on screen, runs every 1 second
         function updateClock() {
             var time = getTimeRemaining();
             minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
             secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
 
-            //If the time goes to zero end the game and print points to screen
+            //If the time goes to zero the game ends and prints the points achieved to screen
             if (time.total <= 0) {
                 clearInterval(timeinterval);
                 $("#mydiv").children(0).animate({top: 0, left: 0});
