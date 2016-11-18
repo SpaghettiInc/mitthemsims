@@ -322,7 +322,7 @@ $(function () {
         if(rndCheck === 5){
             $(rndImage).appendTo($('#mydiv')).draggable().on('click', function(){
                 $("#mydiv").children().remove();
-                imgObject.deadline = imgObject.deadline + 5000;
+                // imgObject.deadline = imgObject.deadline + 5000;
                 $(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
                 $(imgObject.images[7]).appendTo($('#mydiv')).draggable().show();
             }).show();
@@ -336,7 +336,7 @@ $(function () {
     function updatePoints2(status) {
         if (status) {
             imgObject.points++;
-            imgObject.deadline = imgObject.deadline + 2000;
+            // imgObject.deadline = imgObject.deadline + 2000;
         }else if(imgObject.points > 0){
             imgObject.points--;
             imgObject.deadline = imgObject.deadline - 3000;
@@ -386,10 +386,11 @@ $(function () {
                 $("#mydiv").children(0).animate({top: 0, left: 0});
                 $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
-                $("#score").show();
-                $('#score').text('You got ' + imgObject.points + ' points');
+                $("#game-over").show();
+                $('#game-over').children(0).text('Du fick ' + imgObject.points + ' poäng!');
                 $('#myClock').hide();
                 $('#replay').show();
+
             }
         }
     }
@@ -407,12 +408,12 @@ $(function () {
             if (count > 0) {
                 $("#cdText").text(count);
                 count--;
-                setTimeout(gameCd, 500);
+                setTimeout(gameCd, 1000);
             } else {
-                $("#cdText").text("Start!!!").hide(500, function () {
+                $("#cdText").text("!").hide("fade", 1000, function () {
                     //$("#score").hide();
                     $('#gameStart').toggle('fade', 2000, function(){
-                        imgObject.deadline = Date.parse(new Date()) + 30000;
+                        imgObject.deadline = Date.parse(new Date()) + 5000;
                         initializeClock('myClock');
                     });
                     $("#myClock").show();

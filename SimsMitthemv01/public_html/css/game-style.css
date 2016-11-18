@@ -98,6 +98,20 @@ body {
     font-weight: bolder;
 }
 
+#game-over {
+
+    display: none;
+
+}
+
+#game-over p {
+
+    font-size: 120px;
+    line-height: 160px;
+    text-align: center;
+    color: #fff;
+    opacity: 0.7;
+}
 
 #myClock span {
 
@@ -107,9 +121,13 @@ body {
 }
 
 
-.cdText{
-    padding-top: 5px;
-    font-size: 16px;
+#cdText {
+
+    font-size: 500px;
+    line-height: 520px;
+    color: #fff;
+    font-weight: bolder;
+    opacity: 0.7;
 }
 
 #score {
