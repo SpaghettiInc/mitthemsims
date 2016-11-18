@@ -9,7 +9,7 @@
 //
 $(function () {
    /**
-    * Creating the IMAGES class and stores all images in a vector.
+    * Creating the IMAGES class with constructor and store the images in an array.
     * @returns {mitthemscripts_L9.IMAGES}
     */
     function IMAGES() {
@@ -54,6 +54,7 @@ $(function () {
                         src: 'img/game/trash/bonus_event/bp.png',
                         alt: "No Picture found"})];
         
+        //Mapping the thrash to the corresponding bin
         this.binBind = {
             img0:'glasBin',
             img1:'matBin',
@@ -65,15 +66,18 @@ $(function () {
         };
         
         
-        
+        //Adding some audio objects
         this.glass_audio = new Audio('sound/glass_break.mp3');
         this.metal_throw = new Audio('sound/metal_throw.mp3');
         this.glass_audio.volume = 0.2;
         this.metal_throw.volume = 0.2;
+        
+        
         //Adds a getPic function to retrieve a picture from the class
         this.getPic = function (imgNr) {
             return this.images[imgNr];
         };
+        
         this.points = 0;
         
         this.muteAll = function (){
@@ -85,12 +89,13 @@ $(function () {
             this.glass_audio.muted = false;
             this.metal_throw.muted = false;
         };
+        
         this.status = true;
     }
 
-    
     $("#score").hide();
     $('#replay').hide();
+    
     //Creates a new image object
     var imgObject = new IMAGES();
 
@@ -100,7 +105,6 @@ $(function () {
         }else{
            imgObject.muteAll(); 
         }
-        
     });
 
     $('#gameStarter').click(function () {
@@ -280,8 +284,8 @@ $(function () {
     function spawnRandomImg(imgObject) {
         var threeRnd = [0,1,2,3,4,5];
         var index = 6;
+        
         $('#thrashDiv').children().hide();
-
         
         var rnd = (Math.floor(Math.random() * index));
         var rndCheck = rnd;
@@ -289,6 +293,7 @@ $(function () {
         var rndImage = imgObject.getPic(rnd);
         var boundBin = imgObject.binBind['img' + rnd];
         threeRnd.splice(rnd,1);
+        $('#' + boundBin).show();
         
         if(rnd === 5){
             threeRnd.splice(1,1);
@@ -298,10 +303,6 @@ $(function () {
             index--;
         }
         
-        
-
-        $('#' + boundBin).show();
-
         rnd = (Math.floor(Math.random() * index));
         index--;
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
@@ -312,7 +313,6 @@ $(function () {
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
         
-                
         if(rndCheck === 5){
             $(rndImage).appendTo($('#mydiv')).draggable().on('click', function(){
                 $("#mydiv").children().remove();
@@ -323,16 +323,6 @@ $(function () {
         }else{
         $(rndImage).appendTo($('#mydiv')).draggable().show();
         }
-        /*{
-            revert: function(event, ui){
-                $(this).data("ui-draggable").originalPosition = {
-                    top: 0,
-                    left: 0
-                };
-                return !event;
-            }
-        }*/
-        
     }
 
 
@@ -345,7 +335,6 @@ $(function () {
             imgObject.points--;
             imgObject.deadline = imgObject.deadline - 3000;
         }
-        $("#testScore").text(imgObject.points);    
     }
 
 /**
@@ -355,7 +344,6 @@ $(function () {
  * Returns the time remaining
  *
  */
-
     function getTimeRemaining() {
         var time = imgObject.deadline - Date.parse(new Date());
         var seconds = Math.floor((time / 1000) % 60);
@@ -373,7 +361,6 @@ $(function () {
  * @returns {undefined}
  * Function that initializes the timer
  */
-
     function initializeClock(id) {
         var clock = document.getElementById(id);
         var minutesSpan = clock.querySelector('.minutes');
@@ -406,23 +393,22 @@ $(function () {
         $('#gameStarter').remove();
         var count = 3;
         gameCd();
-        
+
         function gameCd() {
-        if (count > 0) {
-            //console.log(count);
-            $("#cdText").text(count);
-            count--;
-            setTimeout(gameCd, 500);
-        }else {
-        $("#cdText").text("Start!!!").hide(500, function(){
-        $("#score").hide();
-        $('#gameStart').toggle('shake', 500);
-        spawnRandomImg(imgObject); //Spawns the first thrash
-        imgObject.deadline = Date.parse(new Date()) + 30000;
-        initializeClock('myClock');
-        $("#myClock").show();
-        });
+            if (count > 0) {
+                $("#cdText").text(count);
+                count--;
+                setTimeout(gameCd, 500);
+            } else {
+                $("#cdText").text("Start!!!").hide(500, function () {
+                    //$("#score").hide();
+                    $('#gameStart').toggle('shake', 500);
+                    spawnRandomImg(imgObject); //Spawns the first thrash
+                    imgObject.deadline = Date.parse(new Date()) + 30000;
+                    initializeClock('myClock');
+                    $("#myClock").show();
+                });
+            }
         }
-    }
     }
 });
