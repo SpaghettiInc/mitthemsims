@@ -91,7 +91,6 @@ $(function () {
     
     $("#score").hide();
     $('#replay').hide();
-    $("#myClock").hide();
     //Creates a new image object
     var imgObject = new IMAGES();
 
