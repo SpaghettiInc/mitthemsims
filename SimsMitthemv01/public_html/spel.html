@@ -98,9 +98,13 @@
 
                 <div id="game-over" class="">
 
-                    <p></p>
+                    <p id="myScore"></p>
+
+                <input type="text" id="submitName" />
+                <input type="submit" id="submitButton" />
 
                 </div>
+
 
                 <div id="gameStart">
                     <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
@@ -142,105 +146,13 @@
         the game is over. -->
         <section id="highscore" class="modal">
 
+
             <h1>Topplista</h1>
             <table id="highscore-table">
 
-                <tr>
-                    <td id="name">
-                        Henrik Larsson
-                    </td>
-                    <td id="date">
-                        161104
-                    </td>
-                    <td id="points">
-                        24
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
+                <form method="post">
+                    <input type="submit" name="show_score" value="fungers nua">
+                </form>
             </table>
 
             <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />

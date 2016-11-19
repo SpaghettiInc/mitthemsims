@@ -88,6 +88,10 @@ body {
         CLOCK PROPERTIES
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+#inputBox {
+    display: none;
+}
+
 #myClock {
 
     color: #fff;
@@ -104,7 +108,11 @@ body {
 
 }
 
-#game-over p {
+#dbscore{
+    display: hidden;
+}
+
+#myScore {
 
     font-size: 120px;
     line-height: 160px;

@@ -16,7 +16,7 @@ $(function () {
         this.images = [$('<img />',
                     {id: 'img0',
                         class: 'trash padding',
-                        src: 'img/game/trash/glasflaska.jpg',
+                        src: 'img/game/trash/glasflaska.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img1',
@@ -26,7 +26,7 @@ $(function () {
             $('<img />',
                     {id: 'img2',
                         class: 'trash padding',
-                        src: 'img/game/trash/pappersavfall.jpg',
+                        src: 'img/game/trash/pappersavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img3',
@@ -124,6 +124,55 @@ $(function () {
         $("#cdText").show();
         startGame();
     });
+
+
+$("#submitButton").click(function() {
+
+    var submitName = $("#submitName").val();
+    var submitScore = imgObject.points;
+    console.log(submitName);
+    console.log(submitScore);
+    $.ajax({
+        url: "php/hsController.php",
+        type: "post",
+        data: {
+            "name": submitName,
+            "score": submitScore
+        },
+        success: function(data) {
+            $("#submitButton").hide();
+        }
+    });
+});
+
+
+    /*
+    <table id="highscore-table">
+
+    <?php
+        require_once("php/hsController.php");
+        $hs = new vsh;
+        $ggrip = $hs->getTop25();
+
+        echo "<span id='dbscore'>$ggrip</span>";
+
+        $hs->getHtmlTable();
+    ?>
+
+    </table>
+
+    <div id="inputBox">
+
+        <form method="POST">
+            <input id="fungera" name="score" type="hidden" value="" />
+            <input type="text" name="name" />
+            <input type="submit" name="submit" value="Skicka" />
+
+        </form>
+        */
+
+
+
 
     /**
      * When dropped it checks whether the ID corresponds to the correct thrash
@@ -387,14 +436,29 @@ $(function () {
                 $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
                 $("#game-over").show();
-                $('#game-over').children(0).text('Du fick ' + imgObject.points + ' poäng!');
+                $('#myScore').text('Du fick ' + imgObject.points + ' poäng!');
                 $('#myClock').hide();
                 $('#replay').show();
+                $('#submitButton').show();
+                $('#submitName').show();
+                //document.getElementById('fungera').value= imgObject.points;
+                //$('#fungera').attr('value') = imgObject.points;
+                //scoreComp();
+
 
             }
         }
     }
-
+/*
+    function scoreComp (){
+        var gua = $('#dbscore').text();
+        var guaInt = parseInt(gua);
+        $("#inputBox").hide();
+        if(guaInt < parseInt(imgObject.points)){
+            $("#inputBox").show();
+        }
+    }
+*/
     //Function to start the game
     function startGame() {
         $('#gameStarter').remove();
