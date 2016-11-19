@@ -56,7 +56,10 @@ and open the template in the editor.
 }
 
 #thrashDiv {
-
+    margin-left: 100px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .bottom {
@@ -85,32 +88,54 @@ body {
         CLOCK PROPERTIES
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+#inputBox {
+    display: none;
+}
+
 #myClock {
 
     color: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    background: green;
-    display: inline-block;
-    font-weight: 100;
+    position: fixed;
+    right: 0;
+    font-size: 180px;
+    padding: 20px 50px 0 0;
+    font-weight: bolder;
+}
+
+#game-over {
+
+    display: none;
+
+}
+
+#dbscore{
+    display: hidden;
+}
+
+#myScore {
+
+    font-size: 120px;
+    line-height: 160px;
     text-align: center;
-    font-size: 30px;
-    opacity: 0.8;
+    color: #fff;
+    opacity: 0.7;
 }
 
-#myClock div {
-    display: inline-block;
+#myClock span {
+
+    display: block;
+    opacity: 0.6;
+
 }
 
-#myClock div span {
 
-    display: inline-block;
-}
+#cdText {
 
-
-.cdText{
-    padding-top: 5px;
-    font-size: 16px;
+    font-size: 500px;
+    line-height: 520px;
+    color: #fff;
+    font-weight: bolder;
+    opacity: 0.7;
 }
 
 #score {
@@ -159,7 +184,7 @@ body {
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 .bin-container div  {
-    display: inline-block;
+    display: block;
     margin: 0 auto 0 auto;
         width: 180px;
 }
@@ -179,7 +204,7 @@ body {
     width: 25px;
     height: 100px;
 }
-.testing{
+.block{
     display: inline-block;
 
 }
@@ -188,19 +213,33 @@ body {
         G E N E R A L   P R O P E R T I E S
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+#game-greeter {
 
-#startAnimation{
+    background-color: #fff;
+    width: 600px;
+    height: 300px;
+    margin: auto;
+    padding: 25px;
+    opacity: 0.7;
+    margin-top: 90px;
+    box-shadow: 5px 5px 5px #000;
+}
+
+/*#startAnimation{
 display: inline-block;
 opacity: 1;
-}
+}*/
 
 #gameStart{
     display: none;
+    text-align: center;
+    margin: 80px auto;
+    align: center;
 }
-
 
 .center-content {
     text-align: center;
+    display: block;
 }
 
 .padding {
