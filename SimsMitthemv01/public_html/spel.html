@@ -75,39 +75,57 @@
 
             <section id="game-area">
 
-                <div id="myClock">
-                    <div>
-                        <span class="minutes"></span>
-                        <div class="cdText">minuter</div>
-                    </div>
-                    <div>
-                        <span class="seconds"></span>
-                        <div class="cdText">sekunder</div>
-                    </div>
+                <h1 id="cdText"></h1>
+
+                <section id="game-greeter" class="">
+
+                    <h1>Välkommen till spelet!</h1>
+                    <p>Så här spelar man:</p>
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>Dolor sit</li>
+                        <li>Amet.</li>
+                    </ul>
+
+                </section>
+
+                <aside id="myClock">
+
+                    <span class="minutes opacity"></span>
+                    <span class="seconds opacity"></span>
+
+                </aside>
+
+                <div id="game-over" class="">
+
+                    <p id="myScore"></p>
+
+                <input type="text" id="submitName" />
+                <input type="submit" id="submitButton" />
+
                 </div>
 
-                <h1 id="cdText"></h1>
 
                 <div id="gameStart">
                     <!-- THIS IS WHERE THE OBJECTS WILL BE DROPPED -->
                     <div class="bin-container center-content" id="thrashDiv">
-                        <figure id="glasBin" class="testing">
+                        <figure id="glasBin" class="block">
                             <img alt="Glas" src="img/game/garbage-containers/glas.png">
                             <figcaption>Glasavfall</figcaption>
                         </figure>
-                        <figure id="matBin" class="testing">
+                        <figure id="matBin" class="block">
                             <img alt="Mat" src="img/game/garbage-containers/mat.png">
                             <figcaption>Matavfall</figcaption>
                         </figure>
-                        <figure id="papperBin" class="testing">
+                        <figure id="papperBin" class="block">
                             <img alt="Papper" src="img/game/garbage-containers/papper.png">
                             <figcaption>Papper</figcaption>
                         </figure>
-                        <figure id="metallBin" class="testing">
+                        <figure id="metallBin" class="block">
                             <img alt="Metall" src="img/game/garbage-containers/metall.png">
                             <figcaption>Metallavfall</figcaption>
                         </figure>
-                        <figure id="plastBin" class="testing">
+                        <figure id="plastBin" class="block">
                             <img alt="Plast" src="img/game/garbage-containers/plast.png">
                             <figcaption>Plastavfall</figcaption>
                         </figure>
@@ -128,105 +146,13 @@
         the game is over. -->
         <section id="highscore" class="modal">
 
+
             <h1>Topplista</h1>
             <table id="highscore-table">
 
-                <tr>
-                    <td id="name">
-                        Henrik Larsson
-                    </td>
-                    <td id="date">
-                        161104
-                    </td>
-                    <td id="points">
-                        24
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Martin "Always Second" Karttunen
-                    </td>
-                    <td>
-                        161104
-                    </td>
-                    <td>
-                        21
-                    </td>
-                </tr>
-
+                <form method="post">
+                    <input type="submit" name="show_score" value="fungers nua">
+                </form>
             </table>
 
             <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
