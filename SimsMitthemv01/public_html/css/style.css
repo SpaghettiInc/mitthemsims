@@ -156,8 +156,8 @@ tr, td {
 .bg-trans-white-40 { background-image: url("../img/transparency/white-40.png"); }
 .bg-trans-white-80 { background-image: url("../img/transparency/white-80.png"); }
 .bg-trans-white-90 { background-image: url("../img/transparency/white-90.png"); }
-.bg-trans-black-40 { background-image: url("../img/transparency/black-40.png"); }
-.bg-trans-black-80 { background-image: url("../img/transparency/black-80.png"); }
+.bg-trans-black-40 { background-image: url("../img/transparency/black-40.png"); color: #fff; }
+.bg-trans-black-80 { background-image: url("../img/transparency/black-80.png"); color: #fff; }
 .bg-trans-blue-40 { background-image: url("../img/transparency/blue-40.png"); }
 .bg-trans-blue-80 { background-image: url("../img/transparency/blue-80.png"); }
 
