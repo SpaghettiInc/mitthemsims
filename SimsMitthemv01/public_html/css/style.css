@@ -97,6 +97,7 @@ a:hover, a:active {}
 }
 
 #top-logo { width: 200px; }
+#bottom-logo { width: 80px; }
 
 #highscore-table {
 	width: 100%;
