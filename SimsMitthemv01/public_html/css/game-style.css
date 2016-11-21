@@ -104,8 +104,8 @@ body {
 
 #game-over {
 
-    display: none;
-
+    display: block;
+    margin: auto;
 }
 
 #dbscore{
@@ -114,11 +114,13 @@ body {
 
 #myScore {
 
-    font-size: 120px;
-    line-height: 160px;
-    text-align: center;
+    font-size: 200px;
+    line-height: 470px;
     color: #fff;
+    font-weight: bolder;
+
     opacity: 0.7;
+    display: inline-block;
 }
 
 #myClock span {

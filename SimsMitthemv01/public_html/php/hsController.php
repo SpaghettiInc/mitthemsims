@@ -2,9 +2,14 @@
 
 include_once('dbHandler.php');
 
-if( isset($_POST['name']) ) {
+$dbHandler = new dbHandler;
 
-    $dbHandler = new dbHandler;
+if( isset($_POST['name']) ) {
     $dbHandler->writeHighscore($_POST['name'], $_POST['score']);
+}
+
+if( isset($_POST['top25']) ) {
+
+    $dbHandler->getTop25();
 }
  ?>

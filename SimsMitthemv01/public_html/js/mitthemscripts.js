@@ -96,6 +96,7 @@ $(function () {
     $("#myClock").hide();
     $("#score").hide();
     $('#replay').hide();
+    $("#game-over").hide();
 
     //Creates a new image object
     var imgObject = new IMAGES();
@@ -132,6 +133,31 @@ $("#submitButton").click(function() {
     var submitScore = imgObject.points;
     console.log(submitName);
     console.log(submitScore);
+
+    $.ajax({
+        url: "php/hsController.php",
+        type: "post",
+        dataType: 'json',
+        data: {
+
+            "request" : "top25"
+        },
+
+        success: function(data) {          //on recieve of reply
+
+            var score = data[0];              //get id
+            console.log(score)
+            $("#lowest-score").text("Lägst poäng:" + score)
+
+            if (imgObject.points > score) {
+
+
+                $("#submitButton").show();
+                $("#submitName").show();
+            }
+        }
+    });
+
     $.ajax({
         url: "php/hsController.php",
         type: "post",
@@ -141,9 +167,12 @@ $("#submitButton").click(function() {
         },
         success: function(data) {
             $("#submitButton").hide();
+            $("#submitName").hide();
         }
     });
 });
+
+
 
 
     /*
@@ -436,7 +465,7 @@ $("#submitButton").click(function() {
                 $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
                 $("#game-over").show();
-                $('#myScore').text('Du fick ' + imgObject.points + ' poäng!');
+                $('#myScore').text(imgObject.points + ' poäng!');
                 $('#myClock').hide();
                 $('#replay').show();
                 $('#submitButton').show();

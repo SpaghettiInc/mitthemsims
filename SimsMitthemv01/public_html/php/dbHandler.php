@@ -55,7 +55,8 @@ class dbHandler {
             // output data of each row
             while($row = $result->fetch_assoc()) {
 
-                return $row['score'];
+                //return $row['score'];
+                return json_encode($row);
             }
         }
 
@@ -84,7 +85,5 @@ class dbHandler {
         mysqli_close($con);
     }
 }
-
-
 
 ?>
