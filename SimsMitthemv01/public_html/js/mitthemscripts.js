@@ -146,7 +146,7 @@ $("#submitButton").click(function() {
 
         success: function(data) {          //on recieve of reply
 
-            var score = data[0];              //get id
+            var score = data;              //get id
             console.log(score)
             $("#lowest-score").text("Lägst poäng:" + score)
 
@@ -504,13 +504,13 @@ $("#submitButton").click(function() {
                 count--;
                 setTimeout(gameCd, 1000);
             } else {
-                $("#cdText").text("!").hide("fade", 1000, function () {
+                $("#cdText").text("").hide("fade", 300, function () {
                     //$("#score").hide();
-                    $('#gameStart').toggle('fade', 2000, function(){
+                    $('#gameStart').toggle('fade', 1000, function(){
                         imgObject.deadline = Date.parse(new Date()) + 5000;
                         initializeClock('myClock');
                     });
-                    $("#myClock").show();
+                    $("#myClock").show('fade', 1000);
                     spawnRandomImg(imgObject); //Spawns the first thrash
                 });
             }

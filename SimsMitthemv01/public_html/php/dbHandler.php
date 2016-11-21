@@ -46,7 +46,7 @@ class dbHandler {
 
         $myConn = $this->openConnection();
 
-        $sql = "SELECT score FROM highscore ORDER BY score ASC LIMIT 1";
+        $sql = "SELECT score FROM highscore ORDER BY score ASC LIMIT 10";
 
         $result = mysqli_query($myConn, $sql);
 
@@ -56,7 +56,7 @@ class dbHandler {
             while($row = $result->fetch_assoc()) {
 
                 //return $row['score'];
-                return json_encode($row);
+                return $row['score'];
             }
         }
 

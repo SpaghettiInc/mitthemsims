@@ -8,7 +8,7 @@ if( isset($_POST['name']) ) {
     $dbHandler->writeHighscore($_POST['name'], $_POST['score']);
 }
 
-if( isset($_POST['top25']) ) {
+if( isset($_POST['request']) ) {
 
     $dbHandler->getTop25();
 }
