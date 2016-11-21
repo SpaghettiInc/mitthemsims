@@ -96,6 +96,7 @@ $(function () {
     $("#myClock").hide();
     $("#score").hide();
     $('#replay').hide();
+    $("#game-over").hide();
 
     //Creates a new image object
     var imgObject = new IMAGES();
@@ -122,6 +123,7 @@ $(function () {
         $('#replay').hide();
         $('#score').text('');
         $("#cdText").show();
+        $("#game-over").hide();
         startGame();
     });
 
@@ -132,6 +134,31 @@ $("#submitButton").click(function() {
     var submitScore = imgObject.points;
     console.log(submitName);
     console.log(submitScore);
+
+    $.ajax({
+        url: "php/hsController.php",
+        type: "post",
+        dataType: 'json',
+        data: {
+
+            "request" : "top25"
+        },
+
+        success: function(data) {          //on recieve of reply
+
+            var score = data;              //get id
+            console.log(score)
+            $("#lowest-score").text("Lägst poäng:" + score)
+
+            if (imgObject.points > score) {
+
+
+                $("#submitButton").show();
+                $("#submitName").show();
+            }
+        }
+    });
+
     $.ajax({
         url: "php/hsController.php",
         type: "post",
@@ -141,9 +168,12 @@ $("#submitButton").click(function() {
         },
         success: function(data) {
             $("#submitButton").hide();
+            $("#submitName").hide();
         }
     });
 });
+
+
 
 
     /*
@@ -436,7 +466,7 @@ $("#submitButton").click(function() {
                 $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
                 $("#game-over").show();
-                $('#myScore').text('Du fick ' + imgObject.points + ' poäng!');
+                $('#myScore').text(imgObject.points + ' poäng!');
                 $('#myClock').hide();
                 $('#replay').show();
                 $('#submitButton').show();
@@ -474,13 +504,13 @@ $("#submitButton").click(function() {
                 count--;
                 setTimeout(gameCd, 1000);
             } else {
-                $("#cdText").text("!").hide("fade", 1000, function () {
+                $("#cdText").text("").hide("fade", 300, function () {
                     //$("#score").hide();
-                    $('#gameStart').toggle('fade', 2000, function(){
+                    $('#gameStart').toggle('fade', 1000, function(){
                         imgObject.deadline = Date.parse(new Date()) + 5000;
                         initializeClock('myClock');
                     });
-                    $("#myClock").show();
+                    $("#myClock").show('fade', 1000);
                     spawnRandomImg(imgObject); //Spawns the first thrash
                 });
             }

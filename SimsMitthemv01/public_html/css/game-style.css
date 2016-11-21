@@ -23,7 +23,7 @@ and open the template in the editor.
 
 .transparent {
 
-    opacity: 0.1;
+    opacity: 0.4;
 }
 
 .white {
@@ -104,8 +104,16 @@ body {
 
 #game-over {
 
-    display: none;
+    width: auto;
+    display: inline-block;
+    margin: auto;
+}
 
+#highscore-input {
+
+    width: auto;
+    display: block;
+    margin: auto;
 }
 
 #dbscore{
@@ -114,10 +122,13 @@ body {
 
 #myScore {
 
-    font-size: 120px;
-    line-height: 160px;
-    text-align: center;
+    font-size: 200px;
+    line-height: 250px;
     color: #fff;
+    font-weight: bolder;
+    width: auto;
+    margin: 0;
+    padding: 0;
     opacity: 0.7;
 }
 
