@@ -123,6 +123,7 @@ $(function () {
         $('#replay').hide();
         $('#score').text('');
         $("#cdText").show();
+        $("#game-over").hide();
         startGame();
     });
 

@@ -23,7 +23,7 @@ and open the template in the editor.
 
 .transparent {
 
-    opacity: 0.1;
+    opacity: 0.4;
 }
 
 .white {
@@ -104,6 +104,14 @@ body {
 
 #game-over {
 
+    width: auto;
+    display: inline-block;
+    margin: auto;
+}
+
+#highscore-input {
+
+    width: auto;
     display: block;
     margin: auto;
 }
@@ -115,12 +123,13 @@ body {
 #myScore {
 
     font-size: 200px;
-    line-height: 470px;
+    line-height: 250px;
     color: #fff;
     font-weight: bolder;
-
+    width: auto;
+    margin: 0;
+    padding: 0;
     opacity: 0.7;
-    display: inline-block;
 }
 
 #myClock span {
