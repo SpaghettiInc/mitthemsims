@@ -168,8 +168,8 @@ tr, td {
     font-size: 10px;
 }
 
-.top a:link, .top a:visited { text-decoration: none; }
-.top a:hover, .top a:active { border: none; }
+.top a:link, .top a:visited { color: #000; text-decoration: none; }
+.top a:hover, .top a:active { color: #000; border: none; }
 
 .siluette {
 
