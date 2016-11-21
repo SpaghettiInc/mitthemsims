@@ -507,7 +507,7 @@ $("#submitButton").click(function() {
                 $("#cdText").text("").hide("fade", 300, function () {
                     //$("#score").hide();
                     $('#gameStart').toggle('fade', 1000, function(){
-                        imgObject.deadline = Date.parse(new Date()) + 5000;
+                        imgObject.deadline = Date.parse(new Date()) + 15000;
                         initializeClock('myClock');
                     });
                     $("#myClock").show('fade', 1000);
