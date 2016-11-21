@@ -80,7 +80,14 @@ a:hover, a:active {}
 
 #aside { background-color: green; }
 
-#footer { background-color: green; }
+#footer {
+
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    height: auto;
+    color: #fff;
+}
 
 #start-game-text {
   text-align: justify;;
@@ -101,6 +108,22 @@ a:hover, a:active {}
 #highscore-table tr:nth-child(even) {
 	background-color: #ddd;
 	color: #000;
+}
+
+#company-info {
+
+    display: inline-block;
+}
+
+#social-buttons {
+
+    display: inline-block;
+    float: right;
+    right: 0;
+}
+
+#social-buttons i {
+    padding: 5px;
 }
 
 tr, td {

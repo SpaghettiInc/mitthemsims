@@ -9,6 +9,7 @@ $(document).ready(function() {
   $("#start-game-button").click(function() {
 
     $("#wrapper").hide();
+    $("#footer").hide();
     $("#game").show();
   });
 
@@ -17,13 +18,16 @@ $(document).ready(function() {
 
     $("#game").hide();
     $("#wrapper").show();
+    $("#footer").show();
   });
 
   /*  Clicking on "show highscore" button */
   $("#show-highscore-button").click(function() {
 
     $("#wrapper").hide();
+    $("#footer").hide();
     $("#highscore").show();
+
   });
 
   /*  Clicking on "close highscore" button */
