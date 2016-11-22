@@ -41,14 +41,14 @@ a:hover, a:active {}
     margin: 0;
 }
 
-#categories a:link, a:visited {
+#categories a:link, #categories a:visited {
   margin: 0;
   padding: 10px;
   text-decoration: none;
   color: #000;
 }
 
-#categories a:hover, a:active {
+#categories a:hover, #categories a:active {
   text-decoration: none;
   color: green;
   border-bottom: 4px solid green;
@@ -62,6 +62,19 @@ a:hover, a:active {}
 	float: right;
 	cursor: pointer;
 	padding: 10px;
+}
+
+#language-switcher a:link, #language-switcher a:visited {
+  margin: 0;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+#language-switcher a:hover, #language-switcher a:active {
+  text-decoration: none;
+  color: green;
+  border-bottom: 4px solid green;
 }
 
 #nav {
