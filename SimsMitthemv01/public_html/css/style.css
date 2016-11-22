@@ -102,13 +102,6 @@ a:hover, a:active {}
     color: #fff;
 }
 
-.top-from-footer {
-
-    color: #fff;
-    bottom: 10px;
-    right: 100px;
-}
-
 #start-game-text {
   text-align: justify;
   padding: 100px 0 40px 0;
@@ -159,14 +152,14 @@ tr, td {
   margin: 0;
 }
 
-#nav a:link, a:visited {
+#nav a:link, #nav a:visited {
   margin: 0;
   padding: 10px;
   text-decoration: none;
   color: #000;
 }
 
-#nav a:hover, a:active {
+#nav a:hover, #nav a:active {
   text-decoration: none;
   color: green;
   border-bottom: 4px solid green;
@@ -189,14 +182,21 @@ tr, td {
     font-size: 10px;
 }
 
-<<<<<<< HEAD
-.top a:link, .top a:visited { color: #000; text-decoration: none; }
-.top a:hover, .top a:active { color: #000; border: none; }
-=======
+/*.top a:link, .top a:visited { color: #000; text-decoration: none; }
+.top a:hover, .top a:active { color: #000; border: none; }*/
 
-.top a:link, .top a:visited { text-decoration: none; color: inherit;}
-.top a:hover, .top a:active { border: none; color: inherit;}
->>>>>>> front-end
+.top a:link, .top a:visited {
+  margin: 0;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.top a:hover, .top a:active {
+  text-decoration: none;
+  color: green;
+  border-bottom: 4px solid green;
+}
 
 .siluette {
 
