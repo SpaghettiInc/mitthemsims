@@ -40,7 +40,7 @@ class dbHandler {
 
         $myConn = $this->openConnection();
 
-        $sql = "SELECT score, name FROM highscore ORDER BY score DESC LIMIT 25,1";
+        $sql = "SELECT score, name FROM highscore ORDER BY score, date, id DESC LIMIT 25,1";
         $result = mysqli_query($myConn, $sql);
 
         if ($result->num_rows > 0) {

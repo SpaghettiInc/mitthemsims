@@ -197,12 +197,12 @@ function printHighScore(){
             console.log(JSON.stringify(data));
             //var hej = JSON.stringify(data);
             
+            $("#highscore-table-area").append($("<tr><td>" + "Namn" +"</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>" ));
+            
             for(var i in data){
-            //for(var i = 0; i < hej.size; i++){
-                //console.log(data[i]['name'] + "<br>" + data[i]['date'] + "<br>" + data[i]['score'] + "<br> ------------------------------------------------------------------ <br>");
+                
                 $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] +"</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>" ));
             }
-            //$("#highscore-table-area").append($("<tr><td>" + name +"</td><td>" + date + "</td><td>" + score + "</td></tr>" ));
             
         }
     });
