@@ -12,7 +12,7 @@ if( isset($_POST['get_param']) ) {
     $dbHandler->getTop25();
 }
 
-if( isset($_POST['id']) ) {
+if( isset($_POST['date']) ) {
 
     $dbHandler->getHtmlTable();
 }

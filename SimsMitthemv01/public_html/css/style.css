@@ -227,10 +227,14 @@ tr, td {
   background-color: #fff;
   text-align: center;
   opacity: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
   /*padding: 50px;*/
     border: 0px solid #ddd;
     background-image: url("../img/bgs/game-back.png");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .button {

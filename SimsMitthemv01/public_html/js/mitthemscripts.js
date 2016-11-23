@@ -151,7 +151,7 @@ $("#submitButton").click(function() {
             $("#submitButton").hide();
             $("#submitName").hide();
 
-            //printHighScore();
+            printHighScore();
 
         }
     });
@@ -163,17 +163,19 @@ function checkPoints(){
         type: "post",
         dataType: 'json',
         data: {
-            get_param : "score"
+            get_param : "score",
+            name: "name"
         },
         success: function(data) {          //on recieve of reply
             console.log("inside success");
+            console.log(data);
             if ( imgObject.points > parseInt(data['score']) ) {
+                console.log(data);
                 $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
                 $("#submitButton").show();
                 $("#submitName").show();
 
             } else {
-
                 $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
             }
         }
@@ -186,19 +188,27 @@ function printHighScore(){
         type: "post",
         dataType: 'json',
         data: {
-            id : "id",
             name : "name",
             date : "date",
             score : "score"
         },
         success: function(data) {          //on recieve of reply
-
-            //$("highscore-area").show();
-            console.log("bulleku");
-            console.log(data);
+            
+            console.log(JSON.stringify(data));
+            //var hej = JSON.stringify(data);
+            
+            for(var i in data){
+            //for(var i = 0; i < hej.size; i++){
+                //console.log(data[i]['name'] + "<br>" + data[i]['date'] + "<br>" + data[i]['score'] + "<br> ------------------------------------------------------------------ <br>");
+                $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] +"</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>" ));
+            }
+            //$("#highscore-table-area").append($("<tr><td>" + name +"</td><td>" + date + "</td><td>" + score + "</td></tr>" ));
+            
         }
     });
 }
+
+
 /*
 
 $("#show-highscore-button").click(function(){
