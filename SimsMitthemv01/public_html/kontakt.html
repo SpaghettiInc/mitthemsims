@@ -20,7 +20,7 @@
         <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
 
         <div id="language-switcher">
-          <a href="en/index.html"><i class="fa fa-globe"></i>
+          <a href="en/kontakt.html"><i class="fa fa-globe"></i>
           <span class="swe">English</span></a>
         </div>
 
@@ -39,21 +39,50 @@
 
       <section id="content">
 
-        <h1 class="swe">Välkommen till SPRECO!</h1>
+        <h1 class="swe">Kontakta oss</h1>
 
-        <p class="green-indent swe">Vad roligt att just du hittat till Sprecos hemsida. På Spreco jobbar vi med hållbar utveckling, där miljön och främst avfallshanteringen är huvudområdet. Här hoppas vi kunna inspirera dig och dina grannar att sortera erat avfall på ett korrekt sätt utan att det behöver vara svårt eller komplicerat.</p>
+        <div id="form-box">
 
-        <p class="swe">Du har väl inte missat att anta utmaningen att bli Veckans Sopa på Spreco? Spela spelet för din chans att vinna och få den ärofyllda titeln för en vecka!</p>
+            <form action="post" method="php/mailform.php">
 
-        <h1 class="swe">Vad är SPRECO?</h1>
+                <input type="text" id="form-name" class="input" placeholder="Ditt namn" autofocus required />
 
-        <p class="swe green-indent">Spreco är ett bolag som riktar sig främst till hyresgäst- och bostadsrättsföreningar, där syftet är att erbjuda smarta vardagslösningar som undviker felsorteringar av hushållsavfallet. Idén uppkom i takt med att ett hyresgästföretag i Sundsvall sökte extern hjälp med att se över sin sophanterings- process. Detta med fokus att se om det var möjligt att göra ekonomiska besparingar, men även värna om vår miljö.</p>
+                <input type="email" id="form-email" class="input" placeholder="Din e-postadress" required />
 
-        <p class="swe">Många bostadsområden erbjuder hantering av både mat- och hushållsavfall, medan resterande områden enbart erbjuder hantering för hushållsavfall. I de fall där det erbjuds hantering av både matavfall och hushållsavfall blir det mycket felsorteringar, och detta får stora ekonomiska konsekvenser. Det absolut vanligaste felet är att runt sin matavfallspåse träs en plastpåse innan den slängs i komposten, den bruna tunnan. Detta är ett beteende som är strängt förbjudet då plast inte är nedbrytbart av naturen. Problemet är dessutom okontrollerbart eftersom det inte går att spåra vem som slängt sitt matavfall på ett felaktigt sätt. </p>
+                <input type="text" id="form-phone" class="input" placeholder="Ditt telefonnummer" />
 
-        <p class="swe">Spreco är en utanpå- lösning till de kärl som existerar på marknaden idag. Båset är en enkel konstruktion där tunnorna körs in genom en enkel dörröppning och ovanpå finns det tre falluckor. Falluckorna identifierar färgen på påsen, och har påsen rätt färg kommer den att återvinnas. En grön indikation kommer också att ges för att symbolisera att du återvunnit på ett korrekt sätt. Har påsen som försöker slängas däremot en felaktig färg kommer inte påsen att släppas ner och en röd indikation kommer att ges på att något är fel.</p>
+                <input type="text" id="form-subject" class="input" placeholder="Rubrik" required />
 
-        <p class="swe">På Spreco fokuserar vi på hållbar utveckling med miljön i fokus, där kundens behov är vår utmaning att tillfredsställa.  Vi arbetar serviceinriktat och vill lösa dina behov. Kontakta oss om du upplever problem i din verksamhet- vi hjälper dig gärna!</p>
+                <textarea id="form-message" class="input" placeholder="Meddelande" required ></textarea>
+
+                <input type="submit" value="Skicka" id="form-submit" class="button"/>
+                <input type="button" value="Nollställ" class="button"/>
+
+            </form>
+
+        </div>
+
+        <div id="form-sidebar">
+
+            <p>Det enklaste sättet att komma i kontakt med oss på är att fylla i formuläret
+            här intill. Vi återkommer till dig så snart vi bara kan. Vi finns även tillgängliga
+            på telefon, e-post och besökadress.</p>
+
+            <div class="green-line"></div>
+
+            <p>Telefon: 098 - 123 45 67</p>
+
+            <p>E-post: info@spreco.se</p>
+
+            <p>Miljögatan 4<br />
+            123 45&nbsp;&nbsp;Återvinningsberga</p>
+
+            <div class="green-line"></div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7394.138377725936!2d17.3549164!3d62.3989048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1479927925134" width="100%" height="250px" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+
       </section>
 
     </div>
