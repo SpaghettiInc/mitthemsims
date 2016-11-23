@@ -51,6 +51,7 @@ and open the template in the editor.
 }
 
 #game-area {
+
     float: left;
     width: 100vw;
 }
