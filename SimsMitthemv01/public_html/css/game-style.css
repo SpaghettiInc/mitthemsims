@@ -208,8 +208,8 @@ body {
 }
 
 .bin-container figure img{
-    width: 125px;
-    height: 200px;
+    width: 150px;
+
 }
 .trash {
     width: 25px;
@@ -224,14 +224,32 @@ body {
         G E N E R A L   P R O P E R T I E S
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+.figcap {
+
+    padding: 5px;
+    display: block;
+}
+
 #game-greeter {
 
     width: 600px;
-    height: 300px;
     margin: auto;
     padding: 25px;
-    margin-top: 90px;
     box-shadow: 5px 5px 5px #000;
+}
+
+#appraise {
+
+    color: #fff;
+    font-size: 20px;
+}
+
+#game-greeter ul {
+
+    padding: 15px;
+    display: block;
+    text-align: left;
+    list-style-type: circle;
 }
 
 /*#startAnimation{

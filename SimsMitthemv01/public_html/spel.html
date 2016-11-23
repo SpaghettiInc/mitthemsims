@@ -43,12 +43,13 @@
                 <!-- User will click this button when they want to start
                 the game. When so, this button will go hidden. -->
 
-                <p id="start-game-text">
-                    Några förklarande ord om spelet. Orkar inte komma med några
-                    specifika exempel nu. Duger inte detta menar du?</p>
-                <input type="button" id="start-game-button" class="button" value="Starta spelet" />
-                <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
-
+                <div id="start-game-box">
+                    <p id="start-game-text">
+                        Här tävlar vi om vem som ska bli Veckans Sopa! Allt du behöver göra för
+                        att starta spelet är att trycka på knappen här nedanför. Lycka till!</p>
+                    <input type="button" id="start-game-button" class="button" value="Starta spelet" />
+                    <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
+                </div>
 
 
             </div> <!-- END #content-->
@@ -60,8 +61,10 @@
 
             <div id="company-info">
 
-                <p>SPRECO</p>
-                <p>Text en masse</p>
+                <img src="img/logo-small.png" alt="Logotype, small (logo-small.png)" id="bottom-logo"/>
+                <p>Miljögatan 4<br />
+                123 45&nbsp;&nbsp;Återvinningsberga<br />
+                098 - 123 45 67</p>
 
             </div>
 
@@ -98,13 +101,17 @@
 
                 <section id="game-greeter" class="bg-trans-black-40">
 
-                    <h1>Välkommen till spelet!</h1>
-                    <p>Så här spelar man:</p>
+                    <h1>Gör så här</h1>
+                    <p>Spelet går ut på att sortera avfall rätt. För varje korrekt sortering får du ett poäng. Om du däremot sorterar fel så får du ett avdrag. I bland
+                        dyker det upp speciella sopor som måste hanteras annorlunda. Ett exempel på detta är en plastpåse runt en papperspåse med komposterbart avfall.
+                        Det korrekta här är att klicka på objektet för att separera plastpåsen från papperspåsen och på så viss sortera dem rätt.
+                    </main></p>
                     <ul>
-                        <li>Lorem ipsum</li>
-                        <li>Dolor sit</li>
-                        <li>Amet.</li>
-                    </ul>s
+                        <li>Tryck på <i class="white transparent fa fa-play" aria-hidden="true"></i> när du vill sätta igång spelet</li>
+                        <li>Om du vill stänga spelet och går tillbaks till webbsidan, tryck på <i class="white transparent fa fa-close" aria-hidden="true"></i></li>
+                        <li>Efter att du spelat klart kan du trycka på <i class="white transparent fa fa-refresh" aria-hidden="true"></i> för att starta ett nytt spel</li>
+                        <li>Om du vill växla mellan ljud och tystnad trycker du på <i class="white transparent fa fa-volume-up" aria-hidden="true"></i></li>
+                    </ul>
 
                 </section>
 
@@ -119,13 +126,18 @@
 
 
                     <p id="myScore" class="center"></p>
+                    <p id="appraise" class="center"></p>
                     <div id="highscore-input">
                         <input type="text" id="submitName" />
                         <input type="submit" id="submitButton" />
                     </div>
 
 
-                    <p id="lowest-score"></p>
+                    <div id="highscore-area">
+                        <table id="highscore-table-area">
+
+                        </table>
+                    </div>
 
                 </div>
 
@@ -135,23 +147,23 @@
                     <div class="bin-container center-content" id="thrashDiv">
                         <figure id="glasBin" class="block">
                             <img alt="Glas" src="img/game/garbage-containers/glas.png">
-                            <figcaption>Glasavfall</figcaption>
+                            <figcaption class="figcap bg-trans-black-40">Glasavfall</figcaption>
                         </figure>
                         <figure id="matBin" class="block">
                             <img alt="Mat" src="img/game/garbage-containers/mat.png">
-                            <figcaption>Matavfall</figcaption>
+                            <figcaption class="figcap bg-trans-black-40">Matavfall</figcaption>
                         </figure>
                         <figure id="papperBin" class="block">
                             <img alt="Papper" src="img/game/garbage-containers/papper.png">
-                            <figcaption>Papper</figcaption>
+                            <figcaption class="figcap bg-trans-black-40">Papper</figcaption>
                         </figure>
                         <figure id="metallBin" class="block">
                             <img alt="Metall" src="img/game/garbage-containers/metall.png">
-                            <figcaption>Metallavfall</figcaption>
+                            <figcaption class="figcap bg-trans-black-40">Metallavfall</figcaption>
                         </figure>
                         <figure id="plastBin" class="block">
                             <img alt="Plast" src="img/game/garbage-containers/plast.png">
-                            <figcaption>Plastavfall</figcaption>
+                            <figcaption class="figcap bg-trans-black-40">Plastavfall</figcaption>
                         </figure>
                     </div>
 

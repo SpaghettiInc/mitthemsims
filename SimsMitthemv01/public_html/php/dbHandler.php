@@ -13,25 +13,20 @@ class dbHandler {
         $myConn = $this->openConnection();
 
         $sql = "SELECT * FROM highscore ORDER BY score DESC";
-        $result = $myConn->query($sql);
-
+        $result = mysqli_query($myConn, $sql);
+        var $ggrip = array();
         if ($result->num_rows > 0) {
 
            // output data of each row
            while($row = $result->fetch_assoc()) {
-               echo "
-                <tr>
-                  <td>" . $row["name"] . "</td>
-                  <td>" . $row["date"] . "</td>
-                  <td>" . $row["score"] . "</td>
-                </tr>
-        ";
+
+               $data
            }
 
-        } else {
-           echo "0 results";
+           echo json_encode($row);
         }
         mysqli_close($myConn);
+        return;
     }
 
     // opens up a connection to the actual database
@@ -46,21 +41,21 @@ class dbHandler {
 
         $myConn = $this->openConnection();
 
-        $sql = "SELECT score FROM highscore ORDER BY score ASC LIMIT 10";
-
+        $sql = "SELECT score FROM highscore ORDER BY score ASC LIMIT 1";
+        $ggrip = array();
         $result = mysqli_query($myConn, $sql);
 
         if ($result->num_rows > 0) {
 
             // output data of each row
             while($row = $result->fetch_assoc()) {
-
                 //return $row['score'];
-                return $row['score'];
+                echo json_encode($row);
             }
         }
 
         mysqli_close($myConn);
+        return;
     }
 
     // write a post (name and score) to the database

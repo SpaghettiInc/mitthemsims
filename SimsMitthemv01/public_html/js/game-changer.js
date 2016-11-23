@@ -22,13 +22,14 @@ $(document).ready(function() {
   });
 
   /*  Clicking on "show highscore" button */
+  /*
   $("#show-highscore-button").click(function() {
 
     $("#wrapper").hide();
     $("#footer").hide();
     $("#highscore").show();
 
-  });
+});*/
 
   /*  Clicking on "close highscore" button */
   $("#close-highscore-button").click(function() {

@@ -93,10 +93,14 @@ $(function () {
         this.status = true;
     }
 
+
+    $("#submitButton").hide();
+    $("#submitName").hide();
     $("#myClock").hide();
     $("#score").hide();
     $('#replay').hide();
     $("#game-over").hide();
+    
 
     //Creates a new image object
     var imgObject = new IMAGES();
@@ -132,32 +136,7 @@ $("#submitButton").click(function() {
 
     var submitName = $("#submitName").val();
     var submitScore = imgObject.points;
-    console.log(submitName);
-    console.log(submitScore);
 
-    $.ajax({
-        url: "php/hsController.php",
-        type: "post",
-        dataType: 'json',
-        data: {
-
-            "request" : "top25"
-        },
-
-        success: function(data) {          //on recieve of reply
-
-            var score = data;              //get id
-            console.log(score)
-            $("#lowest-score").text("Lägst poäng:" + score)
-
-            if (imgObject.points > score) {
-
-
-                $("#submitButton").show();
-                $("#submitName").show();
-            }
-        }
-    });
 
     $.ajax({
         url: "php/hsController.php",
@@ -167,14 +146,64 @@ $("#submitButton").click(function() {
             "score": submitScore
         },
         success: function(data) {
+            console.log("in first succezz");
+            $("#appraise").hide();
             $("#submitButton").hide();
             $("#submitName").hide();
+
+            //printHighScore();
+
         }
     });
 });
 
+function checkPoints(){
+    $.ajax({
+        url: "php/hsController.php",
+        type: "post",
+        dataType: 'json',
+        data: {
+            get_param : "score"
+        },
+        success: function(data) {          //on recieve of reply
+            console.log("inside success");
+            if ( imgObject.points > parseInt(data['score']) ) {
+                $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
+                $("#submitButton").show();
+                $("#submitName").show();
 
+            } else {
 
+                $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+            }
+        }
+    });
+}
+
+function printHighScore(){
+    $.ajax({
+        url: "php/hsController.php",
+        type: "post",
+        dataType: 'json',
+        data: {
+            id : "id",
+            name : "name",
+            date : "date",
+            score : "score"
+        },
+        success: function(data) {          //on recieve of reply
+
+            //$("highscore-area").show();
+            console.log("bulleku");
+            console.log(data);
+        }
+    });
+}
+/*
+
+$("#show-highscore-button").click(function(){
+    printHighScore();
+});/*
 
     /*
     <table id="highscore-table">
@@ -469,8 +498,7 @@ $("#submitButton").click(function() {
                 $('#myScore').text(imgObject.points + ' poäng!');
                 $('#myClock').hide();
                 $('#replay').show();
-                $('#submitButton').show();
-                $('#submitName').show();
+                checkPoints();
                 //document.getElementById('fungera').value= imgObject.points;
                 //$('#fungera').attr('value') = imgObject.points;
                 //scoreComp();

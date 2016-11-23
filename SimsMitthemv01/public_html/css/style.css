@@ -102,11 +102,18 @@ a:hover, a:active {}
     color: #fff;
 }
 
+
+
 #start-game-text {
   text-align: justify;
-  padding: 100px 0 40px 0;
   margin: auto;
   width: 300px;
+  padding: 30px;
+}
+
+#start-game-box {
+
+    padding: 100px 0 100px 0;
 }
 
 #top-logo { width: 200px; }
@@ -126,6 +133,7 @@ a:hover, a:active {}
 
 #company-info {
 
+    font-size: 10px;
     display: inline-block;
 }
 
