@@ -12,18 +12,17 @@ class dbHandler {
     public function getHtmlTable() {
         $myConn = $this->openConnection();
 
-        $sql = "SELECT * FROM highscore ORDER BY score DESC";
+        $sql = "SELECT name, date, score FROM highscore ORDER BY score DESC LIMIT 25";
         $result = mysqli_query($myConn, $sql);
-        var $ggrip = array();
+        $ggrip = [];
         if ($result->num_rows > 0) {
 
            // output data of each row
            while($row = $result->fetch_assoc()) {
-
-               $data
+               $ggrip[] = $row;
            }
 
-           echo json_encode($row);
+           echo json_encode($ggrip);
         }
         mysqli_close($myConn);
         return;
@@ -41,8 +40,7 @@ class dbHandler {
 
         $myConn = $this->openConnection();
 
-        $sql = "SELECT score FROM highscore ORDER BY score ASC LIMIT 1";
-        $ggrip = array();
+        $sql = "SELECT score, name FROM highscore ORDER BY score, date, id DESC LIMIT 25,1";
         $result = mysqli_query($myConn, $sql);
 
         if ($result->num_rows > 0) {
@@ -53,19 +51,19 @@ class dbHandler {
                 echo json_encode($row);
             }
         }
-
+        
         mysqli_close($myConn);
         return;
     }
 
     // write a post (name and score) to the database
-    public function writeHighscore($name, $score) {
+    public function writeHighscore($name1, $score) {
 
         // open up a connection
         $con = $this->openConnection();
 
         // escape any illegal characters from input
-        $name = mysqli_real_escape_string($con, $name);
+        $name = mysqli_real_escape_string($con, $name1);
 
         // we need the date of today
         $date = date("Y-m-d");

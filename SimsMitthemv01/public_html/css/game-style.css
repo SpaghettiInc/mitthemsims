@@ -100,6 +100,12 @@ body {
     font-size: 180px;
     padding: 20px 50px 0 0;
     font-weight: bolder;
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #game-over {
@@ -116,8 +122,28 @@ body {
     margin: auto;
 }
 
+#highscore-area {
+    
+    width: 100%;
+    padding: 25px 0;
+}
+
+#highscore-table-area {
+    
+    width: 100%;
+
+}
+
+#highscore-table-area tr:nth-child(even) {
+    
+    background-image: url("../img/transparency/black-40.png");
+}
+
+
+
 #dbscore{
     display: hidden;
+    
 }
 
 #myScore {
@@ -130,6 +156,12 @@ body {
     margin: 0;
     padding: 0;
     opacity: 0.7;
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #myClock span {
@@ -147,6 +179,13 @@ body {
     color: #fff;
     font-weight: bolder;
     opacity: 0.7;
+    
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #score {
@@ -242,6 +281,13 @@ body {
 
     color: #fff;
     font-size: 20px;
+    padding: 10px;
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #game-greeter ul {
@@ -262,6 +308,12 @@ opacity: 1;
     text-align: center;
     margin: 80px auto;
     align: center;
+        -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .center-content {
