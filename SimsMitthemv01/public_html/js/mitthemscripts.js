@@ -8,11 +8,13 @@
 //Main Script page for testing for MITTHEM
 //
 $(function () {
-   /**
-    * Creating the IMAGES class with constructor and store the images in an array.
-    * @returns {mitthemscripts_L9.IMAGES}
-    */
+    /**
+     * Creating the IMAGES class with constructor and store the images in an array.
+     * @returns {mitthemscripts_L9.IMAGES}
+     */
     function IMAGES() {
+
+        //Array containing the images to be dropped
         this.images = [$('<img />',
                     {id: 'img0',
                         class: 'trash padding',
@@ -54,21 +56,24 @@ $(function () {
                         src: 'img/game/trash/bonus_event/bp.png',
                         alt: "No Picture found"})];
 
-        //Mapping the thrash to the corresponding bin
+        //Mapping the thrash to the corresponding bin through inner object
         this.binBind = {
-            img0:'glasBin',
-            img1:'matBin',
-            img2:'papperBin',
-            img3:'metallBin',
-            img4:'plastBin',
-            img5:'matBin',
-            img6:'plastBin'
+            img0: 'glasBin',
+            img1: 'matBin',
+            img2: 'papperBin',
+            img3: 'metallBin',
+            img4: 'plastBin',
+            img5: 'matBin',
+            img6: 'plastBin'
         };
 
 
         //Adding some audio objects
         this.glass_audio = new Audio('sound/glass_break.mp3');
         this.metal_throw = new Audio('sound/metal_throw.mp3');
+        this.game_music = new Audio('sound/gameMusic.mp3');
+        this.game_music.volume = 0.05;
+        this.game_music.loop = true;
         this.glass_audio.volume = 0.2;
         this.metal_throw.volume = 0.2;
 
@@ -80,264 +85,228 @@ $(function () {
 
         this.points = 0;
 
-        this.muteAll = function (){
+        //Mute all function
+        this.muteAll = function () {
             this.glass_audio.muted = true;
             this.metal_throw.muted = true;
+            this.game_music.muted = true;
         };
 
-        this.unMuteAll = function (){
+        //Function to unmute function
+        this.unMuteAll = function () {
             this.glass_audio.muted = false;
             this.metal_throw.muted = false;
+            this.game_music.muted = false;
         };
 
         this.status = true;
     }
 
-
+    //Hiding all elements prior to game start
     $("#submitButton").hide();
     $("#submitName").hide();
     $("#myClock").hide();
     $("#score").hide();
     $('#replay').hide();
     $("#game-over").hide();
-    
+
 
     //Creates a new image object
     var imgObject = new IMAGES();
 
-    $("#sound").click(function(){
-        if(imgObject.glass_audio.muted){
+       /* 
+    function GGRIP(){
+        this.myTest = [];
+        
+    }*/
+    
+    var hello = [[1,2], [3,4], [5,6]];
+    console.log(hello[0][1]);
+    console.log(hello[1][0]);
+
+    /**
+     * Anonomous function to mute the game sounds
+     */
+    $("#sound").click(function () {
+        if (imgObject.glass_audio.muted) {
             $("#sound").toggleClass("fa-volume-up").removeClass("fa-volume-off");
-            //addClass('white transparent game-button fa fa-volume-on').removeClass("white transparent game-button fa fa-volume-off");
             imgObject.unMuteAll();
-        }else{
-           $("#sound").toggleClass("fa-volume-off").removeClass("fa-volume-up");
-           //addClass('white transparent game-button fa fa-volume-off').removeClass("white transparent game-button fa fa-volume-on");
-           imgObject.muteAll();
+        } else {
+            $("#sound").toggleClass("fa-volume-off").removeClass("fa-volume-up");
+            imgObject.muteAll();
         }
     });
 
+    /**
+     * Anonomous click function to start the game also plays the music
+     */
     $('#gameStarter').click(function () {
-
+        imgObject.game_music.play();
         startGame();
     });
 
+    /**
+     * Anonomous on click function that replays the game
+     */
     $('#replay').click(function () {
         imgObject.points = 0;
         $('#replay').hide();
         $('#score').text('');
         $("#cdText").show();
         $("#game-over").hide();
+        $("#mydiv").children().remove();
         startGame();
     });
 
 
-$("#submitButton").click(function() {
+    /**
+     * Function that animates plus points
+     * @returns {undefined}
+     */
+    function plusPoint() {
+        $("#surprise").animate({opacity: 1, fontSize: "8em"}, 400, function () {
+            $("#surprise").animate({opacity: 0, fontSize: "20em"}, 400);
+            $("#surprise").animate({fontSize: "2em"}, 0);
+        });
+    }
 
-    var submitName = $("#submitName").val();
-    var submitScore = imgObject.points;
 
+    /**
+     * Function that animates what user get minus points
+     * @returns {undefined}
+     */
+    function minPoint() {
+        $("#minus").animate({opacity: 1, fontSize: "4em"}, 600, function () {
+            $("#minus").animate({opacity: 0, fontSize: "20em"}, 200);
+            $("#minus").animate({fontSize: "2em"}, 0);
+        });
+    }
 
-    $.ajax({
-        url: "php/hsController.php",
-        type: "post",
-        data: {
-            "name": submitName,
-            "score": submitScore
-        },
-        success: function(data) {
-            console.log("in first succezz");
-            $("#appraise").hide();
-            $("#submitButton").hide();
-            $("#submitName").hide();
+    /**
+     * Function to animate the time gained from bonus event
+     * @returns {undefined}
+     */
+    function bonusTime() {
+        $("#time").animate({opacity: 1, fontSize: "4em"}, 600, function () {
+            $("#time").animate({opacity: 0, fontSize: "20em"}, 200);
+            $("#time").animate({fontSize: "2em"}, 0);
+        });
+    }
 
-            printHighScore();
+    /**
+     * Ajax post request to add a user to the highscore
+     * Sends name and score to database through php
+     */
+    $("#submitButton").click(function () {
+        var submitName = $("#submitName").val();
+        var submitScore = imgObject.points;
+        $.ajax({
+            url: "php/hsController.php",
+            type: "post",
+            data: {
+                "name": submitName,
+                "score": submitScore
+            },
+            success: function (data) {
+                console.log("in first succezz");
+                $("#appraise").hide();
+                $("#submitButton").hide();
+                $("#submitName").hide();
 
-        }
+                printHighScore();
+
+            }
+        });
     });
-});
 
-function checkPoints(){
-    $.ajax({
-        url: "php/hsController.php",
-        type: "post",
-        dataType: 'json',
-        data: {
-            get_param : "score",
-            name: "name"
-        },
-        success: function(data) {          //on recieve of reply
-            console.log("inside success");
-            console.log(data);
-            if ( imgObject.points > parseInt(data['score']) ) {
+    /**
+     * Check to see whether the person is qualified to get on the highscore
+     * Using ajax post request to get the lowest qualified score
+     * @returns {undefined}
+     */
+    function checkPoints() {
+        $.ajax({
+            url: "php/hsController.php",
+            type: "post",
+            dataType: 'json',
+            data: {
+                get_param: "score",
+                name: "name"
+            },
+            success: function (data) {          //on recieve of reply
+                console.log("inside success");
                 console.log(data);
-                $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
-                $("#submitButton").show();
-                $("#submitName").show();
-
-            } else {
-                $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+                if (imgObject.points > parseInt(data['score'])) {
+                    console.log(data);
+                    $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
+                    $("#submitButton").show();
+                    $("#submitName").show();
+                } else {
+                    $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+                }
             }
-        }
-    });
-}
+        });
+    }
 
-function printHighScore(){
-    $.ajax({
-        url: "php/hsController.php",
-        type: "post",
-        dataType: 'json',
-        data: {
-            name : "name",
-            date : "date",
-            score : "score"
-        },
-        success: function(data) {          //on recieve of reply
-            
-            console.log(JSON.stringify(data));
-            //var hej = JSON.stringify(data);
-            
-            $("#highscore-table-area").append($("<tr><td>" + "Namn" +"</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>" ));
-            
-            for(var i in data){
-                
-                $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] +"</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>" ));
+    /**
+     * Function to print the highscore, using ajax a post request is made to the server
+     * @returns {undefined}
+     */
+    function printHighScore() {
+        $.ajax({
+            url: "php/hsController.php",
+            type: "post",
+            dataType: 'json',
+            data: {
+                name: "name",
+                date: "date",
+                score: "score"
+            },
+            success: function (data) {          //on recieve of reply
+                console.log(JSON.stringify(data));
+                $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+
+                for (var i in data) {
+                    $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
+                }
             }
-            
-        }
-    });
-}
-
-
-/*
-
-$("#show-highscore-button").click(function(){
-    printHighScore();
-});/*
-
-    /*
-    <table id="highscore-table">
-
-    <?php
-        require_once("php/hsController.php");
-        $hs = new vsh;
-        $ggrip = $hs->getTop25();
-
-        echo "<span id='dbscore'>$ggrip</span>";
-
-        $hs->getHtmlTable();
-    ?>
-
-    </table>
-
-    <div id="inputBox">
-
-        <form method="POST">
-            <input id="fungera" name="score" type="hidden" value="" />
-            <input type="text" name="name" />
-            <input type="submit" name="submit" value="Skicka" />
-
-        </form>
-        */
-
-
-
+        });
+    }
 
     /**
      * When dropped it checks whether the ID corresponds to the correct thrash
      * If its correct it updates points to true and then gets rid of the image,
-     * If not correct it shakes and then gets rid of picture
+     * If not correct it shakes and then gets returns the thrash to starting position
      */
     $("#glasBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
-                imgObject.status = true;
                 imgObject.glass_audio.play();
-                $(ui.draggable).toggle("scale", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });
+                thrashAccept(ui);
             } else {
-                imgObject.status = false;
-                $(ui.draggable).toggle('shake', 'fast').show(function(){
-                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
-                    updatePoints2(imgObject.status);
-                });
-                /*$(ui.draggable).toggle("shake", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });*/
+                thrashReturn(ui);
             }
         }
     });
 
     $("#matBin").droppable({
         drop: function (event, ui) {
-            if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img6" || ui.draggable.attr('id') === "img7") {
+            if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img7") {
                 imgObject.metal_throw.play();
-                imgObject.status = true;
-                $(ui.draggable).toggle("scale", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });
+                thrashAccept(ui);
             } else {
-                imgObject.status = false;
-
-                $(ui.draggable).toggle('shake', 'fast').show(function(){
-                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
-                    updatePoints2(imgObject.status);
-                });
-
-
-                /*$(ui.draggable).toggle("shake", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });*/
+                thrashReturn(ui);
             }
         }
     });
-
 
     $("#papperBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img2") {
                 imgObject.metal_throw.play();
-                imgObject.status = true;
-                $(ui.draggable).toggle("scale", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });
+                thrashAccept(ui);
             } else {
-                imgObject.status = false;
-
-                $(ui.draggable).toggle('shake', 'fast').show(function(){
-                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
-                    updatePoints2(imgObject.status);
-                });
-
-
-                /*$(ui.draggable).toggle("shake", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });*/
+                thrashReturn(ui);
             }
         }
     });
@@ -346,29 +315,9 @@ $("#show-highscore-button").click(function(){
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img3") {
                 imgObject.metal_throw.play();
-                imgObject.status = true;
-                $(ui.draggable).toggle("scale", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });
+                thrashAccept(ui);
             } else {
-                imgObject.status = false;
-
-                $(ui.draggable).toggle('shake', 'fast').show(function(){
-                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
-                    updatePoints2(imgObject.status);
-                });
-
-                /*$(ui.draggable).toggle("shake", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });*/
+                thrashReturn(ui);
             }
         }
     });
@@ -377,97 +326,113 @@ $("#show-highscore-button").click(function(){
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img4") {
                 imgObject.metal_throw.play();
-                imgObject.status = true;
-                $(ui.draggable).toggle("scale", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });
+                thrashAccept(ui);
             } else {
-                imgObject.status = false;
-                $(ui.draggable).toggle('shake', 'fast').show(function(){
-                    $(ui.draggable).animate({top: 0, left: 0}, 'fast');
-                    updatePoints2(imgObject.status);
-                });
-
-                /*$(ui.draggable).toggle("shake", function () {
-                    $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
-                        $("#mydiv").children().remove();
-                        updatePoints2(imgObject.status);
-                        spawnRandomImg(imgObject);
-                    });
-                });*/
+                thrashReturn(ui);
             }
 
         }
     });
 
+    function thrashAccept(ui) {
+        imgObject.status = true;
+        plusPoint();
+        $(ui.draggable).toggle("scale", function () {
+            $(ui.draggable).animate({top: 0, left: 0}, 0, function () {
+                $("#mydiv").children().remove();
+                updatePoints2(imgObject.status);
+                spawnRandomImg(imgObject);
+            });
+        });
+    }
+
+    function thrashReturn(ui) {
+        imgObject.status = false;
+        minPoint();
+        $(ui.draggable).toggle('shake', 'fast').show(function () {
+            $(ui.draggable).animate({top: 0, left: 0}, 'fast');
+            updatePoints2(imgObject.status);
+        });
+    }
+
+
+    
+
+
+
     //Function that spawns the random image
     function spawnRandomImg(imgObject) {
-        var threeRnd = [0,1,2,3,4,5];
-        var index = 6;
+        var threeRnd = [0, 1, 2, 3, 4, 5]; //Array for keeping track of spawned bins
+        var index = 6; //Index to randomize
 
-        $('#thrashDiv').children().hide();
+        $('#thrashDiv').children().hide(); //Hiding all bins
 
-        var rnd = (Math.floor(Math.random() * index));
-        var rndCheck = rnd;
-        index--;
-        var rndImage = imgObject.getPic(rnd);
-        var boundBin = imgObject.binBind['img' + rnd];
-        threeRnd.splice(rnd,1);
-        $('#' + boundBin).show();
+        var rnd = (Math.floor(Math.random() * index)); //First thrash
+        var rndCheck = rnd; //Check if the thrash is special event
+        index--; //Decrementing Index
+        var rndImage = imgObject.getPic(rnd); //Get correct thrash
+        var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
-        if(rnd === 5){
-            threeRnd.splice(1,1);
+        threeRnd.splice(rnd, 1); //Removing bin from array
+        $('#' + boundBin).show(); //Showing the proper bin
+
+        //Check if it's special event if so the other bin needs to be removed
+        //So we do not get a clash
+        if (rnd === 5) {
+            threeRnd.splice(1, 1);
             index--;
-        }else{
-            threeRnd.splice(4,1);
+        } else {
+            threeRnd.splice(4, 1);
             index--;
         }
 
+        //Spawning the next two bins randomly
         rnd = (Math.floor(Math.random() * index));
         index--;
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
-        threeRnd.splice(rnd,1);
+        threeRnd.splice(rnd, 1);
 
         rnd = (Math.floor(Math.random() * index));
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
 
-        if(rndCheck === 5){
-            $(rndImage).appendTo($('#mydiv')).draggable().on('click', function(){
+
+        //If it's the plastic bag that spawned it has to be made clickable so you can remove the bag.
+        if (rndCheck === 5) {
+            $(rndImage).appendTo($('#mydiv')).draggable().on('click', function () {
                 $("#mydiv").children().remove();
-                // imgObject.deadline = imgObject.deadline + 5000;
-                $(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
+                bonusTime();
+                imgObject.deadline = imgObject.deadline + 5000;
+                //$(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
                 $(imgObject.images[7]).appendTo($('#mydiv')).draggable().show();
             }).show();
-        }else{
-        $(rndImage).appendTo($('#mydiv')).draggable().show();
+        } else {
+            $(rndImage).appendTo($('#mydiv')).draggable().show();
         }
     }
 
-
-    //Function to update the points.
+    /**
+     * 
+     * @param {bool} status
+     */
     function updatePoints2(status) {
         if (status) {
-            imgObject.points++;
-            // imgObject.deadline = imgObject.deadline + 2000;
-        }else if(imgObject.points > 0){
-            imgObject.points--;
-            imgObject.deadline = imgObject.deadline - 3000;
+            imgObject.points = imgObject.points + 50;
+        } else if (imgObject.points > 0) {
+            imgObject.points = imgObject.points - 100;
+            if (imgObject.points < 0) {
+                imgObject.points = 0;
+            }
         }
     }
 
-/**
- *
- *
- * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
- * Returns the time remaining
- *
- */
+    /**
+     *
+     * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
+     * Returns the time remaining
+     *
+     */
     function getTimeRemaining() {
         var time = imgObject.deadline - Date.parse(new Date());
         var seconds = Math.floor((time / 1000) % 60);
@@ -479,12 +444,11 @@ $("#show-highscore-button").click(function(){
         };
     }
 
-/**
- *
- * @param {type} id
- * @returns {undefined}
- * Function that initializes the timer
- */
+    /**
+     *
+     * @param {string} id
+     * Function that initializes the timer
+     */
     function initializeClock(id) {
         var clock = document.getElementById(id);
         var minutesSpan = clock.querySelector('.minutes');
@@ -505,28 +469,14 @@ $("#show-highscore-button").click(function(){
                 $("#mydiv").children().remove();
                 $("#gameStart").toggle('scale', 'fast');
                 $("#game-over").show();
-                $('#myScore').text(imgObject.points + ' poäng!');
                 $('#myClock').hide();
                 $('#replay').show();
+                $('#myScore').text(imgObject.points + ' poäng!');
                 checkPoints();
-                //document.getElementById('fungera').value= imgObject.points;
-                //$('#fungera').attr('value') = imgObject.points;
-                //scoreComp();
-
-
             }
         }
     }
-/*
-    function scoreComp (){
-        var gua = $('#dbscore').text();
-        var guaInt = parseInt(gua);
-        $("#inputBox").hide();
-        if(guaInt < parseInt(imgObject.points)){
-            $("#inputBox").show();
-        }
-    }
-*/
+
     //Function to start the game
     function startGame() {
         $('#gameStarter').remove();
@@ -535,25 +485,24 @@ $("#show-highscore-button").click(function(){
         gameCd();
 
         function gameCd() {
-            $("#game-greeter").hide("fade", 300, function() {
+            $("#game-greeter").hide("fade", 300, function () {
 
-            if (count > 0) {
-                $("#cdText").text(count);
-                count--;
-                setTimeout(gameCd, 1000);
-            } else {
-                $("#cdText").text("").hide("fade", 300, function () {
-                    //$("#score").hide();
-                    $('#gameStart').toggle('fade', 1000, function(){
-                        imgObject.deadline = Date.parse(new Date()) + 15000;
-                        initializeClock('myClock');
+                if (count > 0) {
+                    $("#cdText").text(count);
+                    count--;
+                    setTimeout(gameCd, 1000);
+                } else {
+                    $("#cdText").text("").hide("fade", 300, function () {
+                        //$("#score").hide();
+                        $('#gameStart').toggle('fade', 1000, function () {
+                            imgObject.deadline = Date.parse(new Date()) + 15000;
+                            initializeClock('myClock');
+                        });
+                        $("#myClock").show('fade', 1000);
+                        spawnRandomImg(imgObject); //Spawns the first thrash
                     });
-                    $("#myClock").show('fade', 1000);
-                    spawnRandomImg(imgObject); //Spawns the first thrash
-                });
-            }
+                }
             });
         }
-
     }
 });
