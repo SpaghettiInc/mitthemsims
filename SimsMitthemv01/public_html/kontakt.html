@@ -43,20 +43,22 @@
 
         <div id="form-box">
 
-            <form action="post" method="php/mailform.php">
+            <form action="php/mailform.php" method="post">
 
-                <input type="text" id="form-name" class="input" placeholder="Ditt namn" autofocus required />
+                <input type="hidden" name="lang" value="sv" />
 
-                <input type="email" id="form-email" class="input" placeholder="Din e-postadress" required />
+                <input type="text" name="name" id="form-name" class="input" placeholder="Ditt namn" autofocus required />
 
-                <input type="text" id="form-phone" class="input" placeholder="Ditt telefonnummer" />
+                <input type="email" name="email" id="form-email" class="input" placeholder="Din e-postadress" required />
 
-                <input type="text" id="form-subject" class="input" placeholder="Rubrik" required />
+                <input type="text" name="phone" id="form-phone" class="input" placeholder="Ditt telefonnummer" />
 
-                <textarea id="form-message" class="input" placeholder="Meddelande" required ></textarea>
+                <input type="text" name="subject" id="form-subject" class="input" placeholder="Rubrik" required />
 
-                <input type="submit" value="Skicka" id="form-submit" class="button"/>
-                <input type="button" value="Nollställ" class="button"/>
+                <textarea id="form-message" name="message" class="input" placeholder="Meddelande" required ></textarea>
+
+                <input type="submit" name="submit" value="Skicka" id="form-submit" class="button"/>
+                <input type="button" value="Nollställ" class="button red"/>
 
             </form>
 

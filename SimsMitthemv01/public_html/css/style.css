@@ -14,6 +14,11 @@ body {
   background-attachment: fixed;
 }
 
+strong {
+
+    font-weight: bold;
+}
+
 p {
 	text-align: left;
 	margin: 10px 10px 20px 0;
@@ -297,5 +302,16 @@ tr, td {
 
 .button:active {
   color: #fff;
-  background-color: lightgreen;
+  background-color: darkgreen;
+}
+
+.red {
+
+    background-color: red;
+    border: solid 2px red;
+}
+
+.red:active {
+
+    background-color: darkred;
 }
