@@ -4,89 +4,6 @@
  * and open the template in the editor.
  */
 
-/*
-             $('<img />',
-                    {id: 'img7',
-                        class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/bp.png',
-                        alt: "No Picture found"})
- **/
-
-/*
-
-    [[$('<img />',
-        {id: 'img0',
-        class: 'trash padding',
-        src: 'img/game/trash/glasflaska.png',
-        alt: "No picture found"}),
-    $('<img />',
-        {id: 'img1',
-        class: 'trash padding',
-        src: 'img/game/trash/fargatglas.png',
-        alt: "No Picture found"})],
-    
-    [$('<img />',
-        {id: 'img2',
-            class: 'trash padding',
-            src: 'img/game/trash/matavfall.png',
-            alt: "No picture found"}),
-    $('<img />',
-        {id: 'img2',
-            class: 'trash padding',
-            src: 'img/game/trash/matavfall.png',
-            alt: "No picture found"})],
-    
-    [$('<img />',
-        {id: 'img4',
-            class: 'trash padding',
-            src: 'img/game/trash/pappersavfall.png',
-            alt: "No picture found"}),
-    $('<img />',
-        {id: 'img4',
-            class: 'trash padding',
-            src: 'img/game/trash/pappersavfall.png',
-            alt: "No picture found"})],
-    
-    [$('<img />',
-        {id: 'img5',
-            class: 'trash padding',
-            src: 'img/game/trash/metallavfall.png',
-            alt: "No picture found"}),
-    $('<img />',
-        {id: 'img5',
-            class: 'trash padding',
-            src: 'img/game/trash/metallavfall.png',
-            alt: "No picture found"})],
-    
-    [$('<img />',
-        {id: 'img6',
-            class: 'trash padding',
-            src: 'img/game/trash/plastavfall.png',
-            alt: "No picture found"}),
-    $('<img />',
-        {id: 'img6',
-            class: 'trash padding',
-            src: 'img/game/trash/plastavfall.png',
-            alt: "No picture found"})],
-    
-    [$('<img />',
-        {id: 'img7',
-            class: 'trash padding',
-            src: 'img/game/trash/batteri.png',
-            alt: "No picture found"}),
-    $('<img />',
-        {id: 'img7',
-            class: 'trash padding',
-            src: 'img/game/trash/batteri.png',
-            alt: "No picture found"})],
-    [],
-    [],
-    [],
-    []];*/
-
-
-
-
 //Main Script page for testing for MITTHEM
 //
 $(function () {
@@ -221,16 +138,6 @@ $(function () {
     //Creates a new image object
     var imgObject = new IMAGES();
 
-    /* 
-    function GGRIP(){
-        this.myTest = [];
-        
-    }
-    
-    var hello = [[1,2], [3,4], [5,6]];
-    console.log(hello[0][1]);
-    console.log(hello[1][0]);
-    */
     /**
      * Anonomous function to mute the game sounds
      */
@@ -496,6 +403,14 @@ $(function () {
         }
     });
 
+    /**
+     * Sets status to true, calls the animation function for points, does a scale animation
+     * on the thrash when done the callback function returns the thrash to its original position
+     * a callback function then remove picture from the div, updates the points and calls the
+     * function to spawn the next trash
+     * @param {type} ui
+     * @returns {void}
+     */
     function thrashAccept(ui) {
         imgObject.status = true;
         plusPoint();
@@ -507,7 +422,15 @@ $(function () {
             });
         });
     }
-
+    
+    /**
+     * Function that returns the thrash to it's original position on wrong placement
+     * it set's the status to false to indicate wrong, then it does a shake animation,
+     * Since toggle makes the picture hidden I call the show function with a callback to
+     * animate the trash to it's original position
+     * @param {type} ui
+     * @returns {undefined}
+     */
     function thrashReturn(ui) {
         imgObject.status = false;
         minPoint();
@@ -562,7 +485,6 @@ $(function () {
                 $("#mydiv").children().remove();
                 bonusTime();
                 imgObject.deadline = imgObject.deadline + 5000;
-                //$(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
                 $(imgObject.images[11]).appendTo($('#mydiv')).draggable().show();
             }).show();
         } else {
@@ -664,3 +586,4 @@ $(function () {
         }
     }
 });
+
