@@ -4,6 +4,88 @@
  * and open the template in the editor.
  */
 
+/*
+             $('<img />',
+                    {id: 'img7',
+                        class: 'trash padding',
+                        src: 'img/game/trash/bonus_event/bp.png',
+                        alt: "No Picture found"})
+ **/
+
+/*
+
+    [[$('<img />',
+        {id: 'img0',
+        class: 'trash padding',
+        src: 'img/game/trash/glasflaska.png',
+        alt: "No picture found"}),
+    $('<img />',
+        {id: 'img1',
+        class: 'trash padding',
+        src: 'img/game/trash/fargatglas.png',
+        alt: "No Picture found"})],
+    
+    [$('<img />',
+        {id: 'img2',
+            class: 'trash padding',
+            src: 'img/game/trash/matavfall.png',
+            alt: "No picture found"}),
+    $('<img />',
+        {id: 'img2',
+            class: 'trash padding',
+            src: 'img/game/trash/matavfall.png',
+            alt: "No picture found"})],
+    
+    [$('<img />',
+        {id: 'img4',
+            class: 'trash padding',
+            src: 'img/game/trash/pappersavfall.png',
+            alt: "No picture found"}),
+    $('<img />',
+        {id: 'img4',
+            class: 'trash padding',
+            src: 'img/game/trash/pappersavfall.png',
+            alt: "No picture found"})],
+    
+    [$('<img />',
+        {id: 'img5',
+            class: 'trash padding',
+            src: 'img/game/trash/metallavfall.png',
+            alt: "No picture found"}),
+    $('<img />',
+        {id: 'img5',
+            class: 'trash padding',
+            src: 'img/game/trash/metallavfall.png',
+            alt: "No picture found"})],
+    
+    [$('<img />',
+        {id: 'img6',
+            class: 'trash padding',
+            src: 'img/game/trash/plastavfall.png',
+            alt: "No picture found"}),
+    $('<img />',
+        {id: 'img6',
+            class: 'trash padding',
+            src: 'img/game/trash/plastavfall.png',
+            alt: "No picture found"})],
+    
+    [$('<img />',
+        {id: 'img7',
+            class: 'trash padding',
+            src: 'img/game/trash/batteri.png',
+            alt: "No picture found"}),
+    $('<img />',
+        {id: 'img7',
+            class: 'trash padding',
+            src: 'img/game/trash/batteri.png',
+            alt: "No picture found"})],
+    [],
+    [],
+    [],
+    []];*/
+
+
+
 
 //Main Script page for testing for MITTHEM
 //
@@ -43,15 +125,36 @@ $(function () {
             $('<img />',
                     {id: 'img5',
                         class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/gpp.png',
-                        alt: "No Picture found"}),
+                        src: 'img/game/trash/batteri.png',
+                        alt: "No picture found"}),
             $('<img />',
                     {id: 'img6',
                         class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/gp.png',
-                        alt: "No Picture found"}),
+                        src: 'img/game/trash/eslampa.png',
+                        alt: "No picture found"}),
             $('<img />',
                     {id: 'img7',
+                        class: 'trash padding',
+                        src: 'img/game/trash/ofargatglas.png',
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img8',
+                        class: 'trash padding',
+                        src: 'img/game/trash/hussopa.png',
+                        alt: "No picture found"}),
+            $('<img />',
+                    {id: 'img9',
+                        class: 'trash padding',
+                        src: 'img/game/trash/kartong.png',
+                        alt: "No picture found"}),
+            
+            $('<img />',
+                    {id: 'img10',
+                        class: 'trash padding',
+                        src: 'img/game/trash/bonus_event/gpp.png',
+                        alt: "No Picture found"}),
+            $('<img />',
+                    {id: 'img11',
                         class: 'trash padding',
                         src: 'img/game/trash/bonus_event/bp.png',
                         alt: "No Picture found"})];
@@ -63,8 +166,12 @@ $(function () {
             img2: 'papperBin',
             img3: 'metallBin',
             img4: 'plastBin',
-            img5: 'matBin',
-            img6: 'plastBin'
+            img5: 'battBin',
+            img6: 'enSparBin',
+            img7: 'ofargatBin',
+            img8: 'husBin',
+            img9: 'kartongBin',
+            img10: 'matBin'
         };
 
 
@@ -74,8 +181,8 @@ $(function () {
         this.game_music = new Audio('sound/gameMusic.mp3');
         this.game_music.volume = 0.05;
         this.game_music.loop = true;
-        this.glass_audio.volume = 0.2;
-        this.metal_throw.volume = 0.2;
+        this.glass_audio.volume = 0.07;
+        this.metal_throw.volume = 0.07;
 
 
         //Adds a getPic function to retrieve a picture from the class
@@ -114,16 +221,16 @@ $(function () {
     //Creates a new image object
     var imgObject = new IMAGES();
 
-       /* 
+    /* 
     function GGRIP(){
         this.myTest = [];
         
-    }*/
+    }
     
     var hello = [[1,2], [3,4], [5,6]];
     console.log(hello[0][1]);
     console.log(hello[1][0]);
-
+    */
     /**
      * Anonomous function to mute the game sounds
      */
@@ -165,7 +272,7 @@ $(function () {
      */
     function plusPoint() {
         $("#surprise").animate({opacity: 1, fontSize: "8em"}, 400, function () {
-            $("#surprise").animate({opacity: 0, fontSize: "20em"}, 400);
+            $("#surprise").animate({opacity: 0, fontSize: "15em"}, 400);
             $("#surprise").animate({fontSize: "2em"}, 0);
         });
     }
@@ -177,7 +284,7 @@ $(function () {
      */
     function minPoint() {
         $("#minus").animate({opacity: 1, fontSize: "4em"}, 600, function () {
-            $("#minus").animate({opacity: 0, fontSize: "20em"}, 200);
+            $("#minus").animate({opacity: 0, fontSize: "15em"}, 200);
             $("#minus").animate({fontSize: "2em"}, 0);
         });
     }
@@ -188,7 +295,7 @@ $(function () {
      */
     function bonusTime() {
         $("#time").animate({opacity: 1, fontSize: "4em"}, 600, function () {
-            $("#time").animate({opacity: 0, fontSize: "20em"}, 200);
+            $("#time").animate({opacity: 0, fontSize: "15em"}, 200);
             $("#time").animate({fontSize: "2em"}, 0);
         });
     }
@@ -291,7 +398,7 @@ $(function () {
 
     $("#matBin").droppable({
         drop: function (event, ui) {
-            if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img7") {
+            if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img11") {
                 imgObject.metal_throw.play();
                 thrashAccept(ui);
             } else {
@@ -330,7 +437,62 @@ $(function () {
             } else {
                 thrashReturn(ui);
             }
-
+        }
+    });
+    
+    $("#battBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img5") {
+                imgObject.metal_throw.play();
+                thrashAccept(ui);
+            } else {
+                thrashReturn(ui);
+            }
+        }
+    });
+    
+    $("#enSparBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img6") {
+                imgObject.metal_throw.play();
+                thrashAccept(ui);
+            } else {
+                thrashReturn(ui);
+            }
+        }
+    });
+    
+    $("#ofargatBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img7") {
+                imgObject.metal_throw.play();
+                thrashAccept(ui);
+            } else {
+                thrashReturn(ui);
+            }
+        }
+    });
+    
+    
+    $("#husBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img8") {
+                imgObject.metal_throw.play();
+                thrashAccept(ui);
+            } else {
+                thrashReturn(ui);
+            }
+        }
+    });
+    
+    $("#kartongBin").droppable({
+        drop: function (event, ui) {
+            if (ui.draggable.attr('id') === "img9") {
+                imgObject.metal_throw.play();
+                thrashAccept(ui);
+            } else {
+                thrashReturn(ui);
+            }
         }
     });
 
@@ -355,15 +517,10 @@ $(function () {
         });
     }
 
-
-    
-
-
-
     //Function that spawns the random image
     function spawnRandomImg(imgObject) {
-        var threeRnd = [0, 1, 2, 3, 4, 5]; //Array for keeping track of spawned bins
-        var index = 6; //Index to randomize
+        var threeRnd = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //Array for keeping track of spawned bins
+        var index = 11; //Index to randomize
 
         $('#thrashDiv').children().hide(); //Hiding all bins
 
@@ -374,15 +531,16 @@ $(function () {
         var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
         threeRnd.splice(rnd, 1); //Removing bin from array
+        
         $('#' + boundBin).show(); //Showing the proper bin
 
         //Check if it's special event if so the other bin needs to be removed
         //So we do not get a clash
-        if (rnd === 5) {
+        if (rnd === 10) {
             threeRnd.splice(1, 1);
             index--;
         } else {
-            threeRnd.splice(4, 1);
+            threeRnd.splice(9, 1);
             index--;
         }
 
@@ -399,13 +557,13 @@ $(function () {
 
 
         //If it's the plastic bag that spawned it has to be made clickable so you can remove the bag.
-        if (rndCheck === 5) {
+        if (rndCheck === 10) {
             $(rndImage).appendTo($('#mydiv')).draggable().on('click', function () {
                 $("#mydiv").children().remove();
                 bonusTime();
                 imgObject.deadline = imgObject.deadline + 5000;
                 //$(imgObject.images[6]).appendTo($('#mydiv')).draggable().show();
-                $(imgObject.images[7]).appendTo($('#mydiv')).draggable().show();
+                $(imgObject.images[11]).appendTo($('#mydiv')).draggable().show();
             }).show();
         } else {
             $(rndImage).appendTo($('#mydiv')).draggable().show();
@@ -495,7 +653,7 @@ $(function () {
                     $("#cdText").text("").hide("fade", 300, function () {
                         //$("#score").hide();
                         $('#gameStart').toggle('fade', 1000, function () {
-                            imgObject.deadline = Date.parse(new Date()) + 15000;
+                            imgObject.deadline = Date.parse(new Date()) + 25000;
                             initializeClock('myClock');
                         });
                         $("#myClock").show('fade', 1000);
