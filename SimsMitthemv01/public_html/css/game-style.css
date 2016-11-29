@@ -8,6 +8,54 @@ and open the template in the editor.
     Author     : Martin
 */
 
+
+#game-area-point-splash {
+    
+    display: inline-block;
+    z-index: 4;
+    margin: auto;
+    text-align: center;
+    /*background: red;*/
+    width: auto;
+    position: absolute;
+    top: 300px;
+    left: 20%;
+                -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    /* transition: transform 0.5s;  THIS */
+}
+
+/* #game-area-point-splash:hover { */ /* THIS */
+    /* transform: scale(4); */ /* THIS */
+/* } */
+
+#surprise{
+    font-size: 30px;
+    color: green;
+    opacity: 0;
+    position: relative;
+   
+}
+
+#minus{
+    font-size: 30px;
+    color: red;
+    opacity: 0;
+    position: relative;
+}
+
+#time{
+    font-size: 30px;
+    color: blue;
+    opacity: 0;
+    position: relative;
+}
+
 .game-button {
 
 

@@ -3,7 +3,7 @@
 <html lang="sv">
 
     <head>
-      <title></title>
+      <title>Spelsidan</title>
       <meta charset="utf-8" />
       <script src="js/library/jquery-3.1.1.js"></script>
       <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
@@ -93,13 +93,17 @@
                 <i id="end-game-button" class="white transparent game-button fa fa-close" aria-hidden="true"></i>
                 <i id="replay" class="white transparent game-button fa fa-refresh" aria-hidden="true"></i>
                 <i id="sound" class="white transparent game-button fa fa-volume-up" aria-hidden="true"></i>
+                
 
             </aside>
 
             <section id="game-area">
 
                 <h1 id="cdText"></h1>
-
+                
+                <!-- <input type="button" id="ggus" /> -->
+                
+                
                 <section id="game-greeter" class="bg-trans-black-40">
 
                     <h1>Gör så här</h1>
@@ -120,12 +124,15 @@
 
                     <span class="minutes opacity"></span>
                     <span class="seconds opacity"></span>
-
                 </aside>
-
+                
+                <div id="game-area-point-splash">
+                    <p id="surprise">+50</p>
+                    <p id="minus">-100</p>
+                    <p id="time">5s</p>
+                </div>
+                
                 <div id="game-over" class="">
-
-
                     <p id="myScore" class="center"></p>
                     <p id="appraise" class="center bg-trans-black-40"></p>
                     <div id="highscore-input">
@@ -148,7 +155,7 @@
                     <div class="bin-container center-content" id="thrashDiv">
                         <figure id="glasBin" class="block">
                             <img alt="Glas" src="img/game/garbage-containers/glas.png">
-                            <figcaption class="figcap bg-trans-black-40">Glasavfall</figcaption>
+                            <figcaption class="figcap bg-trans-black-40">Färgat glas</figcaption>
                         </figure>
                         <figure id="matBin" class="block">
                             <img alt="Mat" src="img/game/garbage-containers/mat.png">
@@ -166,10 +173,31 @@
                             <img alt="Plast" src="img/game/garbage-containers/plast.png">
                             <figcaption class="figcap bg-trans-black-40">Plastavfall</figcaption>
                         </figure>
+                        <figure id="battBin" class="block">
+                            <img alt="Batterier" src="img/game/garbage-containers/batterier.png">
+                            <figcaption class="figcap bg-trans-black-40">Batterier</figcaption>
+                        </figure>
+                        <figure id="enSparBin" class="block">
+                            <img alt="Batterier" src="img/game/garbage-containers/eslampor.png">
+                            <figcaption class="figcap bg-trans-black-40">Energi-lampor</figcaption>
+                        </figure>
+                        <figure id="ofargatBin" class="block">
+                            <img alt="Batterier" src="img/game/garbage-containers/glas_of.png">
+                            <figcaption class="figcap bg-trans-black-40">Ofärgat glas</figcaption>
+                        </figure>
+                        <figure id="husBin" class="block">
+                            <img alt="Batterier" src="img/game/garbage-containers/hus_soper.png">
+                            <figcaption class="figcap bg-trans-black-40">Hushåll</figcaption>
+                        </figure>
+                        <figure id="kartongBin" class="block">
+                            <img alt="Batterier" src="img/game/garbage-containers/kartong.png">
+                            <figcaption class="figcap bg-trans-black-40">Kartonger</figcaption>
+                        </figure>
                     </div>
 
                     <!-- THIS IS THE OBJECTS TO BE DROPPED IN THE BINS ABOVE -->
                     <div id ="mydiv" class="trash-container center-content"></div>
+                    
                 </div>
 
             </section>
