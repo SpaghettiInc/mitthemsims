@@ -10,7 +10,7 @@ $(function () {
 
     var level = "";
 
-    if ( $("html").attr("lang") == "en" ) {
+    if ( $("html").attr("lang") === "en" ) {
 
         level = "../";
     }
@@ -264,13 +264,13 @@ $(function () {
                 console.log(data);
                 if (imgObject.points > parseInt(data['score'])) {
                     console.log(data);
-                    if (level.length == 0) { $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan."); }
+                    if (level.length === 0) { $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan."); }
                     else { $("#appraise").text("Well done! You made it to the highscore."); }
 
                     $("#submitButton").show();
                     $("#submitName").show();
                 } else {
-                    if (level.length == 0) { $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan."); }
+                    if (level.length === 0) { $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan."); }
                     else { $("#appraise").text("Not bad! Unfortunately, it is not enough to make it to the highscore.");}
 
                 }
@@ -471,13 +471,10 @@ $(function () {
         var rndImage = imgObject.getPic(rnd); //Get correct thrash
         var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
-<<<<<<< HEAD
-        threeRnd.splice(rnd, 1); //Removing bin from array
 
-=======
         threeRnd.splice(rnd, 1); //Removing index corresponding to the bin from array
 
->>>>>>> master
+
         $('#' + boundBin).show(); //Showing the proper bin
 
         //Check if it's a special event if so the other bin needs to be removed
@@ -574,8 +571,11 @@ $(function () {
                 $('#myClock').hide();
                 $('#replay').show();
 
-                if (level.length == 0) { $('#myScore').text(imgObject.points + ' poäng!'); }
-                else { $('#myScore').text(imgObject.points + ' points!'); }
+                if (level.length === 0) { 
+                $('#myScore').text(imgObject.points + ' poäng!'); 
+                }else { 
+                $('#myScore').text(imgObject.points + ' points!'); 
+                }
 
                 checkPoints();
             }
