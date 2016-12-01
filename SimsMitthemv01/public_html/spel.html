@@ -38,12 +38,8 @@
                 </ul>
 
             </nav>
-            
-            <div id="jsguard" class="center-content">
-                <h2>Unfortunately you need to enable javascript to play the game</h2>
-            </div>
-            
-            <div id="content" class="hidden">
+
+            <div id="content">
 
                 <!-- User will click this button when they want to start
                 the game. When so, this button will go hidden. -->
@@ -55,7 +51,7 @@
                     <input type="button" id="start-game-button" class="button" value="Starta spelet" />
                     <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
                 </div>
-                
+
 
             </div> <!-- END #content-->
 
@@ -89,7 +85,7 @@
         <!-- This is the actual game section and will start out hidden.
         When the user choses to start the game, this section will become
         visible (and the game will begin). -->
-        <section id="game" class="modal hidden">
+        <section id="game" class="modal">
 
             <aside id="button-box">
 
@@ -213,7 +209,7 @@
         <!-- This section will display the current highscore. It
         will start out hidden and show upon either request or when
         the game is over. -->
-        <section id="highscore" class="modal hidden">
+        <section id="highscore" class="modal">
 
 
             <h1>Topplista</h1>
