@@ -13,7 +13,6 @@ if( isset($_POST['get_param']) ) {
 }
 
 if( isset($_POST['date']) ) {
-
     $dbHandler->getHtmlTable();
 }
 
