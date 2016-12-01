@@ -7,9 +7,17 @@
 //Main Script page for testing for MITTHEM
 //
 $(function () {
+
+    var level = "";
+
+    if ( $("html").attr("lang") == "en" ) {
+
+        level = "../";
+    }
+
     /**
-     * 
-     * @returns {mitthemscriptsL#9.IMAGES}
+     * Creating the IMAGES class with constructor and store the images in an array.
+     * @returns {mitthemscripts_L9.IMAGES}
      */
     function IMAGES() {
 
@@ -17,63 +25,63 @@ $(function () {
         this.images = [$('<img />',
                     {id: 'img0',
                         class: 'trash padding',
-                        src: 'img/game/trash/glasflaska.png',
+                        src: level + 'img/game/trash/glasflaska.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img1',
                         class: 'trash padding',
-                        src: 'img/game/trash/matavfall.png',
+                        src: level + 'img/game/trash/matavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img2',
                         class: 'trash padding',
-                        src: 'img/game/trash/pappersavfall.png',
+                        src: level + 'img/game/trash/pappersavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img3',
                         class: 'trash padding',
-                        src: 'img/game/trash/metallavfall.png',
+                        src: level + 'img/game/trash/metallavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img4',
                         class: 'trash padding',
-                        src: 'img/game/trash/plastavfall.png',
+                        src: level + 'img/game/trash/plastavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img5',
                         class: 'trash padding',
-                        src: 'img/game/trash/batteri.png',
+                        src: level + 'img/game/trash/batteri.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img6',
                         class: 'trash padding',
-                        src: 'img/game/trash/eslampa.png',
+                        src: level + 'img/game/trash/eslampa.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img7',
                         class: 'trash padding',
-                        src: 'img/game/trash/ofargatglas.png',
+                        src: level + 'img/game/trash/ofargatglas.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img8',
                         class: 'trash padding',
-                        src: 'img/game/trash/hussopa.png',
+                        src: level + 'img/game/trash/hussopa.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img9',
                         class: 'trash padding',
-                        src: 'img/game/trash/kartong.png',
+                        src: level + 'img/game/trash/kartong.png',
                         alt: "No picture found"}),
-            
+
             $('<img />',
                     {id: 'img10',
                         class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/gpp.png',
+                        src: level + 'img/game/trash/bonus_event/gpp.png',
                         alt: "No Picture found"}),
             $('<img />',
                     {id: 'img11',
                         class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/bp.png',
+                        src: level + 'img/game/trash/bonus_event/bp.png',
                         alt: "No Picture found"})];
 
         //Mapping the thrash to the corresponding bin through inner object
@@ -93,9 +101,9 @@ $(function () {
 
 
         //Adding some audio objects
-        this.glass_audio = new Audio('sound/glass_break.mp3');
-        this.metal_throw = new Audio('sound/metal_throw.mp3');
-        this.game_music = new Audio('sound/gameMusic.mp3');
+        this.glass_audio = new Audio(level + 'sound/glass_break.mp3');
+        this.metal_throw = new Audio(level + 'sound/metal_throw.mp3');
+        this.game_music = new Audio(level + 'sound/gameMusic.mp3');
         this.game_music.volume = 0.05;
         this.game_music.loop = true;
         this.glass_audio.volume = 0.07;
@@ -109,26 +117,23 @@ $(function () {
 
         this.points = 0;
 
-        //Mute all sound function
+        //Mute all function
         this.muteAll = function () {
             this.glass_audio.muted = true;
             this.metal_throw.muted = true;
             this.game_music.muted = true;
         };
 
-        //Function to unmute game sound function
+        //Function to unmute function
         this.unMuteAll = function () {
             this.glass_audio.muted = false;
             this.metal_throw.muted = false;
             this.game_music.muted = false;
         };
-        
-        //Bool used in the points function
+
         this.status = true;
     }
 
-    $("#content").show();
-    $("#jsguard").remove();
     //Hiding all elements prior to game start
     $("#submitButton").hide();
     $("#submitName").hide();
@@ -155,7 +160,7 @@ $(function () {
     });
 
     /**
-     * Anonomous click function to starts the game and also plays the game music
+     * Anonomous click function to start the game also plays the music
      */
     $('#gameStarter').click(function () {
         imgObject.game_music.play();
@@ -163,8 +168,7 @@ $(function () {
     });
 
     /**
-     * Anonomous on click function bound to the replay button, performs the actions needed
-     * to restart the game
+     * Anonomous on click function that replays the game
      */
     $('#replay').click(function () {
         imgObject.points = 0;
@@ -179,7 +183,7 @@ $(function () {
 
     /**
      * Function that animates plus points
-     * @returns {void}
+     * @returns {undefined}
      */
     function plusPoint() {
         $("#surprise").animate({opacity: 1, fontSize: "8em"}, 400, function () {
@@ -191,7 +195,7 @@ $(function () {
 
     /**
      * Function that animates what user get minus points
-     * @returns {void}
+     * @returns {undefined}
      */
     function minPoint() {
         $("#minus").animate({opacity: 1, fontSize: "4em"}, 600, function () {
@@ -202,7 +206,7 @@ $(function () {
 
     /**
      * Function to animate the time gained from bonus event
-     * @returns {void}
+     * @returns {undefined}
      */
     function bonusTime() {
         $("#time").animate({opacity: 1, fontSize: "4em"}, 600, function () {
@@ -240,11 +244,11 @@ $(function () {
     /**
      * Check to see whether the person is qualified to get on the highscore
      * Using ajax post request to get the lowest qualified score
-     * @returns {void}
+     * @returns {undefined}
      */
     function checkPoints() {
         $.ajax({
-            url: "php/hsController.php",
+            url: level + "php/hsController.php",
             type: "post",
             dataType: 'json',
             data: {
@@ -256,11 +260,15 @@ $(function () {
                 console.log(data);
                 if (imgObject.points > parseInt(data['score'])) {
                     console.log(data);
-                    $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
+                    if (level.length == 0) { $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan."); }
+                    else { $("#appraise").text("Well done! You made it to the highscore."); }
+
                     $("#submitButton").show();
                     $("#submitName").show();
                 } else {
-                    $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+                    if (level.length == 0) { $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan."); }
+                    else { $("#appraise").text("Not bad! Unfortunately, it is not enough to make it to the highscore.");}
+
                 }
             }
         });
@@ -268,11 +276,11 @@ $(function () {
 
     /**
      * Function to print the highscore, using ajax a post request is made to the server
-     * @returns {void}
+     * @returns {undefined}
      */
     function printHighScore() {
         $.ajax({
-            url: "php/hsController.php",
+            url: level + "php/hsController.php",
             type: "post",
             dataType: 'json',
             data: {
@@ -282,7 +290,9 @@ $(function () {
             },
             success: function (data) {          //on recieve of reply
                 console.log(JSON.stringify(data));
-                $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+
+                if (level.length == 0) { $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>")); }
+                else { $("#highscore-table-area").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>")); }
 
                 for (var i in data) {
                     $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
@@ -300,9 +310,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
                 imgObject.glass_audio.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
@@ -311,9 +321,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img11") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
@@ -322,9 +332,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img2") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
@@ -333,9 +343,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img3") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
@@ -344,65 +354,65 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img4") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
-    
+
     $("#battBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img5") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
-    
+
     $("#enSparBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img6") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
-    
+
     $("#ofargatBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img7") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
-    
-    
+
+
     $("#husBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img8") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
-    
+
     $("#kartongBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img9") {
                 imgObject.metal_throw.play();
-                trashAccept(ui);
+                thrashAccept(ui);
             } else {
-                trashReturn(ui);
+                thrashReturn(ui);
             }
         }
     });
@@ -410,12 +420,12 @@ $(function () {
     /**
      * Sets status to true, calls the animation function for points, does a scale animation
      * on the thrash when done the callback function returns the thrash to its original position
-     * a callback function then removes the picture from the div, updates the points and calls the
+     * a callback function then remove picture from the div, updates the points and calls the
      * function to spawn the next trash
      * @param {type} ui
      * @returns {void}
      */
-    function trashAccept(ui) {
+    function thrashAccept(ui) {
         imgObject.status = true;
         plusPoint();
         $(ui.draggable).toggle("scale", function () {
@@ -426,7 +436,7 @@ $(function () {
             });
         });
     }
-    
+
     /**
      * Function that returns the thrash to it's original position on wrong placement
      * it set's the status to false to indicate wrong, then it does a shake animation,
@@ -435,7 +445,7 @@ $(function () {
      * @param {type} ui
      * @returns {undefined}
      */
-    function trashReturn(ui) {
+    function thrashReturn(ui) {
         imgObject.status = false;
         minPoint();
         $(ui.draggable).toggle('shake', 'fast').show(function () {
@@ -457,12 +467,12 @@ $(function () {
         var rndImage = imgObject.getPic(rnd); //Get correct thrash
         var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
-        threeRnd.splice(rnd, 1); //Removing index corresponding to the bin from array
-        
+        threeRnd.splice(rnd, 1); //Removing bin from array
+
         $('#' + boundBin).show(); //Showing the proper bin
 
-        //Check if it's a special event if so the other bin needs to be removed
-        //So we do not get a clash as to say it picks the same
+        //Check if it's special event if so the other bin needs to be removed
+        //So we do not get a clash
         if (rnd === 10) {
             threeRnd.splice(1, 1);
             index--;
@@ -471,7 +481,7 @@ $(function () {
             index--;
         }
 
-        //Spawning the next two bins pseudo randomly
+        //Spawning the next two bins randomly
         rnd = (Math.floor(Math.random() * index));
         index--;
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
@@ -497,9 +507,8 @@ $(function () {
     }
 
     /**
-     * 
+     *
      * @param {bool} status
-     * @returns {void}
      */
     function updatePoints2(status) {
         if (status) {
@@ -515,6 +524,7 @@ $(function () {
     /**
      *
      * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
+     * Returns the time remaining
      *
      */
     function getTimeRemaining() {
@@ -527,10 +537,11 @@ $(function () {
             'seconds': seconds
         };
     }
+
     /**
-     * 
+     *
      * @param {string} id
-     * @returns {void}
+     * Function that initializes the timer
      */
     function initializeClock(id) {
         var clock = document.getElementById(id);
@@ -554,7 +565,10 @@ $(function () {
                 $("#game-over").show();
                 $('#myClock').hide();
                 $('#replay').show();
-                $('#myScore').text(imgObject.points + ' poäng!');
+
+                if (level.length == 0) { $('#myScore').text(imgObject.points + ' poäng!'); }
+                else { $('#myScore').text(imgObject.points + ' points!'); }
+
                 checkPoints();
             }
         }
@@ -567,9 +581,9 @@ $(function () {
         var count = 3;
         gameCd();
 
-        //Simple inner function for a game count down
         function gameCd() {
             $("#game-greeter").hide("fade", 300, function () {
+
                 if (count > 0) {
                     $("#cdText").text(count);
                     count--;
@@ -589,4 +603,3 @@ $(function () {
         }
     }
 });
-
