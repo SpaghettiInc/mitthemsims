@@ -100,9 +100,8 @@ and open the template in the editor.
 
 #game-area {
 
-
+    float: left;
     width: 100vw;
-    text-align: center;
 }
 
 #thrashDiv {
@@ -300,6 +299,7 @@ body {
 
 .bin-container figure img{
     width: 150px;
+    margin: 0 20px;
 
 }
 .trash {
@@ -324,11 +324,9 @@ body {
 #game-greeter {
 
     width: 600px;
+    margin: auto;
     padding: 25px;
     box-shadow: 5px 5px 5px #000;
-    margin: 0 auto;
-    -webkit-margin-start: auto;
-    -webkit-margin-end: auto;
 }
 
 #appraise {
@@ -368,7 +366,6 @@ opacity: 1;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
 }
 
 .center-content {
