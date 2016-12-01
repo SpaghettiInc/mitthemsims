@@ -8,8 +8,8 @@
 //
 $(function () {
     /**
-     * Creating the IMAGES class with constructor and store the images in an array.
-     * @returns {mitthemscripts_L9.IMAGES}
+     * 
+     * @returns {mitthemscriptsL#9.IMAGES}
      */
     function IMAGES() {
 
@@ -109,23 +109,26 @@ $(function () {
 
         this.points = 0;
 
-        //Mute all function
+        //Mute all sound function
         this.muteAll = function () {
             this.glass_audio.muted = true;
             this.metal_throw.muted = true;
             this.game_music.muted = true;
         };
 
-        //Function to unmute function
+        //Function to unmute game sound function
         this.unMuteAll = function () {
             this.glass_audio.muted = false;
             this.metal_throw.muted = false;
             this.game_music.muted = false;
         };
-
+        
+        //Bool used in the points function
         this.status = true;
     }
 
+    $("#content").show();
+    $("#jsguard").remove();
     //Hiding all elements prior to game start
     $("#submitButton").hide();
     $("#submitName").hide();
@@ -152,7 +155,7 @@ $(function () {
     });
 
     /**
-     * Anonomous click function to start the game also plays the music
+     * Anonomous click function to starts the game and also plays the game music
      */
     $('#gameStarter').click(function () {
         imgObject.game_music.play();
@@ -160,7 +163,8 @@ $(function () {
     });
 
     /**
-     * Anonomous on click function that replays the game
+     * Anonomous on click function bound to the replay button, performs the actions needed
+     * to restart the game
      */
     $('#replay').click(function () {
         imgObject.points = 0;
@@ -175,7 +179,7 @@ $(function () {
 
     /**
      * Function that animates plus points
-     * @returns {undefined}
+     * @returns {void}
      */
     function plusPoint() {
         $("#surprise").animate({opacity: 1, fontSize: "8em"}, 400, function () {
@@ -187,7 +191,7 @@ $(function () {
 
     /**
      * Function that animates what user get minus points
-     * @returns {undefined}
+     * @returns {void}
      */
     function minPoint() {
         $("#minus").animate({opacity: 1, fontSize: "4em"}, 600, function () {
@@ -198,7 +202,7 @@ $(function () {
 
     /**
      * Function to animate the time gained from bonus event
-     * @returns {undefined}
+     * @returns {void}
      */
     function bonusTime() {
         $("#time").animate({opacity: 1, fontSize: "4em"}, 600, function () {
@@ -236,7 +240,7 @@ $(function () {
     /**
      * Check to see whether the person is qualified to get on the highscore
      * Using ajax post request to get the lowest qualified score
-     * @returns {undefined}
+     * @returns {void}
      */
     function checkPoints() {
         $.ajax({
@@ -264,7 +268,7 @@ $(function () {
 
     /**
      * Function to print the highscore, using ajax a post request is made to the server
-     * @returns {undefined}
+     * @returns {void}
      */
     function printHighScore() {
         $.ajax({
@@ -296,9 +300,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
                 imgObject.glass_audio.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -307,9 +311,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img11") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -318,9 +322,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img2") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -329,9 +333,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img3") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -340,9 +344,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img4") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -351,9 +355,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img5") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -362,9 +366,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img6") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -373,9 +377,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img7") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -385,9 +389,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img8") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -396,9 +400,9 @@ $(function () {
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img9") {
                 imgObject.metal_throw.play();
-                thrashAccept(ui);
+                trashAccept(ui);
             } else {
-                thrashReturn(ui);
+                trashReturn(ui);
             }
         }
     });
@@ -406,12 +410,12 @@ $(function () {
     /**
      * Sets status to true, calls the animation function for points, does a scale animation
      * on the thrash when done the callback function returns the thrash to its original position
-     * a callback function then remove picture from the div, updates the points and calls the
+     * a callback function then removes the picture from the div, updates the points and calls the
      * function to spawn the next trash
      * @param {type} ui
      * @returns {void}
      */
-    function thrashAccept(ui) {
+    function trashAccept(ui) {
         imgObject.status = true;
         plusPoint();
         $(ui.draggable).toggle("scale", function () {
@@ -431,7 +435,7 @@ $(function () {
      * @param {type} ui
      * @returns {undefined}
      */
-    function thrashReturn(ui) {
+    function trashReturn(ui) {
         imgObject.status = false;
         minPoint();
         $(ui.draggable).toggle('shake', 'fast').show(function () {
@@ -453,12 +457,12 @@ $(function () {
         var rndImage = imgObject.getPic(rnd); //Get correct thrash
         var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
-        threeRnd.splice(rnd, 1); //Removing bin from array
+        threeRnd.splice(rnd, 1); //Removing index corresponding to the bin from array
         
         $('#' + boundBin).show(); //Showing the proper bin
 
-        //Check if it's special event if so the other bin needs to be removed
-        //So we do not get a clash
+        //Check if it's a special event if so the other bin needs to be removed
+        //So we do not get a clash as to say it picks the same
         if (rnd === 10) {
             threeRnd.splice(1, 1);
             index--;
@@ -467,7 +471,7 @@ $(function () {
             index--;
         }
 
-        //Spawning the next two bins randomly
+        //Spawning the next two bins pseudo randomly
         rnd = (Math.floor(Math.random() * index));
         index--;
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
@@ -495,6 +499,7 @@ $(function () {
     /**
      * 
      * @param {bool} status
+     * @returns {void}
      */
     function updatePoints2(status) {
         if (status) {
@@ -510,7 +515,6 @@ $(function () {
     /**
      *
      * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
-     * Returns the time remaining
      *
      */
     function getTimeRemaining() {
@@ -523,11 +527,10 @@ $(function () {
             'seconds': seconds
         };
     }
-
     /**
-     *
+     * 
      * @param {string} id
-     * Function that initializes the timer
+     * @returns {void}
      */
     function initializeClock(id) {
         var clock = document.getElementById(id);
@@ -564,9 +567,9 @@ $(function () {
         var count = 3;
         gameCd();
 
+        //Simple inner function for a game count down
         function gameCd() {
             $("#game-greeter").hide("fade", 300, function () {
-
                 if (count > 0) {
                     $("#cdText").text(count);
                     count--;
