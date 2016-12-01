@@ -40,17 +40,22 @@ class dbHandler {
 
         $myConn = $this->openConnection();
 
-        $sql = "SELECT score, name FROM highscore ORDER BY score, date, id DESC LIMIT 25,1";
+        $sql = "SELECT score, name FROM highscore ORDER BY score DESC LIMIT 25,1";
         $result = mysqli_query($myConn, $sql);
         if ($result) {
             // output data of each row
             $row = mysqli_fetch_assoc($result);
-            //return $row['score'];
-            echo json_encode($row);
-            mysqli_free_result($result);
-        } else {
-            $lowScore['score'] = 0;
-            echo json_encode($lowScore);
+            if ($row['score'] != null) {
+                echo json_encode($row);
+                mysqli_free_result($result);
+            } else {
+                mysqli_free_result($result);
+                $sl = "SELECT MIN(score) AS score FROM highscore";
+                $rs = mysqli_query($myConn, $sl);
+                $rw = mysqli_fetch_assoc($rs);
+                echo json_encode($rw);
+                mysqli_free_result($rs);
+            }
         }
         mysqli_close($myConn);
     }
@@ -68,11 +73,11 @@ class dbHandler {
             return;
         }
         
-        if(strlen($name2 > 16)){
-            $name2 = substr($name2,0 ,16);
+        if(strlen($name2) > 16){
+            $name2 = substr($name2, 0 ,16);
         }
         
-        $sName = htmlspecialchars($name2, ENT_SUBSTITUT);
+        $sName = htmlspecialchars($name2, ENT_SUBSTITUTE);
         // we need the date of today
         $date = date("Y-m-d");
 
