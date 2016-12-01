@@ -72,8 +72,7 @@ class dbHandler {
             $name2 = substr($name2,0 ,16);
         }
         
-        //Filtering so they cannot insert html code
-        $sName = htmlspecialchars($name2, ENT_SUBSTITUTE);
+        $sName = htmlspecialchars($name2, ENT_SUBSTITUT);
         // we need the date of today
         $date = date("Y-m-d");
 

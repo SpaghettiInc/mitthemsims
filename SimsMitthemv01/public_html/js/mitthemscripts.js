@@ -260,6 +260,7 @@ $(function () {
                     $("#submitButton").show();
                     $("#submitName").show();
                 } else {
+                    console.log(data);
                     $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
                 }
             }
