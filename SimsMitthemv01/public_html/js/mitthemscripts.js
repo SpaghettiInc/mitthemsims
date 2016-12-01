@@ -462,7 +462,7 @@ $(function () {
         $('#' + boundBin).show(); //Showing the proper bin
 
         //Check if it's a special event if so the other bin needs to be removed
-        //So we do not get a clash
+        //So we do not get a clash as to say it picks the same
         if (rnd === 10) {
             threeRnd.splice(1, 1);
             index--;
