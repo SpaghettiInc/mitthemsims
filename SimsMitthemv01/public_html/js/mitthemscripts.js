@@ -7,8 +7,16 @@
 //Main Script page for testing for MITTHEM
 //
 $(function () {
+
+    var level = "";
+
+    if ( $("html").attr("lang") === "en" ) {
+
+        level = "../";
+    }
+
     /**
-     * 
+     *
      * @returns {mitthemscriptsL#9.IMAGES}
      */
     function IMAGES() {
@@ -17,63 +25,63 @@ $(function () {
         this.images = [$('<img />',
                     {id: 'img0',
                         class: 'trash padding',
-                        src: 'img/game/trash/glasflaska.png',
+                        src: level + 'img/game/trash/glasflaska.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img1',
                         class: 'trash padding',
-                        src: 'img/game/trash/matavfall.png',
+                        src: level + 'img/game/trash/matavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img2',
                         class: 'trash padding',
-                        src: 'img/game/trash/pappersavfall.png',
+                        src: level + 'img/game/trash/pappersavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img3',
                         class: 'trash padding',
-                        src: 'img/game/trash/metallavfall.png',
+                        src: level + 'img/game/trash/metallavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img4',
                         class: 'trash padding',
-                        src: 'img/game/trash/plastavfall.png',
+                        src: level + 'img/game/trash/plastavfall.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img5',
                         class: 'trash padding',
-                        src: 'img/game/trash/batteri.png',
+                        src: level + 'img/game/trash/batteri.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img6',
                         class: 'trash padding',
-                        src: 'img/game/trash/eslampa.png',
+                        src: level + 'img/game/trash/eslampa.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img7',
                         class: 'trash padding',
-                        src: 'img/game/trash/ofargatglas.png',
+                        src: level + 'img/game/trash/ofargatglas.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img8',
                         class: 'trash padding',
-                        src: 'img/game/trash/hussopa.png',
+                        src: level + 'img/game/trash/hussopa.png',
                         alt: "No picture found"}),
             $('<img />',
                     {id: 'img9',
                         class: 'trash padding',
-                        src: 'img/game/trash/kartong.png',
+                        src: level + 'img/game/trash/kartong.png',
                         alt: "No picture found"}),
-            
+
             $('<img />',
                     {id: 'img10',
                         class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/gpp.png',
+                        src: level + 'img/game/trash/bonus_event/gpp.png',
                         alt: "No Picture found"}),
             $('<img />',
                     {id: 'img11',
                         class: 'trash padding',
-                        src: 'img/game/trash/bonus_event/bp.png',
+                        src: level + 'img/game/trash/bonus_event/bp.png',
                         alt: "No Picture found"})];
 
         //Mapping the thrash to the corresponding bin through inner object
@@ -93,9 +101,9 @@ $(function () {
 
 
         //Adding some audio objects
-        this.glass_audio = new Audio('sound/glass_break.mp3');
-        this.metal_throw = new Audio('sound/metal_throw.mp3');
-        this.game_music = new Audio('sound/gameMusic.mp3');
+        this.glass_audio = new Audio(level + 'sound/glass_break.mp3');
+        this.metal_throw = new Audio(level + 'sound/metal_throw.mp3');
+        this.game_music = new Audio(level + 'sound/gameMusic.mp3');
         this.game_music.volume = 0.05;
         this.game_music.loop = true;
         this.glass_audio.volume = 0.07;
@@ -122,7 +130,7 @@ $(function () {
             this.metal_throw.muted = false;
             this.game_music.muted = false;
         };
-        
+
         //Bool used in the points function
         this.status = true;
     }
@@ -219,7 +227,7 @@ $(function () {
         var submitName = $("#submitName").val();
         var submitScore = imgObject.points;
         $.ajax({
-            url: "php/hsController.php",
+            url: level + "php/hsController.php",
             type: "post",
             data: {
                 "name": submitName,
@@ -244,7 +252,7 @@ $(function () {
      */
     function checkPoints() {
         $.ajax({
-            url: "php/hsController.php",
+            url: level + "php/hsController.php",
             type: "post",
             dataType: 'json',
             data: {
@@ -256,12 +264,15 @@ $(function () {
                 console.log(data);
                 if (imgObject.points > parseInt(data['score'])) {
                     console.log(data);
-                    $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
+                    if (level.length === 0) { $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan."); }
+                    else { $("#appraise").text("Well done! You made it to the highscore."); }
+
                     $("#submitButton").show();
                     $("#submitName").show();
                 } else {
-                    console.log(data);
-                    $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+                    if (level.length === 0) { $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan."); }
+                    else { $("#appraise").text("Not bad! Unfortunately, it is not enough to make it to the highscore.");}
+
                 }
             }
         });
@@ -273,7 +284,7 @@ $(function () {
      */
     function printHighScore() {
         $.ajax({
-            url: "php/hsController.php",
+            url: level + "php/hsController.php",
             type: "post",
             dataType: 'json',
             data: {
@@ -283,7 +294,9 @@ $(function () {
             },
             success: function (data) {          //on recieve of reply
                 console.log(JSON.stringify(data));
-                $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+
+                if (level.length == 0) { $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>")); }
+                else { $("#highscore-table-area").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>")); }
 
                 for (var i in data) {
                     $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
@@ -351,7 +364,7 @@ $(function () {
             }
         }
     });
-    
+
     $("#battBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img5") {
@@ -362,7 +375,7 @@ $(function () {
             }
         }
     });
-    
+
     $("#enSparBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img6") {
@@ -373,7 +386,7 @@ $(function () {
             }
         }
     });
-    
+
     $("#ofargatBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img7") {
@@ -384,8 +397,8 @@ $(function () {
             }
         }
     });
-    
-    
+
+
     $("#husBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img8") {
@@ -396,7 +409,7 @@ $(function () {
             }
         }
     });
-    
+
     $("#kartongBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img9") {
@@ -427,7 +440,7 @@ $(function () {
             });
         });
     }
-    
+
     /**
      * Function that returns the thrash to it's original position on wrong placement
      * it set's the status to false to indicate wrong, then it does a shake animation,
@@ -458,8 +471,10 @@ $(function () {
         var rndImage = imgObject.getPic(rnd); //Get correct thrash
         var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
+
         threeRnd.splice(rnd, 1); //Removing index corresponding to the bin from array
-        
+
+
         $('#' + boundBin).show(); //Showing the proper bin
 
         //Check if it's a special event if so the other bin needs to be removed
@@ -498,7 +513,7 @@ $(function () {
     }
 
     /**
-     * 
+     *
      * @param {bool} status
      * @returns {void}
      */
@@ -529,7 +544,7 @@ $(function () {
         };
     }
     /**
-     * 
+     *
      * @param {string} id
      * @returns {void}
      */
@@ -555,7 +570,13 @@ $(function () {
                 $("#game-over").show();
                 $('#myClock').hide();
                 $('#replay').show();
-                $('#myScore').text(imgObject.points + ' poäng!');
+
+                if (level.length === 0) { 
+                $('#myScore').text(imgObject.points + ' poäng!'); 
+                }else { 
+                $('#myScore').text(imgObject.points + ' points!'); 
+                }
+
                 checkPoints();
             }
         }
@@ -590,4 +611,3 @@ $(function () {
         }
     }
 });
-
