@@ -13,13 +13,6 @@ $(document).ready(function() {
     $("#game").show();
   });
 
-  /*  Clicking on "end game" button */
-  $("#end-game-button").click(function() {
-
-    $("#game").hide();
-    $("#wrapper").show();
-    $("#footer").show();
-  });
 
   /*  Clicking on "show highscore" button */
   /*
