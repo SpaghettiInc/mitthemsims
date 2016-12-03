@@ -141,7 +141,7 @@ $(function () {
     $("#submitButton").hide();
     $("#submitName").hide();
     $("#myClock").hide();
-    $("#score").hide();
+    $("#myScore").hide();
     $('#replay').hide();
     $("#game-over").hide();
 
@@ -170,6 +170,44 @@ $(function () {
         startGame();
     });
 
+  /*  Clicking on "end game" button */
+  $("#end-game-button").click(function() {
+    onCloseGame();
+  });
+  
+  
+    function onGameStart(){
+        
+    }
+    
+    function onGameOver(){
+        $("#mydiv").children(0).animate({top: 0, left: 0});
+        $("#mydiv").children().remove();
+        $("#gameStart").hide('scale', 'fast');
+        $("#game-over").show();
+        $('#myClock').hide();
+        $('#replay').show();
+    }
+    
+    function onCloseGame(){
+        imgObject.deadline = 0;
+        imgObject.points = 0;
+        imgObject.game_music.pause();
+        $("#highscore-table-area").children().remove();
+        $("#mydiv").children(0).animate({top: 0, left: 0});
+        $("#mydiv").children().remove();
+        $('#thrashDiv').children().hide();
+        $('#myScore').text('').hide();
+        $("#game-over").hide();
+        $('#myClock').hide();
+        $("#game-greeter").show();
+        $('#replay').hide();
+        $('#gameStarter').show();
+        $("#game").hide();
+        $("#wrapper").show();
+        $("#footer").show();
+    }
+
     /**
      * Anonomous on click function bound to the replay button, performs the actions needed
      * to restart the game
@@ -181,6 +219,7 @@ $(function () {
         $("#cdText").show();
         $("#game-over").hide();
         $("#mydiv").children().remove();
+        $("#highscore-table-area").children().remove();
         startGame();
     });
 
@@ -244,6 +283,20 @@ $(function () {
             }
         });
     });
+
+
+
+  /*  Clicking on "show highscore" button */
+
+  $("#show-highscore-button").click(function() {
+    $("#wrapper").hide();
+    $("#footer").hide();
+    $("#highscore").show();
+    printHighScore();
+
+});
+
+
 
     /**
      * Check to see whether the person is qualified to get on the highscore
@@ -561,31 +614,33 @@ $(function () {
             minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
             secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
 
-            //If the time goes to zero end the game and print points to screen
+            //If the time goes to zero, end the game and print points to screen
             if (time.total <= 0) {
                 clearInterval(timeinterval);
-                $("#mydiv").children(0).animate({top: 0, left: 0});
-                $("#mydiv").children().remove();
-                $("#gameStart").toggle('scale', 'fast');
-                $("#game-over").show();
-                $('#myClock').hide();
-                $('#replay').show();
-
-                if (level.length === 0) { 
-                $('#myScore').text(imgObject.points + ' poäng!'); 
-                }else { 
-                $('#myScore').text(imgObject.points + ' points!'); 
+                //Printing clock to the span, slice extracts the two last letters of the string
+                minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
+                
+                if (time.total > -100) {
+                    onGameOver();
+                    if (level.length === 0) {
+                        $('#myScore').text(imgObject.points + ' poäng!').show();
+                    } else {
+                        $('#myScore').text(imgObject.points + ' points!').show();
+                    }
+                    checkPoints();
+                }else{
+                    minutesSpan.innerHTML = ('00');
+                    secondsSpan.innerHTML = ('00'); 
                 }
-
-                checkPoints();
             }
         }
     }
 
     //Function to start the game
     function startGame() {
-        $('#gameStarter').remove();
-
+        $('#gameStarter').hide();
+        $("#cdText").show();
         var count = 3;
         gameCd();
 
@@ -599,7 +654,7 @@ $(function () {
                 } else {
                     $("#cdText").text("").hide("fade", 300, function () {
                         //$("#score").hide();
-                        $('#gameStart').toggle('fade', 1000, function () {
+                        $('#gameStart').show('fade', 1000, function () {
                             imgObject.deadline = Date.parse(new Date()) + 25000;
                             initializeClock('myClock');
                         });
