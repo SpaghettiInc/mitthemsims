@@ -5,18 +5,18 @@
  */
 
 //Main Script page for testing for MITTHEM
-//
 $(function () {
 
+    /** Check whether you are on the english or swedish side of the website */
     var level = "";
 
-    if ( $("html").attr("lang") === "en" ) {
+    if ($("html").attr("lang") === "en") {
 
         level = "../";
     }
 
     /**
-     *
+     * Main class contains game functions and images.
      * @returns {mitthemscriptsL#9.IMAGES}
      */
     function IMAGES() {
@@ -135,9 +135,9 @@ $(function () {
         this.status = true;
     }
 
+    //Hiding all elements prior to game start
     $("#content").show();
     $("#jsguard").remove();
-    //Hiding all elements prior to game start
     $("#submitButton").hide();
     $("#submitName").hide();
     $("#myClock").hide();
@@ -148,6 +148,11 @@ $(function () {
 
     //Creates a new image object
     var imgObject = new IMAGES();
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     ON CLICK FUNCTIONS
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
 
     /**
      * Anonomous function to mute the game sounds
@@ -170,17 +175,49 @@ $(function () {
         startGame();
     });
 
-  /*  Clicking on "end game" button */
-  $("#end-game-button").click(function() {
-    onCloseGame();
-  });
-  
-  
-    function onGameStart(){
-        
+    /*  Clicking on "end game" button */
+    $("#end-game-button").click(function () {
+        onCloseGame();
+    });
+
+
+
+    $("#close-highscore-button").click(function () {
+        $("#highscore-table").children().remove();
+        $("#highscore").hide();
+        $("#wrapper").show();
+    });
+
+    /*  Clicking on "show highscore" button */
+
+    $("#show-highscore-button").click(function () {
+        $("#wrapper").hide();
+        $("#footer").hide();
+        $("#highscore").show();
+        printHighScore("Ggus");
+
+    });
+
+    /**
+     * Anonomous on click function bound to the replay button, performs the actions needed
+     * to restart the game
+     */
+    $('#replay').click(function () {
+        imgObject.points = 0;
+        $('#replay').hide();
+        $('#score').text('');
+        $("#cdText").show();
+        $("#game-over").hide();
+        $("#mydiv").children().remove();
+        $("#highscore-table-area").children().remove();
+        startGame();
+    });
+
+    function onGameStart() {
+
     }
-    
-    function onGameOver(){
+
+    function onGameOver() {
         $("#mydiv").children(0).animate({top: 0, left: 0});
         $("#mydiv").children().remove();
         $("#gameStart").hide('scale', 'fast');
@@ -188,8 +225,8 @@ $(function () {
         $('#myClock').hide();
         $('#replay').show();
     }
-    
-    function onCloseGame(){
+
+    function onCloseGame() {
         imgObject.deadline = 0;
         imgObject.points = 0;
         imgObject.game_music.pause();
@@ -208,20 +245,10 @@ $(function () {
         $("#footer").show();
     }
 
-    /**
-     * Anonomous on click function bound to the replay button, performs the actions needed
-     * to restart the game
-     */
-    $('#replay').click(function () {
-        imgObject.points = 0;
-        $('#replay').hide();
-        $('#score').text('');
-        $("#cdText").show();
-        $("#game-over").hide();
-        $("#mydiv").children().remove();
-        $("#highscore-table-area").children().remove();
-        startGame();
-    });
+
+
+
+
 
 
     /**
@@ -258,6 +285,12 @@ $(function () {
         });
     }
 
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     DATABASE REQUESTS
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
     /**
      * Ajax post request to add a user to the highscore
      * Sends name and score to database through php
@@ -278,23 +311,13 @@ $(function () {
                 $("#submitButton").hide();
                 $("#submitName").hide();
 
-                printHighScore();
+                printHighScore("inGame");
 
             }
         });
     });
 
 
-
-  /*  Clicking on "show highscore" button */
-
-  $("#show-highscore-button").click(function() {
-    $("#wrapper").hide();
-    $("#footer").hide();
-    $("#highscore").show();
-    printHighScore();
-
-});
 
 
 
@@ -317,25 +340,36 @@ $(function () {
                 console.log(data);
                 if (imgObject.points > parseInt(data['score'])) {
                     console.log(data);
-                    if (level.length === 0) { $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan."); }
-                    else { $("#appraise").text("Well done! You made it to the highscore."); }
+                    if (level.length === 0) {
+                        $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
+                    } else {
+                        $("#appraise").text("Well done! You made it to the highscore.");
+                    }
 
                     $("#submitButton").show();
                     $("#submitName").show();
                 } else {
-                    if (level.length === 0) { $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan."); }
-                    else { $("#appraise").text("Not bad! Unfortunately, it is not enough to make it to the highscore.");}
+                    if (level.length === 0) {
+                        $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+                    } else {
+                        $("#appraise").text("Not bad! Unfortunately, it is not enough to make it to the highscore.");
+                    }
 
                 }
             }
         });
     }
 
+
+
     /**
      * Function to print the highscore, using ajax a post request is made to the server
-     * @returns {void}
+     * @param {string} printId - used to check whether it's ingame or in the show highscore part
+     * @returns {undefined}
      */
-    function printHighScore() {
+    function printHighScore(printId) {
+
+
         $.ajax({
             url: level + "php/hsController.php",
             type: "post",
@@ -347,16 +381,38 @@ $(function () {
             },
             success: function (data) {          //on recieve of reply
                 console.log(JSON.stringify(data));
+                if (printId === "inGame") {
+                    if (level.length === 0) {
+                        $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+                    } else {
+                        $("#highscore-table-area").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>"));
+                    }
 
-                if (level.length == 0) { $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>")); }
-                else { $("#highscore-table-area").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>")); }
+                    for (var i in data) {
+                        $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
+                    }
+                } else {
+                    if (level.length === 0) {
+                        $("#highscore-table").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+                    } else {
+                        $("#highscore-table").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>"));
+                    }
 
-                for (var i in data) {
-                    $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
+                    for (var i in data) {
+                        $("#highscore-table").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
+                    }
                 }
             }
         });
     }
+
+
+
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     GAME BINS DROPPABLE FUNCTIONS
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
 
     /**
      * When dropped it checks whether the ID corresponds to the correct thrash
@@ -511,7 +567,15 @@ $(function () {
         });
     }
 
-    //Function that spawns the random image
+
+
+
+
+    /**
+     * Function that spawns the random image
+     * @param {IMAGES} imgObject
+     * @returns {void}
+     */
     function spawnRandomImg(imgObject) {
         var threeRnd = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //Array for keeping track of spawned bins
         var index = 11; //Index to randomize
@@ -620,7 +684,7 @@ $(function () {
                 //Printing clock to the span, slice extracts the two last letters of the string
                 minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
                 secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
-                
+
                 if (time.total > -100) {
                     onGameOver();
                     if (level.length === 0) {
@@ -629,9 +693,9 @@ $(function () {
                         $('#myScore').text(imgObject.points + ' points!').show();
                     }
                     checkPoints();
-                }else{
+                } else {
                     minutesSpan.innerHTML = ('00');
-                    secondsSpan.innerHTML = ('00'); 
+                    secondsSpan.innerHTML = ('00');
                 }
             }
         }
