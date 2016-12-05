@@ -25,10 +25,10 @@ $(document).ready(function() {
 });*/
 
   /*  Clicking on "close highscore" button */
-  $("#close-highscore-button").click(function() {
+  /*$("#close-highscore-button").click(function() {
 
     $("#highscore").hide();
     $("#wrapper").show();
-  });
+  });*/
 
 });
