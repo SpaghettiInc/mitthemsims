@@ -1,13 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
+ * AUTHOR: Martin Karttunen, Henrik Larsson
+ * SIMS Project for the company Mitthem
+ * PURPOSE: Trash disposing game
+ * 
  */
 
-//Main Script page for testing for MITTHEM
+//Main Scripting page for the game
 $(function () {
 
-    /** Check whether you are on the english or swedish side of the website */
+    //Check whether you are on the english or swedish side of the website
     var level = "";
 
     if ($("html").attr("lang") === "en") {
@@ -15,10 +17,21 @@ $(function () {
         level = "../";
     }
 
-    /**
-     * Main class contains game functions and images.
-     * @returns {mitthemscriptsL#9.IMAGES}
-     */
+    //Setting whether the elements should be hidden or shown prior to game start
+    $("#highscore").hide();
+    $("#game").hide();
+    $("#aside").hide();
+    $("#jsguard").remove();
+    $("#content").show();
+    $("#submitButton").hide();
+    $("#submitName").hide();
+    $("#myClock").hide();
+    $("#myScore").hide();
+    $('#replay').hide();
+    $("#game-over").hide();
+
+     // Main class contains game functions and images.
+     // returns {mitthemscriptsL#9.IMAGES}
     function IMAGES() {
 
         //Array containing the images to be dropped
@@ -99,7 +112,6 @@ $(function () {
             img10: 'matBin'
         };
 
-
         //Adding some audio objects
         this.glass_audio = new Audio(level + 'sound/glass_break.mp3');
         this.metal_throw = new Audio(level + 'sound/metal_throw.mp3');
@@ -109,54 +121,47 @@ $(function () {
         this.glass_audio.volume = 0.07;
         this.metal_throw.volume = 0.07;
 
-
         //Adds a getPic function to retrieve a picture from the class
         this.getPic = function (imgNr) {
             return this.images[imgNr];
         };
 
+        // Game points
         this.points = 0;
 
-        //Mute all sound function
+        // Function to mute all sounds
         this.muteAll = function () {
             this.glass_audio.muted = true;
             this.metal_throw.muted = true;
             this.game_music.muted = true;
         };
 
-        //Function to unmute game sound function
+        // Function to unmute game sound function
         this.unMuteAll = function () {
             this.glass_audio.muted = false;
             this.metal_throw.muted = false;
             this.game_music.muted = false;
         };
 
-        //Bool used in the points function
+        // Bool used in the points function
         this.status = true;
     }
-
-    //Hiding all elements prior to game start
-    $("#content").show();
-    $("#jsguard").remove();
-    $("#submitButton").hide();
-    $("#submitName").hide();
-    $("#myClock").hide();
-    $("#myScore").hide();
-    $('#replay').hide();
-    $("#game-over").hide();
-
 
     //Creates a new image object
     var imgObject = new IMAGES();
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-     ON CLICK FUNCTIONS
+                    ON CLICK FUNCTIONS
      - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+    // Clicking on "start game" button
+    $("#start-game-button").click(function () {
+        $("#wrapper").hide();
+        $("#footer").hide();
+        $("#game").show();
+    });
 
-    /**
-     * Anonomous function to mute the game sounds
-     */
+    // Anonomous on click function to mute the game sounds
     $("#sound").click(function () {
         if (imgObject.glass_audio.muted) {
             $("#sound").toggleClass("fa-volume-up").removeClass("fa-volume-off");
@@ -167,29 +172,27 @@ $(function () {
         }
     });
 
-    /**
-     * Anonomous click function to starts the game and also plays the game music
-     */
+    // Anonomous click function to starts the game and also plays the game music
     $('#gameStarter').click(function () {
         imgObject.game_music.play();
         startGame();
     });
 
-    /*  Clicking on "end game" button */
+    // Clicking on "end game" button
     $("#end-game-button").click(function () {
         onCloseGame();
     });
 
 
-
+    // Anonomous click function to close and clear the highscore
     $("#close-highscore-button").click(function () {
         $("#highscore-table").children().remove();
         $("#highscore").hide();
         $("#wrapper").show();
+        $("#footer").show();
     });
 
-    /*  Clicking on "show highscore" button */
-
+    // Click function to show the highscore
     $("#show-highscore-button").click(function () {
         $("#wrapper").hide();
         $("#footer").hide();
@@ -198,10 +201,8 @@ $(function () {
 
     });
 
-    /**
-     * Anonomous on click function bound to the replay button, performs the actions needed
-     * to restart the game
-     */
+    // Anonomous on click function bound to the replay button, 
+    // performs the actions needed to restart the game
     $('#replay').click(function () {
         imgObject.points = 0;
         $('#replay').hide();
@@ -213,88 +214,12 @@ $(function () {
         startGame();
     });
 
-    function onGameStart() {
-
-    }
-
-    function onGameOver() {
-        $("#mydiv").children(0).animate({top: 0, left: 0});
-        $("#mydiv").children().remove();
-        $("#gameStart").hide('scale', 'fast');
-        $("#game-over").show();
-        $('#myClock').hide();
-        $('#replay').show();
-    }
-
-    function onCloseGame() {
-        imgObject.deadline = 0;
-        imgObject.points = 0;
-        imgObject.game_music.pause();
-        $("#highscore-table-area").children().remove();
-        $("#mydiv").children(0).animate({top: 0, left: 0});
-        $("#mydiv").children().remove();
-        $('#thrashDiv').children().hide();
-        $('#myScore').text('').hide();
-        $("#game-over").hide();
-        $('#myClock').hide();
-        $("#game-greeter").show();
-        $('#replay').hide();
-        $('#gameStarter').show();
-        $("#game").hide();
-        $("#wrapper").show();
-        $("#footer").show();
-    }
-
-
-
-
-
-
-
-    /**
-     * Function that animates plus points
-     * @returns {void}
-     */
-    function plusPoint() {
-        $("#surprise").animate({opacity: 1, fontSize: "8em"}, 400, function () {
-            $("#surprise").animate({opacity: 0, fontSize: "15em"}, 400);
-            $("#surprise").animate({fontSize: "2em"}, 0);
-        });
-    }
-
-
-    /**
-     * Function that animates what user get minus points
-     * @returns {void}
-     */
-    function minPoint() {
-        $("#minus").animate({opacity: 1, fontSize: "4em"}, 600, function () {
-            $("#minus").animate({opacity: 0, fontSize: "15em"}, 200);
-            $("#minus").animate({fontSize: "2em"}, 0);
-        });
-    }
-
-    /**
-     * Function to animate the time gained from bonus event
-     * @returns {void}
-     */
-    function bonusTime() {
-        $("#time").animate({opacity: 1, fontSize: "4em"}, 600, function () {
-            $("#time").animate({opacity: 0, fontSize: "15em"}, 200);
-            $("#time").animate({fontSize: "2em"}, 0);
-        });
-    }
-
-
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-     DATABASE REQUESTS
+                    DATABASE REQUESTS
      - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-    /**
-     * Ajax post request to add a user to the highscore
-     * Sends name and score to database through php
-     */
+    // Ajax post request to add a user to the highscore
+    // Sends name and score to database through php
     $("#submitButton").click(function () {
         var submitName = $("#submitName").val();
         var submitScore = imgObject.points;
@@ -317,15 +242,9 @@ $(function () {
         });
     });
 
-
-
-
-
-    /**
-     * Check to see whether the person is qualified to get on the highscore
-     * Using ajax post request to get the lowest qualified score
-     * @returns {void}
-     */
+    // Check to see whether the person is qualified to get on the highscore
+    // Using ajax post request to get the lowest qualified score
+    // @returns {void}
     function checkPoints() {
         $.ajax({
             url: level + "php/hsController.php",
@@ -341,7 +260,8 @@ $(function () {
                 if (imgObject.points > parseInt(data['score'])) {
                     console.log(data);
                     if (level.length === 0) {
-                        $("#appraise").text("Bra gjort! Nu får du skriva in dig på topplistan.");
+                        $("#appraise").text("Bra gjort! Nu får du skriva in \n\
+                                                dig på topplistan.");
                     } else {
                         $("#appraise").text("Well done! You made it to the highscore.");
                     }
@@ -350,9 +270,11 @@ $(function () {
                     $("#submitName").show();
                 } else {
                     if (level.length === 0) {
-                        $("#appraise").text("Inte illa! Tyvärr räcker det inte riktigt för att ta sig in på topplistan.");
+                        $("#appraise").text("Inte illa! Tyvärr räcker det inte \n\
+                            riktigt för att ta sig in på topplistan.");
                     } else {
-                        $("#appraise").text("Not bad! Unfortunately, it is not enough to make it to the highscore.");
+                        $("#appraise").text("Not bad! Unfortunately, it is not \n\
+                            enough to make it to the highscore.");
                     }
 
                 }
@@ -360,16 +282,10 @@ $(function () {
         });
     }
 
-
-
-    /**
-     * Function to print the highscore, using ajax a post request is made to the server
-     * @param {string} printId - used to check whether it's ingame or in the show highscore part
-     * @returns {undefined}
-     */
+    // Function to print the highscore, using ajax a post request is made to the server
+    // @param {string} printId - used to check whether it's ingame or in the show highscore part
+    // @returns {void}
     function printHighScore(printId) {
-
-
         $.ajax({
             url: level + "php/hsController.php",
             type: "post",
@@ -379,46 +295,54 @@ $(function () {
                 date: "date",
                 score: "score"
             },
-            success: function (data) {          //on recieve of reply
+            // on recieve of reply
+            success: function (data) {
                 console.log(JSON.stringify(data));
                 if (printId === "inGame") {
                     if (level.length === 0) {
-                        $("#highscore-table-area").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+                        $("#highscore-table-area").append($("<tr><td>" + 
+                                "Namn" + "</td><td>" + "Datum" + "</td><td>" + 
+                                "Poäng" + "</td></tr>"));
                     } else {
-                        $("#highscore-table-area").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>"));
+                        $("#highscore-table-area").append($("<tr><td>" + 
+                                "Name" + "</td><td>" + "Date" + "</td><td>" + 
+                                "Points" + "</td></tr>"));
                     }
 
                     for (var i in data) {
-                        $("#highscore-table-area").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
+                        $("#highscore-table-area").append($("<tr><td>" + 
+                                data[i]['name'] + "</td><td>" + data[i]['date'] + 
+                                "</td><td>" + 
+                                data[i]['score'] + "</td></tr>"));
                     }
                 } else {
                     if (level.length === 0) {
-                        $("#highscore-table").append($("<tr><td>" + "Namn" + "</td><td>" + "Datum" + "</td><td>" + "Poäng" + "</td></tr>"));
+                        $("#highscore-table").append($("<tr><td>" + 
+                                "Namn" + "</td><td>" + "Datum" + "</td><td>" + 
+                                "Poäng" + "</td></tr>"));
                     } else {
-                        $("#highscore-table").append($("<tr><td>" + "Name" + "</td><td>" + "Date" + "</td><td>" + "Points" + "</td></tr>"));
+                        $("#highscore-table").append($("<tr><td>" + "Name" + 
+                                "</td><td>" + "Date" + "</td><td>" + "Points" + 
+                                "</td></tr>"));
                     }
 
                     for (var i in data) {
-                        $("#highscore-table").append($("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['date'] + "</td><td>" + data[i]['score'] + "</td></tr>"));
+                        $("#highscore-table").append($("<tr><td>" + 
+                                data[i]['name'] + "</td><td>" + data[i]['date'] + 
+                                "</td><td>" + data[i]['score'] + "</td></tr>"));
                     }
                 }
             }
         });
     }
 
-
-
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
-     GAME BINS DROPPABLE FUNCTIONS
+                GAME BINS DROPPABLE FUNCTIONS
      - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-
-    /**
-     * When dropped it checks whether the ID corresponds to the correct thrash
-     * If its correct it updates points to true and then gets rid of the image,
-     * If not correct it shakes and then gets returns the thrash to starting position
-     */
+    // When dropped it checks whether the ID corresponds to the correct thrash
+    // If its correct it sends the ui-object to the trashAccept function,
+    // If not correct it sends it to the trashReturn function
     $("#glasBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
@@ -507,7 +431,6 @@ $(function () {
         }
     });
 
-
     $("#husBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img8") {
@@ -530,14 +453,12 @@ $(function () {
         }
     });
 
-    /**
-     * Sets status to true, calls the animation function for points, does a scale animation
-     * on the thrash when done the callback function returns the thrash to its original position
-     * a callback function then removes the picture from the div, updates the points and calls the
-     * function to spawn the next trash
-     * @param {type} ui
-     * @returns {void}
-     */
+    // Sets status to true, calls the animation function for points, does a scale animation
+    // on the thrash when done the callback function returns the thrash to its original position
+    // a callback function then removes the picture from the div, updates the points and calls the
+    // function to spawn the next trash
+    // @param {ui} ui
+    // @returns {void}
     function trashAccept(ui) {
         imgObject.status = true;
         plusPoint();
@@ -550,14 +471,12 @@ $(function () {
         });
     }
 
-    /**
-     * Function that returns the thrash to it's original position on wrong placement
-     * it set's the status to false to indicate wrong, then it does a shake animation,
-     * Since toggle makes the picture hidden I call the show function with a callback to
-     * animate the trash to it's original position
-     * @param {type} ui
-     * @returns {undefined}
-     */
+    // Function that returns the thrash to it's original position on wrong placement
+    // it sets the status to false to indicate wrong, then it does a shake animation,
+    // Since toggle makes the picture hidden I call the show function with a callback to
+    // animate the trash to it's original position
+    // @param {UI} ui
+    // @returns {void}
     function trashReturn(ui) {
         imgObject.status = false;
         minPoint();
@@ -568,14 +487,14 @@ $(function () {
     }
 
 
+    /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                    GAME HELPER FUNCTIONS
+     - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
-
-    /**
-     * Function that spawns the random image
-     * @param {IMAGES} imgObject
-     * @returns {void}
-     */
+    // Function that spawns the random trash
+    // @param {IMAGES} imgObject
+    // @returns {void}
     function spawnRandomImg(imgObject) {
         var threeRnd = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //Array for keeping track of spawned bins
         var index = 11; //Index to randomize
@@ -588,14 +507,12 @@ $(function () {
         var rndImage = imgObject.getPic(rnd); //Get correct thrash
         var boundBin = imgObject.binBind['img' + rnd]; //Get correct bin
 
-
         threeRnd.splice(rnd, 1); //Removing index corresponding to the bin from array
-
 
         $('#' + boundBin).show(); //Showing the proper bin
 
-        //Check if it's a special event if so the other bin needs to be removed
-        //So we do not get a clash as to say it picks the same
+        // Check if it's a special event if so the other bin needs to be removed
+        // So we do not get a clash as to say it picks the same
         if (rnd === 10) {
             threeRnd.splice(1, 1);
             index--;
@@ -604,7 +521,7 @@ $(function () {
             index--;
         }
 
-        //Spawning the next two bins pseudo randomly
+        // Spawning the next two bins randomly
         rnd = (Math.floor(Math.random() * index));
         index--;
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
@@ -614,7 +531,6 @@ $(function () {
         rnd = (Math.floor(Math.random() * index));
         boundBin = imgObject.binBind['img' + threeRnd[rnd]];
         $('#' + boundBin).show();
-
 
         //If it's the plastic bag that spawned it has to be made clickable so you can remove the bag.
         if (rndCheck === 10) {
@@ -629,11 +545,9 @@ $(function () {
         }
     }
 
-    /**
-     *
-     * @param {bool} status
-     * @returns {void}
-     */
+    //Function that is called when plus or minus points are given based on correct trash drop
+    // @param {bool} status
+    // @returns {void}
     function updatePoints2(status) {
         if (status) {
             imgObject.points = imgObject.points + 50;
@@ -645,11 +559,7 @@ $(function () {
         }
     }
 
-    /**
-     *
-     * @returns {mitthemscripts_L9.getTimeRemaining.mitthemscriptsAnonym$5}
-     *
-     */
+    // @returns data containing the total time, minutes and seconds remaining
     function getTimeRemaining() {
         var time = imgObject.deadline - Date.parse(new Date());
         var seconds = Math.floor((time / 1000) % 60);
@@ -660,16 +570,15 @@ $(function () {
             'seconds': seconds
         };
     }
-    /**
-     *
-     * @param {string} id
-     * @returns {void}
-     */
+    
+    // Our timer that gives our game timer
+    // @param {string} id - The id to the clock div
+    // @returns {void}
     function initializeClock(id) {
         var clock = document.getElementById(id);
         var minutesSpan = clock.querySelector('.minutes');
         var secondsSpan = clock.querySelector('.seconds');
-        updateClock(); // run function once at first to avoid delay
+        updateClock(); // Running the fucntion once to avoid delay
         var timeinterval = setInterval(updateClock, 1000);
 
         //Inner function to update the clock on screen, runs every 1s
@@ -678,13 +587,15 @@ $(function () {
             minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
             secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
 
-            //If the time goes to zero, end the game and print points to screen
+            // If the time goes to zero, end the game and print points to screen
             if (time.total <= 0) {
                 clearInterval(timeinterval);
-                //Printing clock to the span, slice extracts the two last letters of the string
+                
+                // Printing clock to the span, slice extracts the two last letters of the string
                 minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
                 secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
-
+                
+                // Just a check to see whether the game was ended or closed
                 if (time.total > -100) {
                     onGameOver();
                     if (level.length === 0) {
@@ -701,6 +612,64 @@ $(function () {
         }
     }
 
+    // Function that runs when the game is over, resets the game and prepares 
+    // it for replay.
+    function onGameOver() {
+        $("#mydiv").children(0).animate({top: 0, left: 0});
+        $("#mydiv").children().remove();
+        $("#gameStart").hide('scale', 'fast');
+        $("#game-over").show();
+        $('#myClock').hide();
+        $('#replay').show();
+    }
+    
+    //Function that resets all elements when the game is closed
+    function onCloseGame() {
+        imgObject.deadline = 0;
+        imgObject.points = 0;
+        imgObject.game_music.pause();
+        $("#highscore-table-area").children().remove();
+        $("#mydiv").children(0).animate({top: 0, left: 0});
+        $("#mydiv").children().remove();
+        $('#thrashDiv').children().hide();
+        $('#myScore').text('').hide();
+        $("#game-over").hide();
+        $('#myClock').hide();
+        $("#game-greeter").show();
+        $('#replay').hide();
+        $('#gameStarter').show();
+        $("#game").hide();
+        $("#wrapper").show();
+        $("#footer").show();
+    }
+
+    // Function that animates plus points
+    // @returns {void}
+    function plusPoint() {
+        $("#surprise").animate({opacity: 1, fontSize: "8em"}, 400, function () {
+            $("#surprise").animate({opacity: 0, fontSize: "15em"}, 400);
+            $("#surprise").animate({fontSize: "2em"}, 0);
+        });
+    }
+
+    // Function that animates that the user got minus points
+    // @returns {void}
+    function minPoint() {
+        $("#minus").animate({opacity: 1, fontSize: "4em"}, 600, function () {
+            $("#minus").animate({opacity: 0, fontSize: "15em"}, 200);
+            $("#minus").animate({fontSize: "2em"}, 0);
+        });
+    }
+
+    // Function to animate the time gained from bonus event
+    // @returns {void}
+    function bonusTime() {
+        $("#time").animate({opacity: 1, fontSize: "4em"}, 600, function () {
+            $("#time").animate({opacity: 0, fontSize: "15em"}, 200);
+            $("#time").animate({fontSize: "2em"}, 0);
+        });
+    }
+
     //Function to start the game
     function startGame() {
         $('#gameStarter').hide();
@@ -708,7 +677,7 @@ $(function () {
         var count = 3;
         gameCd();
 
-        //Simple inner function for a game count down
+        //Simple inner function for a game countdown
         function gameCd() {
             $("#game-greeter").hide("fade", 300, function () {
                 if (count > 0) {
@@ -717,7 +686,6 @@ $(function () {
                     setTimeout(gameCd, 1000);
                 } else {
                     $("#cdText").text("").hide("fade", 300, function () {
-                        //$("#score").hide();
                         $('#gameStart').show('fade', 1000, function () {
                             imgObject.deadline = Date.parse(new Date()) + 25000;
                             initializeClock('myClock');
