@@ -28,12 +28,7 @@ class dbHandler {
         return;
     }
 
-    // opens up a connection to the actual database
-    private function openConnection() {
 
-        $connect = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname) or die("Connection failed: ");
-        return $connect;
-    }
 
     // returns the current lowest highscore (for comparison later)
     public function getTop25() {
@@ -90,6 +85,14 @@ class dbHandler {
         // close connection
         mysqli_close($con);
     }
+    
+        // opens up a connection to the actual database
+    private function openConnection() {
+
+        $connect = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname) or die("Connection failed: ");
+        return $connect;
+    }
+    
 }
 
 ?>

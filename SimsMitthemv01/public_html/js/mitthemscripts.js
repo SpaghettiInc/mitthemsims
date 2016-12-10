@@ -257,7 +257,7 @@ $(function () {
             success: function (data) {          //on recieve of reply
                 console.log("inside success");
                 console.log(data);
-                if (gameObject.points > parseInt(data['score'])) {
+                if (gameObject.points > parseInt(data['score']) || data['score'] === null || Object.keys(data).length < 25) {
                     console.log(data);
                     if (level.length === 0) {
                         $("#appraise").text("Bra gjort! Nu får du skriva in \n\
