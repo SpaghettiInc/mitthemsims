@@ -5,13 +5,13 @@
 /*  GENERAL   */
 
 body {
-  font-family: sans-serif;
-  width: 100%;
-  background-image: url("../img/bgs/background-01.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+    font-family: sans-serif;
+    width: 100%;
+    background-image: url("../img/bgs/background-01.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 strong {
@@ -20,10 +20,10 @@ strong {
 }
 
 p {
-	text-align: left;
-	margin: 10px 10px 20px 0;
-	font-size: 16px;
-	line-height: 26px;
+    text-align: left;
+    margin: 10px 10px 20px 0;
+    font-size: 16px;
+    line-height: 26px;
 }
 
 h1 { font-size: 40px; padding: 10px 0; margin: 40px 0 20px 0; }
@@ -37,8 +37,8 @@ a:hover, a:active {}
 
 #categories {
 
-        margin-bottom: 100px;
-        font-size: 12px;
+    margin-bottom: 100px;
+    font-size: 12px;
 }
 #categories li {
 
@@ -47,16 +47,16 @@ a:hover, a:active {}
 }
 
 #categories a:link, #categories a:visited {
-  margin: 0;
-  padding: 10px;
-  text-decoration: none;
-  color: #000;
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
 }
 
 #categories a:hover, #categories a:active {
-  text-decoration: none;
-  color: green;
-  border-bottom: 4px solid green;
+    text-decoration: none;
+    color: green;
+    border-bottom: 4px solid green;
 }
 
 #wrapper { width: 900px; margin: 0 auto; padding: 20px; height: auto;}
@@ -64,36 +64,36 @@ a:hover, a:active {}
 #header { padding: 20px 0 10px 0; }
 
 #language-switcher {
-	float: right;
-	cursor: pointer;
-	padding: 10px;
+    float: right;
+    cursor: pointer;
+    padding: 10px;
 }
 
 #language-switcher a:link, #language-switcher a:visited {
-  margin: 0;
-  padding: 10px;
-  text-decoration: none;
-  color: #000;
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
 }
 
 #language-switcher a:hover, #language-switcher a:active {
-  text-decoration: none;
-  color: green;
-  border-bottom: 4px solid green;
+    text-decoration: none;
+    color: green;
+    border-bottom: 4px solid green;
 }
 
 #nav {
-  margin: 0;
-  padding: 12px 0;
-  font-size: 18px;
+    margin: 0;
+    padding: 12px 0;
+    font-size: 18px;
 }
 
 #content {
-  text-align: center;
-  width: 100%;
-  /*height: 600px;*/
-  background-repeat: no-repeat;
-  border-top: 4px solid #ccc;
+    text-align: center;
+    width: 100%;
+    /*height: 600px;*/
+    background-repeat: no-repeat;
+    border-top: 4px solid #ccc;
 }
 
 #aside { background-color: green; }
@@ -110,10 +110,10 @@ a:hover, a:active {}
 
 
 #start-game-text {
-  text-align: justify;
-  margin: auto;
-  width: 300px;
-  padding: 30px;
+    text-align: justify;
+    margin: auto;
+    width: 300px;
+    padding: 30px;
 }
 
 #start-game-box {
@@ -129,10 +129,10 @@ a:hover, a:active {}
 }
 
 #highscore-table {
-	width: 100%;
-	/*margin: 40px auto;
-	background-color: #fff;
-	color: #000;*/
+    width: 100%;
+    /*margin: 40px auto;
+    background-color: #fff;
+    color: #000;*/
 }
 
 #highscore-table tr:nth-child(even) {
@@ -159,28 +159,28 @@ a:hover, a:active {}
 }
 
 tr, td {
-	padding: 10px;
-	text-align: left;
+    padding: 10px;
+    text-align: left;
 }
 
 /*  MENU SPECIFICS  */
 
 #nav li {
-  display: inline-block;
-  margin: 0;
+    display: inline-block;
+    margin: 0;
 }
 
 #nav a:link, #nav a:visited {
-  margin: 0;
-  padding: 10px;
-  text-decoration: none;
-  color: #000;
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
 }
 
 #nav a:hover, #nav a:active, #nav #current {
-  text-decoration: none;
-  color: green;
-  border-bottom: 4px solid green;
+    text-decoration: none;
+    color: green;
+    border-bottom: 4px solid green;
 }
 
 
@@ -205,16 +205,16 @@ tr, td {
 .top a:hover, .top a:active { color: #000; border: none; }*/
 
 .top a:link, .top a:visited {
-  margin: 0;
-  padding: 10px;
-  text-decoration: none;
-  color: #000;
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
 }
 
 .top a:hover, .top a:active {
-  text-decoration: none;
-  color: green;
-  border-bottom: 4px solid green;
+    text-decoration: none;
+    color: green;
+    border-bottom: 4px solid green;
 }
 
 .siluette {
@@ -225,8 +225,8 @@ tr, td {
 }
 
 .green-indent {
-	border-left: 4px solid green;
-	padding-left: 10px;
+    border-left: 4px solid green;
+    padding-left: 10px;
 }
 
 .modal {
@@ -243,7 +243,7 @@ tr, td {
     opacity: 1;
     left: 0;
     top: 0;
-  /*padding: 50px;*/
+    /*padding: 50px;*/
     border: 0px solid #ddd;
     background-image: url("../img/bgs/game-back.png");
     background-size: cover;
@@ -251,17 +251,15 @@ tr, td {
 }
 
 .input {
-
     padding: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    box-shadow: none;
+    box-shadow: 2px 2px 5px 2px;
     display: inline;
     width: 430px;
     margin: 25px;
     background-color: transparent;
-
 }
 
 #form-box {
@@ -297,17 +295,17 @@ tr, td {
 }
 
 .button {
-  padding: 10px;
-  background-color: green;
-  border-width: 0;
-  color: #fff;
-  border-radius: 5px;
-  border: solid 2px green;
+    padding: 10px;
+    background-color: green;
+    border-width: 0;
+    color: #fff;
+    border-radius: 5px;
+    border: solid 2px green;
 }
 
 .button:active {
-  color: #fff;
-  background-color: darkgreen;
+    color: #fff;
+    background-color: darkgreen;
 }
 
 .red {

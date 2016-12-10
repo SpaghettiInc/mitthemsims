@@ -3,37 +3,36 @@
 <html lang="sv">
 
     <head>
-      <title>Spelsidan</title>
-      <meta charset="utf-8" />
-      <script src="js/library/jquery-3.1.1.min.js"></script>
-      <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
-      <link rel="stylesheet" type="text/css" href="css/game-style.css" />
-      <link rel="stylesheet" type="text/css" href="css/style.css" />
-      <script src="js/mitthemscripts.js"></script>
+        <title>Spelsidan</title>
+        <meta charset="utf-8" />
+        <script src="js/library/jquery-3.1.1.min.js"></script>
+        <script src="js/library/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/game-style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="js/mitthemscripts.js"></script>
     </head>
     <body id="body">
-
         <div id="wrapper" class="bg-trans-white-90">
 
             <header id="header">
 
-              <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
+                <img src="img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
 
-              <div id="language-switcher">
-                <a href="en/spel.html"><i class="fa fa-globe" style="font-size:16px"></i>
-                <span class="swe">English</span></a>
-              </div>
+                <div id="language-switcher">
+                    <a href="en/spel.html"><i class="fa fa-globe" style="font-size:16px"></i>
+                        <span class="swe">English</span></a>
+                </div>
 
             </header>
 
             <nav id="nav">
 
                 <ul>
-                  <li class="swe"><a href="index.html">Vilka är vi?</a></li>
-                  <li class="swe"><a href="hur.html">Hur sorterar man?</a></li>
-                  <li class="swe"><a href="spel.html" id="current">Spela spelet!</a></li>
-                  <li class="swe"><a href="kontakt.html">Kontakta oss</a></li>
+                    <li class="swe"><a href="index.html">Vilka är vi?</a></li>
+                    <li class="swe"><a href="hur.html">Hur sorterar man?</a></li>
+                    <li class="swe"><a href="spel.html" id="current">Spela spelet!</a></li>
+                    <li class="swe"><a href="kontakt.html">Kontakta oss</a></li>
                 </ul>
 
             </nav>
@@ -63,8 +62,8 @@
 
                 <img src="img/logo-small.png" alt="Logotype, small (logo-small.png)" id="bottom-logo"/>
                 <p>Miljögatan 4<br />
-                123 45&nbsp;&nbsp;Återvinningsberga<br />
-                098 - 123 45 67</p>
+                    123 45&nbsp;&nbsp;Återvinningsberga<br />
+                    098 - 123 45 67</p>
 
             </div>
 
@@ -79,7 +78,7 @@
 
         </footer>
 
-<!-- ************************************************************************************ -->
+        <!-- ************************************************************************************ -->
 
         <!-- This is the actual game section and will start out hidden.
         When the user choses to start the game, this section will become
@@ -109,7 +108,7 @@
                     <p>Spelet går ut på att sortera avfall rätt. För varje korrekt sortering får du ett poäng. Om du däremot sorterar fel så får du ett avdrag. I bland
                         dyker det upp speciella sopor som måste hanteras annorlunda. Ett exempel på detta är en plastpåse runt en papperspåse med komposterbart avfall.
                         Det korrekta här är att klicka på objektet för att separera plastpåsen från papperspåsen och på så viss sortera dem rätt.
-                    </main></p>
+                    </p>
                     <ul>
                         <li>Tryck på <i class="white transparent fa fa-play" aria-hidden="true"></i> när du vill sätta igång spelet</li>
                         <li>Om du vill stänga spelet och går tillbaks till webbsidan, tryck på <i class="white transparent fa fa-close" aria-hidden="true"></i></li>
@@ -133,7 +132,7 @@
                 <div id="game-over" class="">
                     <p id="myScore" class="center"></p>
                     <div>
-                    <p id="appraise" class="center bg-trans-black-40"></p>    
+                        <p id="appraise" class="center bg-trans-black-40"></p>    
                     </div>
                     <div id="highscore-input">
                         <input type="text" id="submitName" />
@@ -204,20 +203,20 @@
 
         </section>
 
-<!-- ************************************************************************************ -->
+        <!-- ************************************************************************************ -->
 
-<!-- This section will display the current highscore. It
-will start out hidden and show upon either request or when
-the game is over. -->
-<section id="highscore" class="modal">
-    <div id="highscore-out">
-        <h1>Topplista</h1>
-        <table id="highscore-table" class="bg-trans-black-40">
+        <!-- This section will display the current highscore. It
+        will start out hidden and show upon either request or when
+        the game is over. -->
+        <section id="highscore" class="modal">
+            <div id="highscore-out">
+                <h1>Topplista</h1>
+                <table id="highscore-table" class="bg-trans-black-40">
 
-        </table>
-        <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
-    </div>
-</section>
+                </table>
+                <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
+            </div>
+        </section>
 
 
     </body>
