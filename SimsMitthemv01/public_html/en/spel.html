@@ -3,14 +3,14 @@
 <html lang="en">
 
     <head>
-      <title>Spelsidan</title>
-      <meta charset="utf-8" />
-      <script src="../js/library/jquery-3.1.1.min.js"></script>
-      <script src="../js/library/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
-      <link rel="stylesheet" type="text/css" href="../css/game-style.css" />
-      <link rel="stylesheet" type="text/css" href="../css/style.css" />
-      <script src="../js/mitthemscripts.js"></script>
+        <title>Game page</title>
+        <meta charset="utf-8" />
+        <script src="../js/library/jquery-3.1.1.min.js"></script>
+        <script src="../js/library/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/game-style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <script src="../js/mitthemscripts.js"></script>
     </head>
     <body id="body">
 
@@ -18,12 +18,12 @@
 
             <header id="header">
 
-              <img src="../img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
+                <img src="../img/logo.png" alt="Mitthem logo (logo.png)" id="top-logo" class="" />
 
-              <div id="language-switcher">
-                <a href="../spel.html"><i class="fa fa-globe" style="font-size:16px"></i>
-                <span class="swe">Svenska</span></a>
-              </div>
+                <div id="language-switcher">
+                    <a href="../spel.html"><i class="fa fa-globe" style="font-size:16px"></i>
+                        <span class="swe">Svenska</span></a>
+                </div>
 
             </header>
 
@@ -64,9 +64,9 @@
 
                 <img src="../img/logo-small.png" alt="Logotype, small (logo-small.png)" id="bottom-logo"/>
                 <p>Miljögatan 4<br />
-                123 45&nbsp;&nbsp;Återvinningsberga<br />
-                Sweden<br />
-                098 - 123 45 67</p>
+                    123 45&nbsp;&nbsp;Återvinningsberga<br />
+                    Sweden<br />
+                    098 - 123 45 67</p>
 
             </div>
 
@@ -81,7 +81,7 @@
 
         </footer>
 
-<!-- ************************************************************************************ -->
+        <!-- ************************************************************************************ -->
 
         <!-- This is the actual game section and will start out hidden.
         When the user choses to start the game, this section will become
@@ -101,10 +101,6 @@
             <section id="game-area">
 
                 <h1 id="cdText"></h1>
-
-                <!-- <input type="button" id="ggus" /> -->
-
-
                 <section id="game-greeter" class="bg-trans-black-40 center">
 
                     <h1>Instructions</h1>
@@ -206,21 +202,19 @@
 
         </section>
 
-<!-- ************************************************************************************ -->
+        <!-- ************************************************************************************ -->
 
         <!-- This section will display the current highscore. It
         will start out hidden and show upon either request or when
         the game is over. -->
         <section id="highscore" class="modal">
+            <div id="highscore-out">
+                <h1>Topplista</h1>
+                <table id="highscore-table" class="bg-trans-black-40">
 
-
-            <h1>Highscore</h1>
-            <table id="highscore-table">
-
-            </table>
-
-            <input type="button" id="close-highscore-button" class="button" value="Close highscore" />
-
+                </table>
+                <input type="button" id="close-highscore-button" class="button" value="Close highscore" />
+            </div>
         </section>
 
 
