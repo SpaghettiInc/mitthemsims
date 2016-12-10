@@ -10,7 +10,6 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
       <link rel="stylesheet" type="text/css" href="css/game-style.css" />
       <link rel="stylesheet" type="text/css" href="css/style.css" />
-      <script src="js/game-changer.js"></script>
       <script src="js/mitthemscripts.js"></script>
     </head>
     <body id="body">
@@ -121,7 +120,6 @@
                 </section>
 
                 <aside id="myClock">
-
                     <span class="minutes opacity"></span>
                     <span class="seconds opacity"></span>
                 </aside>
@@ -134,7 +132,9 @@
 
                 <div id="game-over" class="">
                     <p id="myScore" class="center"></p>
-                    <p id="appraise" class="center bg-trans-black-40"></p>
+                    <div>
+                    <p id="appraise" class="center bg-trans-black-40"></p>    
+                    </div>
                     <div id="highscore-input">
                         <input type="text" id="submitName" />
                         <input type="submit" id="submitButton" />
@@ -206,18 +206,18 @@
 
 <!-- ************************************************************************************ -->
 
-        <!-- This section will display the current highscore. It
-        will start out hidden and show upon either request or when
-        the game is over. -->
-        <section id="highscore" class="modal">
+<!-- This section will display the current highscore. It
+will start out hidden and show upon either request or when
+the game is over. -->
+<section id="highscore" class="modal">
+    <div id="highscore-out">
+        <h1>Topplista</h1>
+        <table id="highscore-table" class="bg-trans-black-40">
 
-            <h1>Topplista</h1>
-            <table id="highscore-table">
-                
-            </table>
-            <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
-
-        </section>
+        </table>
+        <input type="button" id="close-highscore-button" class="button" value="Stäng topplistan" />
+    </div>
+</section>
 
 
     </body>
