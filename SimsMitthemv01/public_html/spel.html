@@ -42,14 +42,15 @@
                 <!-- User will click this button when they want to start
                 the game. When so, this button will go hidden. -->
 
-                <div id="start-game-box">
+                <div id="start-game-box" class="hidden">
                     <p id="start-game-text">
                         Här tävlar vi om vem som ska bli Veckans Sopa! Allt du behöver göra för
                         att starta spelet är att trycka på knappen här nedanför. Lycka till!</p>
                     <input type="button" id="start-game-button" class="button" value="Starta spelet" />
                     <input type="button" id="show-highscore-button" class="button" value="Visa topplista" />
                 </div>
-
+                
+                <h2 id="jsguard">Tyvärr så måste javascript vara aktiverat för att ta del av spelet</h2>
 
             </div> <!-- END #content-->
 
@@ -83,7 +84,7 @@
         <!-- This is the actual game section and will start out hidden.
         When the user choses to start the game, this section will become
         visible (and the game will begin). -->
-        <section id="game" class="modal">
+        <section id="game" class="modal hidden">
 
             <aside id="button-box">
 
@@ -98,8 +99,6 @@
             <section id="game-area">
 
                 <h1 id="cdText"></h1>
-
-                <!-- <input type="button" id="ggus" /> -->
 
 
                 <section id="game-greeter" class="bg-trans-black-40 center">
@@ -208,7 +207,7 @@
         <!-- This section will display the current highscore. It
         will start out hidden and show upon either request or when
         the game is over. -->
-        <section id="highscore" class="modal">
+        <section id="highscore" class="modal hidden">
             <div id="highscore-out">
                 <h1>Topplista</h1>
                 <table id="highscore-table" class="bg-trans-black-40">

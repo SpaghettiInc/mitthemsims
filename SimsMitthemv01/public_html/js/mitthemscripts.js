@@ -9,6 +9,14 @@
 //Main Scripting page for the game
 $(function () {
 
+    //Very basic guard against phone users, since the game is not implemented on touch devices it's there to save them from having a bad experience.
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $("#start-game-box").hide();
+        $("#content").append("<h2>Spelet stödjer ännu inte mobila enheter, testa gärna spelet hemma vid datorn</h2>");
+    }else{
+        $("#start-game-box").show();
+    }
+
     //Check whether you are on the english or swedish side of the website
     var level = "";
 
@@ -161,7 +169,7 @@ $(function () {
         $("#game").show();
     });
 
-    // Anonomous on click function to mute the game sounds
+    // Anonymous on click function to mute the game sounds
     $("#sound").click(function () {
         if (gameObject.glass_audio.muted) {
             $("#sound").toggleClass("fa-volume-up").removeClass("fa-volume-off");
@@ -172,7 +180,7 @@ $(function () {
         }
     });
 
-    // Anonomous click function to starts the game and also plays the game music
+    // Anonymous click function to starts the game and also plays the game music
     $('#gameStarter').click(function () {
         gameObject.game_music.play();
         startGame();
