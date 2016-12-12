@@ -1,9 +1,9 @@
 /*
- * 
+ *
  * AUTHOR: Martin Karttunen, Henrik Larsson
  * SIMS Project for the company Mitthem
  * PURPOSE: Trash disposing game
- * 
+ *
  */
 
 //Main Scripting page for the game
@@ -13,17 +13,14 @@ $(function () {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         $("#start-game-box").hide();
         $("#content").append("<h2>Spelet stödjer ännu inte mobila enheter, testa gärna spelet hemma vid datorn</h2>");
-    }else{
+    } else {
         $("#start-game-box").show();
     }
 
     //Check whether you are on the english or swedish side of the website
     var level = "";
 
-    if ($("html").attr("lang") === "en") {
-
-        level = "../";
-    }
+    if ($("html").attr("lang") === "en") { level = "../"; }
 
     //Setting whether the elements should be hidden or shown prior to game start
     $("#highscore").hide();
@@ -209,7 +206,7 @@ $(function () {
 
     });
 
-    // Anonomous on click function bound to the replay button, 
+    // Anonomous on click function bound to the replay button,
     // performs the actions needed to restart the game
     $('#replay').click(function () {
         gameObject.points = 0;
@@ -620,7 +617,7 @@ $(function () {
         }
     }
 
-    // Function that runs when the game is over, resets the game and prepares 
+    // Function that runs when the game is over, resets the game and prepares
     // it for replay.
     function onGameOver() {
         $("#mydiv").children(0).animate({top: 0, left: 0});
