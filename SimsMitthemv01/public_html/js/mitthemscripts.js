@@ -154,6 +154,9 @@ $(function () {
 
     //Creates a new image object
     var gameObject = new GAME();
+    
+    gameObject.muteAll();
+
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - -
      ON CLICK FUNCTIONS
