@@ -118,13 +118,31 @@ $(function () {
         };
 
         //Adding some audio objects
-        this.glass_audio = new Audio(level + 'sound/glass_break.mp3');
+        this.glass = new Audio(level + 'sound/glass_break.mp3');
+        this.batteries = new Audio(level + 'sound/batteries.mp3');
+        this.cardboard = new Audio(level + 'sound/cardboard.mp3');
+        this.light_bulb = new Audio(level + 'sound/light_bulb.mp3');
+        this.paper = new Audio(level + 'sound/paper.mp3');
+        this.plastics = new Audio(level + 'sound/plastics.mp3');
+        this.removing_plastics = new Audio(level + 'sound/removing_plastics.mp3');
+        this.trashbag = new Audio(level + 'sound/trashbag.mp3');
+        this.error = new Audio(level + 'sound/error.mp3');
         this.metal_throw = new Audio(level + 'sound/metal_throw.mp3');
         this.game_music = new Audio(level + 'sound/gameMusic.mp3');
+        this.food = new Audio(level + 'sound/food.mp3');
         this.game_music.volume = 0.05;
         this.game_music.loop = true;
-        this.glass_audio.volume = 0.07;
+        this.glass.volume = 0.07;
         this.metal_throw.volume = 0.07;
+        this.batteries.volume = 0.5;
+        this.cardboard.volume = 0.5;
+        this.light_bulb.volume = 0.6;
+        this.paper.volume = 0.4;
+        this.plastics.volume = 0.5;
+        this.removing_plastics.volume = 0.3;
+        this.trashbag.volume = 0.3;
+        this.error.volume = 0.06;
+        this.food.volume = 0.4;
 
         //Adds a getPic function to retrieve a picture from the class
         this.getPic = function (imgNr) {
@@ -136,16 +154,34 @@ $(function () {
 
         // Function to mute all sounds
         this.muteAll = function () {
-            this.glass_audio.muted = true;
+            this.glass.muted = true;
             this.metal_throw.muted = true;
             this.game_music.muted = true;
+            this.batteries.muted = true;
+            this.cardboard.muted = true;
+            this.light_bulb.muted = true;
+            this.paper.muted = true;
+            this.plastics.muted = true;
+            this.removing_plastics.muted = true;
+            this.trashbag.muted = true;
+            this.error.muted = true;
+            this.food.muted = true;
         };
 
         // Function to unmute game sound function
         this.unMuteAll = function () {
-            this.glass_audio.muted = false;
+            this.glass.muted = false;
             this.metal_throw.muted = false;
             this.game_music.muted = false;
+            this.batteries.muted = false;
+            this.cardboard.muted = false;
+            this.light_bulb.muted = false;
+            this.paper.muted = false;
+            this.plastics.muted = false;
+            this.removing_plastics.muted = false;
+            this.trashbag.muted = false;
+            this.error.muted = false;
+            this.food.muted = false;
         };
 
         // Bool used in the points function
@@ -154,7 +190,7 @@ $(function () {
 
     //Creates a new image object
     var gameObject = new GAME();
-    
+
     gameObject.muteAll();
 
 
@@ -171,7 +207,7 @@ $(function () {
 
     // Anonymous on click function to mute the game sounds
     $("#sound").click(function () {
-        if (gameObject.glass_audio.muted) {
+        if (gameObject.glass.muted) {
             $("#sound").toggleClass("fa-volume-up").removeClass("fa-volume-off");
             gameObject.unMuteAll();
         } else {
@@ -354,9 +390,10 @@ $(function () {
     $("#glasBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img0") {
-                gameObject.glass_audio.play();
+                gameObject.glass.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -365,9 +402,10 @@ $(function () {
     $("#matBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img1" || ui.draggable.attr('id') === "img11") {
-                gameObject.metal_throw.play();
+                gameObject.food.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -376,9 +414,10 @@ $(function () {
     $("#papperBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img2") {
-                gameObject.metal_throw.play();
+                gameObject.paper.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -390,6 +429,7 @@ $(function () {
                 gameObject.metal_throw.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -398,9 +438,10 @@ $(function () {
     $("#plastBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img4") {
-                gameObject.metal_throw.play();
+                gameObject.plastics.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -409,9 +450,10 @@ $(function () {
     $("#battBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img5") {
-                gameObject.metal_throw.play();
+                gameObject.batteries.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -420,9 +462,10 @@ $(function () {
     $("#enSparBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img6") {
-                gameObject.metal_throw.play();
+                gameObject.light_bulb.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -431,9 +474,10 @@ $(function () {
     $("#ofargatBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img7") {
-                gameObject.metal_throw.play();
+                gameObject.glass.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -442,9 +486,10 @@ $(function () {
     $("#husBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img8") {
-                gameObject.metal_throw.play();
+                gameObject.food.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -453,9 +498,10 @@ $(function () {
     $("#kartongBin").droppable({
         drop: function (event, ui) {
             if (ui.draggable.attr('id') === "img9") {
-                gameObject.metal_throw.play();
+                gameObject.cardboard.play();
                 trashAccept(ui);
             } else {
+                gameObject.error.play();
                 trashReturn(ui);
             }
         }
@@ -545,6 +591,7 @@ $(function () {
             $(rndImage).appendTo($('#mydiv')).draggable().on('click', function () {
                 $("#mydiv").children().remove();
                 bonusTime();
+                gameObject.removing_plastics.play();
                 gameObject.deadline = gameObject.deadline + 5000;
                 $(gameObject.images[11]).appendTo($('#mydiv')).draggable().show();
             }).show();
