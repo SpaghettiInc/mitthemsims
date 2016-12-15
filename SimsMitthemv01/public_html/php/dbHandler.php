@@ -32,7 +32,7 @@ class dbHandler {
 
     // returns the current lowest highscore (for comparison later)
     public function getTop25() {
-
+        $this->checkIfReset();
         $myConn = $this->openConnection();
 
         $sql = "SELECT score, name FROM highscore ORDER BY score DESC LIMIT 25,1";
@@ -44,12 +44,8 @@ class dbHandler {
                 echo json_encode($row);
                 mysqli_free_result($result);
             } else {
-                mysqli_free_result($result);
-                $sl = "SELECT MIN(score) AS score FROM highscore";
-                $rs = mysqli_query($myConn, $sl);
-                $rw = mysqli_fetch_assoc($rs);
-                echo json_encode($rw);
-                mysqli_free_result($rs);
+                //$row['score'] = '0';
+                echo json_encode($row);
             }
         }
         mysqli_close($myConn);
@@ -68,8 +64,8 @@ class dbHandler {
             return;
         }
         
-        if(strlen($name2) > 16){
-            $name2 = substr($name2, 0 ,16);
+        if(strlen($name2) > 24){
+            $name2 = substr($name2, 0, 24);
         }
         
         $sName = htmlspecialchars($name2, ENT_SUBSTITUTE);
@@ -85,6 +81,40 @@ class dbHandler {
         // close connection
         mysqli_close($con);
     }
+    
+    private function checkIfReset() {
+
+        // get time of last highscore clear
+        $rDate = strtotime(file_get_contents(".rDate.log"));
+
+
+        // check this differance
+        if ( abs(strtotime(date('Y-m-d'))-strtotime($rDate) ) > 604800  ) {
+
+            $conn = $this->openConnection();
+
+            // if differance is a week or more; clear highscore
+            $query = "SELECT * FROM highscore";
+
+            $rs = mysqli_query($conn, $query);
+
+            while($row = $rs->fetch_assoc()){
+
+                $id = $row['id'];
+                $query = "DELETE FROM highscore WHERE id=$id";
+                mysqli_query($conn, $query);
+            }
+
+            mysqli_free_result($rs);
+            mysqli_close($conn);
+            
+            $file = fopen('.rDate.log', 'w');
+            fwrite($file, date('Y-m-d'));
+            fclose($file);
+        }
+
+    }
+    
     
         // opens up a connection to the actual database
     private function openConnection() {

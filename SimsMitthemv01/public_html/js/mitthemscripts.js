@@ -300,8 +300,8 @@ $(function () {
             },
             success: function (data) {          //on recieve of reply
                 console.log("inside success");
-                console.log(data);
-                if (gameObject.points > parseInt(data['score']) || data['score'] === null || Object.keys(data).length < 25) {
+                console.log(JSON.stringify(data));
+                if (data === null) {
                     console.log(data);
                     if (level.length === 0) {
                         $("#appraise").text("Bra gjort! Nu får du skriva in \n\
@@ -309,10 +309,18 @@ $(function () {
                     } else {
                         $("#appraise").text("Well done! You made it to the highscore.");
                     }
-
                     $("#submitButton").show();
                     $("#submitName").show();
-                } else {
+                } else if(gameObject.points > parseInt(data['score'])){
+                    if (level.length === 0) {
+                        $("#appraise").text("Bra gjort! Nu får du skriva in \n\
+                                                dig på topplistan.");
+                    } else {
+                        $("#appraise").text("Well done! You made it to the highscore.");
+                    }
+                    $("#submitButton").show();
+                    $("#submitName").show();
+                }else {
                     if (level.length === 0) {
                         $("#appraise").text("Inte illa! Tyvärr räcker det inte \n\
                             riktigt för att ta sig in på topplistan.");
